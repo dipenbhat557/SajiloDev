@@ -11,7 +11,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`bg-[#1F2123] sticky w-full h-[70px] flex items-center justify-between`}
+      className={`bg-[#1F2123] fixed z-50 w-full h-[70px] flex items-center justify-between shadow-2xl shadow-black`}
     >
       <div className="h-full w-[65%] flex items-center justify-around">
         <div className="h-full w-[30%]">

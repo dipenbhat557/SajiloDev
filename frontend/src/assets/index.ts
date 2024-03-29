@@ -47,6 +47,7 @@ import work6 from "./works/work6.png";
 import rating from "./rating.png";
 
 import heroBg from "./heroBg.png";
+import reviewBg from "./reviewBg.png";
 
 export {
   logo,
@@ -88,4 +89,5 @@ export {
   work6,
   rating,
   heroBg,
+  reviewBg,
 };

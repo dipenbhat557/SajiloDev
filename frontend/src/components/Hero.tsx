@@ -2,7 +2,7 @@ import { heroBg } from "../assets";
 
 const Hero = () => {
   return (
-    <div className="w-full relative bg-[#1F2123] h-[550px] flex justify-between">
+    <div className="w-full relative bg-[#1F2123] h-[650px] flex justify-between">
       <div className="w-[75%] h-full absolute left-0 ">
         <img
           src={heroBg}

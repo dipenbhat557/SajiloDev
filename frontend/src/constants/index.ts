@@ -1,4 +1,7 @@
 import {
+  customer1,
+  customer2,
+  customer3,
   service1,
   service2,
   service3,
@@ -90,4 +93,31 @@ export const serviceItems = [
     title: "Upgrade & update",
     desc: "We offer website upgrading and updating services, providing significant improvements and regular tweaks to keep your site efficient, secure, and aligned with your evolving needs.",
   },
+];
+
+export const reviewItems = [
+  {
+    img: customer1,
+    name: "Avash Neupane",
+    time: "10 months ago",
+    review: "Really like the service and what a team wohhhh. Guys go for it",
+  },
+  {
+    img: customer2,
+    name: "Dipendra Bhatta",
+    time: "10 months ago",
+    review: "Really like the service and what a team wohhhh. Guys go for it",
+  },
+  {
+    img: customer3,
+    name: "Siddhant Acharya",
+    time: "10 months ago",
+    review: "Really like the service and what a team wohhhh. Guys go for it",
+  },
+  // {
+  //   img: customer2,
+  //   name: "Khem Raj Bhatta",
+  //   time: "10 months ago",
+  //   review: "Really like the service and what a team wohhhh. Guys go for it",
+  // },
 ];
