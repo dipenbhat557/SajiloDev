@@ -12,17 +12,16 @@ const Services = () => {
         {serviceItems?.map((item, index) => {
           return (
             <div
-              className="w-[25%] h-[300px] mt-4 flex flex-col hover:bg-[#1F2123] hover:text-white rounded-t-lg border-b border-[#1877F2]"
+              className="w-[25%] h-auto mt-4 flex flex-col gap-2"
               key={index}
             >
               <img
                 src={item?.img}
                 alt={item?.title}
-                className="w-full h-[80%] object-cover rounded-t-lg"
+                className="w-[50%] h-[180px] object-cover rounded-t-lg"
               />
-              <div className="w-full h-[20%] font-serif flex items-center justify-center">
-                {item?.title}
-              </div>
+              <div className="font-semibold  font-serif">{item?.title}</div>
+              <div>{item?.desc}</div>
             </div>
           );
         })}
