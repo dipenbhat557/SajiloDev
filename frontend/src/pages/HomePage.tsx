@@ -12,7 +12,7 @@ import Footer from "../components/Footer";
 const HomePage = () => {
   return (
     <>
-      <Navbar />
+      <Navbar bgColor="bg-[#1F2123]" textColor="text-white" borderColor="" />
       <Hero />
       <Works />
       <Services />

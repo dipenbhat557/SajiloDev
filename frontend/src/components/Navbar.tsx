@@ -6,15 +6,19 @@ import { useNavigate } from "react-router-dom";
 import { isLoggedIn } from "../store";
 import { useState } from "react";
 
-const Navbar = () => {
+const Navbar = ({
+  bgColor,
+  textColor,
+  borderColor,
+}: {
+  bgColor: string;
+  textColor: string;
+  borderColor: string;
+}) => {
   const navigate = useNavigate();
   const isLogIn = useRecoilValue(isLoggedIn);
   const [showDropdown, setShowDropdown] = useState(false);
   let timeoutId: number;
-
-  const toggleDropdown = () => {
-    setShowDropdown(!showDropdown);
-  };
 
   const handleMouseLeave = () => {
     timeoutId = setTimeout(() => {
@@ -30,16 +34,22 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-[#1F2123] fixed z-50 w-full h-[70px] flex items-center justify-between shadow-2xl shadow-black">
+    <div
+      className={`${bgColor} fixed z-50 w-full h-[70px] flex items-center justify-between shadow-2xl shadow-slate-500 `}
+    >
       <div className="flex items-center justify-around w-[65%]">
-        <div className="w-[30%]">
+        <div
+          className="w-[30%] cursor-pointer
+        "
+          onClick={() => navigate("/")}
+        >
           <img src={logo} alt="logo" className="w-full h-full object-contain" />
         </div>
         <div className="flex items-center justify-around w-[90%]">
           {navLinks?.map((nav, index) => (
             <div
               key={index}
-              className="text-white flex items-center text-[14px] gap-2 cursor-pointer relative"
+              className={`${textColor} flex items-center text-[14px] gap-2 cursor-pointer relative`}
               onMouseEnter={() => {
                 if (nav.title === "Services") {
                   setShowDropdown(true);
@@ -57,7 +67,7 @@ const Navbar = () => {
               {nav.title === "Services" ? (
                 <>
                   {nav.title}
-                  <IoMdArrowDropdown className="inline text-white " />
+                  <IoMdArrowDropdown className={`inline ${textColor} `} />
                 </>
               ) : (
                 <a href={nav?.link}>{nav?.title}</a>
@@ -67,9 +77,17 @@ const Navbar = () => {
         </div>
       </div>
       {!isLogIn && (
-        <div className="w-[25%] flex items-center justify-between pr-2">
-          <p className="text-[#0766FF]">Log in</p>
-          <p className="px-4 py-1 bg-white text-[#0766FF] rounded-lg">
+        <div className="w-[15%] flex items-center justify-around pr-2">
+          <p
+            className="text-[#0766FF] cursor-pointer"
+            onClick={() => navigate("/signin")}
+          >
+            Log in
+          </p>
+          <p
+            className={`px-4 py-1 bg-white cursor-pointer text-[#0766FF] rounded-lg ${borderColor}`}
+            onClick={() => navigate("/signup")}
+          >
             Register
           </p>
         </div>
@@ -78,7 +96,7 @@ const Navbar = () => {
         <div className="w-[15%] flex items-center justify-center ">
           <img
             src={def}
-            className="w-[3] h-[80%] object-contain rounded-full"
+            className="w-[3] h-[80%] object-contain rounded-full cursor-pointer"
           />
         </div>
       )}
@@ -92,7 +110,10 @@ const Navbar = () => {
           <ul>
             {serviceDropdowns?.map((service, index) => {
               return (
-                <li className="hover:bg-[#0766FF30] text-[#0B619E] px-2 py-1 rounded-sm text-[12px] cursor-pointer">
+                <li
+                  key={index}
+                  className="hover:bg-[#0766FF30] text-[#0B619E] px-2 py-1 rounded-sm text-[12px] cursor-pointer"
+                >
                   <a href={`/${service?.link}`}>{service?.title}</a>
                 </li>
               );

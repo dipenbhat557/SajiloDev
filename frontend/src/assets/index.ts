@@ -8,6 +8,7 @@ import youtube from "./socialMedias/youtube.jpg";
 import github from "./socialMedias/github.png";
 import insta from "./socialMedias/insta.png";
 import linkedin from "./socialMedias/linkedin.png";
+import google from "./socialMedias/google.jpg";
 
 import customer1 from "./customers/customer1.png";
 import customer2 from "./customers/customer2.png";
@@ -49,6 +50,8 @@ import rating from "./rating.png";
 import heroBg from "./heroBg.png";
 import reviewBg from "./reviewBg.png";
 
+import login from "./login.svg";
+
 export {
   logo,
   def,
@@ -59,6 +62,7 @@ export {
   github,
   insta,
   linkedin,
+  google,
   customer1,
   customer2,
   customer3,
@@ -90,4 +94,5 @@ export {
   rating,
   heroBg,
   reviewBg,
+  login,
 };
