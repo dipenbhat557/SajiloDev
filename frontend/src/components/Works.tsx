@@ -3,7 +3,7 @@ import { styles } from "../styles";
 
 const Works = () => {
   return (
-    <div className={`h-auto w-full ${styles.padding} flex flex-col gap-4`}>
+    <div className={` h-auto w-full ${styles.padding} flex flex-col gap-4`}>
       <div className={`${styles.sectionHeadText} flex gap-3 mx-auto my-4`}>
         <p>Our </p>
         <p className="text-[#0766FF]">Works</p>

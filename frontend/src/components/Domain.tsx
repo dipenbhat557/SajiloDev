@@ -13,7 +13,7 @@ const Domain = () => {
           placeholder="my-website.com"
           className="px-12 h-[50%] w-[80%] rounded-lg py-3 bg-slate-300 placeholder:text-[22px]  placeholder:font-extralight"
         />
-        <button className="h-[50%] my-auto px-8 text-white bg-[#0766FF] rounded-lg">
+        <button className="h-[50%] my-auto px-2 text-white bg-[#0766FF] rounded-lg">
           Find domain
         </button>
       </div>

@@ -1,13 +1,23 @@
 import {
+  angular,
+  avash,
+  css,
   customer1,
   customer2,
   customer3,
+  dipen,
+  next,
+  react,
   service1,
   service2,
   service3,
   service4,
   service5,
   service6,
+  springBoot,
+  tailwind,
+  ts,
+  wordpress,
   work1,
   work2,
   work3,
@@ -31,6 +41,33 @@ export const navLinks = [
   },
   {
     title: "About us",
+    link: "#",
+  },
+];
+
+export const serviceDropdowns = [
+  {
+    title: "Static Website",
+    link: "#",
+  },
+  {
+    title: "Dynamic Website",
+    link: "#",
+  },
+  {
+    title: "UI/UX",
+    link: "#",
+  },
+  {
+    title: "Hosting",
+    link: "#",
+  },
+  {
+    title: "Domain Registration",
+    link: "#",
+  },
+  {
+    title: "Upgrade Your Website",
     link: "#",
   },
 ];
@@ -114,10 +151,50 @@ export const reviewItems = [
     time: "10 months ago",
     review: "Really like the service and what a team wohhhh. Guys go for it",
   },
-  // {
-  //   img: customer2,
-  //   name: "Khem Raj Bhatta",
-  //   time: "10 months ago",
-  //   review: "Really like the service and what a team wohhhh. Guys go for it",
-  // },
+  {
+    img: customer2,
+    name: "Khem Raj Bhatta",
+    time: "10 months ago",
+    review: "Really like the service and what a team wohhhh. Guys go for it",
+  },
+];
+
+export const frontend = {
+  title: "Front-end",
+  stack: [angular, css, next, react, tailwind, ts, wordpress],
+};
+export const backend = {
+  title: "Back-end",
+  stack: [angular, springBoot, css, next, react, wordpress],
+};
+export const uiux = {
+  title: "UI/UX",
+  stack: [css, next, react, ts, wordpress],
+};
+export const devOps = {
+  title: "DevOps",
+  stack: [next, react, tailwind, wordpress],
+};
+export const database = {
+  title: "Database",
+  stack: [angular, css, wordpress],
+};
+
+export const techStack = [frontend, backend, uiux, devOps, database];
+
+export const founders = [
+  {
+    img: dipen,
+    vanai: "Finally, launced it !!",
+    github: "https://github.com/dipenbhat557",
+    linkedin: "https://www.linkedin.com/in/dipendra-bhatta-38ba32259/",
+    facebook: "https://www.facebook.com/",
+  },
+  {
+    img: avash,
+    vanai: "Finally, launced it !!",
+    github: "https://github.com/dipenbhat557",
+    linkedin: "https://www.linkedin.com/in/dipendra-bhatta-38ba32259/",
+    facebook: "https://www.facebook.com/",
+  },
 ];

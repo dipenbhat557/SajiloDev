@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { rating, reviewBg } from "../assets";
 import { reviewItems } from "../constants";
 import { styles } from "../styles";
@@ -5,6 +6,39 @@ import { IoMdArrowDropright } from "react-icons/io";
 import { IoMdArrowDropleft } from "react-icons/io";
 
 const Reviews = () => {
+  const [currentReviews, setCurrentReviews] = useState<any>([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const updateCurrentReviews = () => {
+    const startIndex = currentIndex;
+    const endIndex = startIndex + 3;
+    const nextIndex = endIndex % reviewItems?.length;
+    if (endIndex !== reviewItems?.length - 1) {
+      setCurrentReviews(
+        reviewItems
+          ?.slice(startIndex, endIndex)
+          ?.concat(reviewItems.slice(0, nextIndex))
+      );
+    } else {
+      setCurrentReviews(reviewItems?.slice(startIndex, endIndex));
+    }
+  };
+
+  const handleAutoSwitch = () => {
+    setCurrentIndex((prevIndex: number) => {
+      const newIndex = (prevIndex + 1) % reviewItems?.length;
+      return newIndex;
+    });
+  };
+
+  useEffect(() => {
+    updateCurrentReviews();
+
+    const interval = setInterval(handleAutoSwitch, 3000);
+
+    return () => clearInterval(interval);
+  }, [currentIndex]);
+
   return (
     <div className={`${styles.padding} w-full h-[700px] flex flex-col`}>
       <div className="w-full h-[30%] ">
@@ -35,16 +69,56 @@ const Reviews = () => {
           </div>
         </div>
         <div className="w-full h-[70%] flex items-center justify-around">
-          <IoMdArrowDropleft className="text-6xl" />
-          {reviewItems?.map((item, index) => {
+          <IoMdArrowDropleft
+            onClick={() => {
+              setCurrentIndex((prevIndex: number) => {
+                const newIndex =
+                  (prevIndex - 1 + reviewItems.length) % reviewItems.length;
+
+                return newIndex;
+              });
+            }}
+            className="text-6xl cursor-pointer"
+          />
+          {currentReviews?.map((item: any, index: number) => {
             return (
               <div
                 key={index}
-                className="border border-black rounded-lg flex flex-col justify-between bg-black items-center w-[28%] h-[60%]"
-              ></div>
+                className="p-2 border border-black rounded-lg flex flex-col justify-between items-center w-[28%] h-[60%]"
+              >
+                <div className="h-[30%] w-full flex gap-2">
+                  <img
+                    src={item?.img}
+                    alt="user"
+                    className="h-[90%] w-[15%] object-contain rounded-full"
+                  />
+                  <div className="h-[90%] w-[80%] flex flex-col ">
+                    <p>{item?.name}</p>
+                    <p className="text-[12px] font-serif font-extralight">
+                      {item?.time}
+                    </p>
+                  </div>
+                </div>
+                <img
+                  src={rating}
+                  alt="rating"
+                  className="h-[10%] w-[40%] object-contain"
+                />
+                <p className="text-[14px] h-[55%] line-clamp-5 tracking-wide leading-relaxed">
+                  {item?.review}
+                </p>
+              </div>
             );
           })}
-          <IoMdArrowDropright className="text-6xl" />
+          <IoMdArrowDropright
+            onClick={() => {
+              setCurrentIndex((prevIndex: number) => {
+                const newIndex = (prevIndex + 1) % reviewItems?.length;
+                return newIndex;
+              });
+            }}
+            className="text-6xl cursor-pointer"
+          />
         </div>
       </div>
     </div>
