@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import Footer from "../components/Footer";
 import GettingSite from "../components/GettingSite";
 import Navbar from "../components/Navbar";
@@ -6,21 +6,30 @@ import { styles } from "../styles";
 import { IoCall } from "react-icons/io5";
 import { IoIosMail } from "react-icons/io";
 
-const ContactUs = () => {
-  const [formData, setFormData] = useState({
+interface FormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
+const ContactUs: React.FC = () => {
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     subject: "",
     message: "",
   });
-  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Here you can implement the logic to submit the form data
     console.log("Form submitted:", formData);
@@ -140,4 +149,5 @@ const ContactUs = () => {
     </>
   );
 };
+
 export default ContactUs;
