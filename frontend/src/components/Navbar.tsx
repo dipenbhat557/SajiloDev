@@ -77,7 +77,7 @@ const Navbar = ({
         </div>
       </div>
       {!isLogIn && (
-        <div className="w-[15%] flex items-center justify-around pr-2">
+        <div className="w-[18%] gap-3 flex items-center justify-around pr-2">
           <p
             className="text-[#0766FF] cursor-pointer"
             onClick={() => navigate("/signin")}
@@ -93,7 +93,10 @@ const Navbar = ({
         </div>
       )}
       {isLogIn && (
-        <div className="w-[15%] flex items-center justify-center ">
+        <div
+          className="w-[15%] flex items-center justify-center "
+          onClick={() => navigate("/user")}
+        >
           <img
             src={def}
             className="w-[3] h-[80%] object-contain rounded-full cursor-pointer"

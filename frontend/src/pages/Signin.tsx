@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { facebook, google, insta, login, twitter } from "../assets";
 import Navbar from "../components/Navbar";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { isLoggedIn } from "../store";
 import { useNavigate } from "react-router-dom";
 
