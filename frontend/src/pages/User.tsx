@@ -16,13 +16,13 @@ const User = () => {
             <br /> create our services the best in the town
           </p>
         </div>
-        <div className="h-[400px] w-full -z-20" />
+        <div className="h-[370px] w-full -z-20" />
 
         <div
-          className={`${styles.padding} top-60 absolute bg-white left-[15%]  w-[70%] mx-auto h-[400px] rounded-md shadow-slate-400 shadow-sm flex flex-col justify-around items-center`}
+          className={`${styles.padding} top-[520px] absolute bg-white left-[15%]  w-[70%] mx-auto h-[400px] rounded-md shadow-slate-400 shadow-sm flex flex-col justify-around items-center`}
         >
           <div className="w-full h-[10%] flex items-center justify-end">
-            <button className="text-white bg-[#0766FF] px-6 rounded-2xl py-1">
+            <button className="text-white bg-[#0766FF] px-12 rounded-full py-1">
               Edit
             </button>
           </div>
@@ -52,12 +52,12 @@ const User = () => {
               <input
                 type="text"
                 className="px-2 border border-slate-200 rounded-md shadow-sm shadow-slate-300 mb-2 placeholder:text-[12px] "
-                placeholder="Enter your additionalss email"
+                placeholder="Enter your additional email"
               />
             </div>
           </div>
           <div className="w-[80%] h-[10%] flex items-center justify-center">
-            <button className="px-4 py-1 text-white bg-[#1F2123] rounded-lg text-[18px] font-serif">
+            <button className="px-14 py-1 text-white bg-[#1F2123] rounded-full text-[18px] font-serif">
               Logout
             </button>
           </div>

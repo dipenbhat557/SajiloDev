@@ -3,6 +3,7 @@ import HomePage from "./HomePage";
 import Signup from "./Signup";
 import Signin from "./Signin";
 import User from "./User";
+import ContactUs from "./ContactUs";
 
 const Pages = () => {
   return (
@@ -12,6 +13,7 @@ const Pages = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/user" element={<User />} />
+        <Route path="/contactus" element={<ContactUs />} />
       </Routes>
     </BrowserRouter>
   );
