@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import { getSite1, getSite2 } from "../assets";
 import { styles } from "../styles";
 
 const GettingSite = () => {
+  const navigate = useNavigate();
   return (
     <div
       className={`${styles.padding}  bg-[#EFEAE1] w-full h-[400px] flex items-center justify-between`}
@@ -10,7 +12,10 @@ const GettingSite = () => {
         <p className="text-[22px] font-semibold font-serif leading-loose">
           "From your imagination to reality, let's craft our digital domain."
         </p>
-        <button className="rounded-md px-6 py-2 text-white text-[12px] sm:text-[14px] bg-[#0766FF]">
+        <button
+          className="rounded-md px-6 py-2 text-white text-[12px] sm:text-[14px] bg-[#0766FF]"
+          onClick={() => navigate("/afterservice/1")}
+        >
           Get your own site
         </button>
       </div>

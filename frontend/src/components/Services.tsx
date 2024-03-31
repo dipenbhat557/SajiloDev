@@ -14,7 +14,7 @@ const Services = () => {
         {serviceItems?.map((item, index) => {
           return (
             <div
-              className="w-[25%] h-auto mt-4 flex flex-col gap-2"
+              className="w-[25%] cursor-pointer h-auto mt-4 flex flex-col gap-2"
               key={index}
               onClick={() => navigate(`/afterservice/${index + 1}`)}
             >

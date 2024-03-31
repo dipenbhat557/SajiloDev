@@ -85,13 +85,14 @@ export const afterClickItems = [
     title: "Dynamic Websites",
     desc: "Dynamic websites generate content in real-time using server-side processing. They offer interactivity, user authentication, and complex functionalities but require more resources for development and maintenance compared to static sites.",
   },
-  {
-    title: "Hosting",
-    desc: "Hosting refers to the service of storing and making web content accessible online. It involves providing servers, storage, and network infrastructure to enable websites and applications to be accessed via the internet.",
-  },
+
   {
     title: "UI/UX",
     desc: "UI/UX (User Interface/User Experience) design focuses on creating intuitive, visually appealing interfaces for optimal user interaction, enhancing usability, accessibility, and overall satisfaction with digital products.",
+  },
+  {
+    title: "Hosting",
+    desc: "Hosting refers to the service of storing and making web content accessible online. It involves providing servers, storage, and network infrastructure to enable websites and applications to be accessed via the internet.",
   },
   {
     title: "Domain Registration",
@@ -107,26 +108,32 @@ export const workItems = [
   {
     img: work1,
     title: "Campaign Kart",
+    link: "http://campaignkart.netlify.app",
   },
   {
     img: work2,
     title: "Lamahi Deukhuri",
+    link: "https://lamahichamberofcommerce.org.np",
   },
   {
     img: work3,
     title: "Deukhuri Campus",
+    link: "https://deukhurimultiplecampus.edu.np",
   },
   {
     img: work4,
     title: "DAED Dang",
+    link: "https://daedang.org.np",
   },
   {
     img: work5,
     title: "Personal Portfolio",
+    link: "http://dipendrabhatta.netlify.app",
   },
   {
     img: work6,
     title: "Personal Portfolio",
+    link: "https://sajilodev.com",
   },
 ];
 
@@ -146,15 +153,16 @@ export const serviceItems = [
     title: "UI/UX",
     desc: "We specialize in UI/UX services, crafting digital experiences that prioritize user satisfaction. From visually appealing interfaces to intuitive navigation, we optimize every aspect for maximum engagement.",
   },
-  {
-    img: service4,
-    title: "Domain registration",
-    desc: "Secure your online identity with seamless domain registration. Claim your unique web address effortlessly and mark your presence in the digital world.",
-  },
+
   {
     img: service5,
     title: "Hosting",
     desc: "sajiloDev provide secure and reliable hosting services, ensuring high uptime, fast loading speeds, and robust security for your online presence.",
+  },
+  {
+    img: service4,
+    title: "Domain registration",
+    desc: "Secure your online identity with seamless domain registration. Claim your unique web address effortlessly and mark your presence in the digital world.",
   },
   {
     img: service6,

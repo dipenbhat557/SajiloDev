@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import { workItems } from "../constants";
 import { styles } from "../styles";
 
 const Works = () => {
+  const navigate = useNavigate();
   return (
     <div className={` h-auto w-full ${styles.padding} flex flex-col gap-4`}>
       <div className={`${styles.sectionHeadText} flex gap-3 mx-auto my-4`}>
@@ -12,8 +14,9 @@ const Works = () => {
         {workItems?.map((item, index) => {
           return (
             <div
-              className="w-[25%] h-[300px] mt-4 flex flex-col hover:bg-[#1F2123] hover:text-white rounded-t-lg border-b border-[#1877F2]"
+              className="w-[25%] cursor-pointer h-[300px] mt-4 flex flex-col hover:bg-[#1F2123] hover:text-white rounded-t-lg border-b border-[#1877F2]"
               key={index}
+              onClick={() => (window.location.href = item?.link)}
             >
               <img
                 src={item?.img}

@@ -17,31 +17,31 @@ const Pages = () => {
         <Route path="/contactus" element={<ContactUs />} />
         <Route
           path="/afterservice/0"
-          element={<AfterService currentService={0} />}
+          element={<AfterService currentServiceIncoming={0} />}
         />
         <Route
           path="/afterservice/1"
-          element={<AfterService currentService={1} />}
+          element={<AfterService currentServiceIncoming={1} />}
         />
         <Route
           path="/afterservice/2"
-          element={<AfterService currentService={2} />}
+          element={<AfterService currentServiceIncoming={2} />}
         />
         <Route
           path="/afterservice/3"
-          element={<AfterService currentService={3} />}
+          element={<AfterService currentServiceIncoming={3} />}
         />
         <Route
           path="/afterservice/4"
-          element={<AfterService currentService={4} />}
+          element={<AfterService currentServiceIncoming={4} />}
         />
         <Route
           path="/afterservice/5"
-          element={<AfterService currentService={5} />}
+          element={<AfterService currentServiceIncoming={5} />}
         />
         <Route
           path="/afterservice/6"
-          element={<AfterService currentService={6} />}
+          element={<AfterService currentServiceIncoming={6} />}
         />
       </Routes>
     </BrowserRouter>

@@ -5,6 +5,7 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { isLoggedIn } from "../store";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = ({
   bgColor,
@@ -117,7 +118,9 @@ const Navbar = ({
                   key={index}
                   className="hover:bg-[#0766FF30] text-[#0B619E] px-2 py-1 rounded-sm text-[12px] cursor-pointer"
                 >
-                  <a href={`/${service?.link}`}>{service?.title}</a>
+                  <p onClick={() => navigate(`/afterservice/${index + 1}`)}>
+                    {service?.title}
+                  </p>
                 </li>
               );
             })}
