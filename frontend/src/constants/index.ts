@@ -48,27 +48,58 @@ export const navLinks = [
 export const serviceDropdowns = [
   {
     title: "Static Website",
-    link: "#",
+    link: "/afterservice/1",
   },
   {
     title: "Dynamic Website",
-    link: "#",
+    link: "/afterservice/2",
   },
   {
     title: "UI/UX",
-    link: "#",
+    link: "/afterservice/3",
   },
   {
     title: "Hosting",
-    link: "#",
+    link: "/afterservice/4",
   },
   {
     title: "Domain Registration",
-    link: "#",
+    link: "/afterservice/5",
   },
   {
     title: "Upgrade Your Website",
-    link: "#",
+    link: "/afterservice/6",
+  },
+];
+
+export const afterClickItems = [
+  {
+    title: "Select services you need ",
+    desc: "We will create our services the best in the town We will create our services the best in the town.",
+  },
+  {
+    title: "Static Websites",
+    desc: " These sites are fast, easy to deploy, and suitable for static content presentation.",
+  },
+  {
+    title: "Dynamic Websites",
+    desc: "Dynamic websites generate content in real-time using server-side processing. They offer interactivity, user authentication, and complex functionalities but require more resources for development and maintenance compared to static sites.",
+  },
+  {
+    title: "Hosting",
+    desc: "Hosting refers to the service of storing and making web content accessible online. It involves providing servers, storage, and network infrastructure to enable websites and applications to be accessed via the internet.",
+  },
+  {
+    title: "UI/UX",
+    desc: "UI/UX (User Interface/User Experience) design focuses on creating intuitive, visually appealing interfaces for optimal user interaction, enhancing usability, accessibility, and overall satisfaction with digital products.",
+  },
+  {
+    title: "Domain Registration",
+    desc: "Secure your online identity with seamless domain registration. Claim your unique web address effortlessly and mark your presence in the digital world.",
+  },
+  {
+    title: "Upgrade your websites",
+    desc: "We offer website upgrading and updating services, providing significant improvements and regular tweaks to keep your site efficient, secure, and aligned with your evolving needs.",
   },
 ];
 
