@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Reviews from "../components/Reviews";
@@ -5,6 +6,14 @@ import Works from "../components/Works";
 import { styles } from "../styles";
 
 const User = () => {
+  const [editable, setEditable] = useState(false);
+
+  const handleEditClick = () => {
+    setEditable(true);
+  };
+  const handleSaveClick = () => {
+    setEditable(false);
+  };
   return (
     <>
       <Navbar bgColor="bg-[#1F2123]" textColor="text-white" borderColor="" />
@@ -22,9 +31,22 @@ const User = () => {
           className={`${styles.padding} top-[520px] absolute bg-white left-[15%]  w-[70%] mx-auto h-[400px] rounded-md shadow-slate-400 shadow-sm flex flex-col justify-around items-center`}
         >
           <div className="w-full h-[10%] flex items-center justify-end">
-            <button className="text-white bg-[#0766FF] px-12 rounded-full py-1">
-              Edit
-            </button>
+            {editable && (
+              <button
+                className="text-white bg-[#0766FF] px-12 rounded-full py-1"
+                onClick={handleEditClick}
+              >
+                Edit
+              </button>
+            )}
+            {!editable && (
+              <button
+                className="text-white bg-[#0766FF] px-12 rounded-full py-1"
+                onClick={handleSaveClick}
+              >
+                Save
+              </button>
+            )}
           </div>
           <div className="w-[80%] h-[75%] flex  justify-around">
             <div className="w-[40%] h-full justify-around flex flex-col gap-3">
@@ -33,17 +55,20 @@ const User = () => {
                 type="text"
                 className="px-2 border border-slate-200 rounded-md shadow-sm shadow-slate-300 mb-2 placeholder:text-[12px] "
                 placeholder="Enter your email"
+                readOnly={!editable}
               />
               <p className="font-serif">Password</p>
               <input
                 type="text"
                 placeholder="Enter your password"
+                readOnly={!editable}
                 className="px-2 border border-slate-200 rounded-md shadow-sm shadow-slate-300 mb-2 placeholder:text-[12px] "
               />
               <p className="font-serif">Contact Number</p>
               <input
                 type="text"
                 className="px-2 border border-slate-200 rounded-md shadow-sm shadow-slate-300 mb-2 placeholder:text-[12px] "
+                readOnly={!editable}
                 placeholder="Enter your contact number"
               />
             </div>
@@ -52,6 +77,7 @@ const User = () => {
               <input
                 type="text"
                 className="px-2 border border-slate-200 rounded-md shadow-sm shadow-slate-300 mb-2 placeholder:text-[12px] "
+                readOnly={!editable}
                 placeholder="Enter your additional email"
               />
             </div>

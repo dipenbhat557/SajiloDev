@@ -1,9 +1,7 @@
-import { useNavigate } from "react-router-dom";
 import { workItems } from "../constants";
 import { styles } from "../styles";
 
 const Works = () => {
-  const navigate = useNavigate();
   return (
     <div className={` h-auto w-full ${styles.padding} flex flex-col gap-4`}>
       <div className={`${styles.sectionHeadText} flex gap-3 mx-auto my-4`}>
