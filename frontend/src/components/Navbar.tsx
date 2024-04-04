@@ -18,7 +18,7 @@ const Navbar = ({
   const navigate = useNavigate();
   const isLogIn = useRecoilValue(isLoggedIn);
   const [showDropdown, setShowDropdown] = useState(false);
-  let timeoutId: number;
+  let timeoutId: NodeJS.Timeout;
 
   const handleMouseLeave = () => {
     timeoutId = setTimeout(() => {

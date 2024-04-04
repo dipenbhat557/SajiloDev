@@ -3,7 +3,9 @@ import { facebook, google, insta, login, twitter } from "../assets";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
-import { isLoggedIn } from "../store";
+import { currUser } from "../store";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebaseConfig";
 
 interface FormData {
   email: string;
@@ -21,8 +23,11 @@ const Signup = () => {
   const [showPassword1, setShowPassword1] = useState<boolean>(false);
   const [showPassword2, setShowPassword2] = useState<boolean>(false);
 
+  const [diffPassword, setDiffPassword] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+
   const navigate = useNavigate();
-  const setIsLoggedIn = useSetRecoilState(isLoggedIn);
+  const setCurrentUser = useSetRecoilState(currUser);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -40,10 +45,28 @@ const Signup = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (formData.password !== formData.confirmPassword) {
+      setDiffPassword(true);
+    }
+
+    createUserWithEmailAndPassword(auth, formData.email, formData.password)
+      .then((res) => {
+        if (res?.user?.email) {
+          setCurrentUser({ email: res.user.email });
+          navigate("/");
+          console.log(res.user);
+        } else {
+          setError(true);
+        }
+      })
+      .catch((err) => {
+        setError(true);
+        console.log(err);
+      });
+
     // Add your form submission logic here
     console.log("Form submitted with data:", formData);
-    setIsLoggedIn(true);
-    navigate("/");
   };
 
   return (
@@ -69,7 +92,10 @@ const Signup = () => {
               We are delighted to offer a modern and user-friendly service to
               ensure you have the best experience.
             </p>
-            <button className=" w-[30%] rounded-lg py-2 bg-[#4461F2] text-white font-serif">
+            <button
+              className=" w-[30%] rounded-lg py-2 bg-[#4461F2] text-white font-serif"
+              onClick={() => navigate("/afterservice/1")}
+            >
               Get your Own Site
             </button>
             <img
@@ -78,33 +104,54 @@ const Signup = () => {
               className="w-[80%] h-[60%] object-contain"
             />
           </div>
-          <div className="w-[38%] h-[80%] flex flex-col gap-8">
-            <p className="text-[22px] font-semibold">Register</p>
+          <div className="w-[38%] h-full flex flex-col gap-8">
+            <p className="text-[22px] font-semibold h-[10%]">Register</p>
             <form
               onSubmit={handleSubmit}
-              className="w-full h-[70%] gap-8 flex flex-col"
+              className="w-full h-[70%] mb-4 gap-8 flex flex-col"
             >
-              <input
-                type="text"
-                name="email"
-                placeholder="Enter Email or Phone"
-                onChange={handleChange}
-                value={formData.email}
-                className="px-8 py-2 placeholder:text-[10px] placeholder:text-slate-700 shadow-sm shadow-slate-600 rounded-md"
-              />
+              <div>
+                {error && (
+                  <p className="text-red-500 text-[8px] p-2">Try again !!</p>
+                )}
+
+                <input
+                  type="text"
+                  name="email"
+                  placeholder="Enter Email or Phone"
+                  onChange={handleChange}
+                  value={formData.email}
+                  className={` w-full px-8 py-2 placeholder:text-[10px] placeholder:text-slate-700  ${
+                    error
+                      ? "shadow-red-700 shadow-lg"
+                      : "shadow-slate-600 shadow-sm"
+                  } rounded-md`}
+                />
+              </div>
               <div className="relative">
+                {diffPassword && (
+                  <p className="text-red-500 text-[8px] p-2">
+                    Password didn't match
+                  </p>
+                )}
                 <input
                   type={showPassword1 ? "text" : "password"}
                   name="password"
                   placeholder="Password"
                   onChange={handleChange}
                   value={formData.password}
-                  className="w-full px-8 -z-10 py-2 placeholder:text-[10px] placeholder:text-slate-700 shadow-sm shadow-slate-600 rounded-md"
+                  className={`w-full px-8 -z-10 py-2 placeholder:text-[10px] placeholder:text-slate-700 ${
+                    error || diffPassword
+                      ? "shadow-lg shadow-red-700"
+                      : "shadow-sm shadow-slate-600"
+                  } rounded-md`}
                 />
                 <button
                   type="button"
                   onClick={togglePasswordVisibility1}
-                  className="absolute right-2 top-2 z-50 "
+                  className={`${
+                    diffPassword ? "top-9" : "top-2"
+                  } absolute right-2  z-50 `}
                 >
                   {showPassword1 ? "🙈" : "👁️"}
                 </button>
@@ -117,7 +164,11 @@ const Signup = () => {
                   placeholder="Confirm password"
                   onChange={handleChange}
                   value={formData.confirmPassword}
-                  className="w-full px-8 -z-10 py-2 placeholder:text-[10px] placeholder:text-slate-700 shadow-sm shadow-slate-600 rounded-md"
+                  className={`w-full px-8 -z-10 py-2 placeholder:text-[10px] placeholder:text-slate-700 ${
+                    error || diffPassword
+                      ? "shadow-lg shadow-red-700"
+                      : "shadow-sm shadow-slate-600"
+                  } rounded-md`}
                 />
                 <button
                   type="button"
@@ -128,12 +179,17 @@ const Signup = () => {
                 </button>
               </div>
 
-              <button type="submit">Register</button>
+              <button
+                type="submit"
+                className="px-8 py-2 rounded-lg bg-[#4461F2] text-white text-[12px] font-medium "
+              >
+                Register
+              </button>
             </form>
 
-            <div className="flex gap-3 items-center justify-center">
+            <div className="flex h-[7%] gap-3 items-center justify-center">
               <div className="border-b border-slate-700 w-[25px]" />
-              <p className="text-slate-700 text-[10px] my-4">
+              <p className="text-slate-700 text-[10px] my-2">
                 Or Continue with
               </p>
               <div className="border-b border-slate-700 w-[25px]" />

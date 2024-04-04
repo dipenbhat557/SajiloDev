@@ -2,8 +2,10 @@ import { useState } from "react";
 import { facebook, google, insta, login, twitter } from "../assets";
 import Navbar from "../components/Navbar";
 import { useSetRecoilState } from "recoil";
-import { isLoggedIn } from "../store";
+import { currUser } from "../store";
 import { useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebaseConfig";
 
 interface FormData {
   email: string;
@@ -17,7 +19,9 @@ const Signin = () => {
   });
 
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const setIsLoggedIn = useSetRecoilState(isLoggedIn);
+  const [error, setError] = useState<boolean>(false);
+
+  const setCurrentUser = useSetRecoilState(currUser);
   const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,9 +36,21 @@ const Signin = () => {
   };
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    signInWithEmailAndPassword(auth, formData.email, formData.password)
+      .then((res) => {
+        if (res?.user?.email) {
+          setCurrentUser({ email: res.user.email });
+          navigate("/");
+          console.log(res.user);
+        } else {
+          setError(true);
+        }
+      })
+      .catch((err) => {
+        setError(true);
+        console.log(err);
+      });
     console.log("Form submitted with data:", formData);
-    setIsLoggedIn(true);
-    navigate("/");
   };
 
   return (
@@ -60,7 +76,10 @@ const Signin = () => {
               We are delighted to offer a modern and user-friendly service to
               ensure you have the best experience.
             </p>
-            <button className=" w-[30%] rounded-lg py-2 bg-[#4461F2] text-white font-serif">
+            <button
+              className=" w-[30%] rounded-lg py-2 bg-[#4461F2] text-white font-serif"
+              onClick={() => navigate("/afterservice/1")}
+            >
               Get your Own Site
             </button>
             <img
@@ -75,13 +94,20 @@ const Signin = () => {
               onSubmit={handleSubmit}
               className="w-full h-[70%] gap-8 flex flex-col"
             >
+              {error && (
+                <p className="text-red-500 text-[8px] p-2">Try again !!</p>
+              )}
               <input
                 type="text"
                 name="email"
                 placeholder="Enter Email or Phone"
                 onChange={handleChange}
                 value={formData.email}
-                className="px-8 py-2 placeholder:text-[10px] placeholder:text-slate-700 shadow-sm shadow-slate-600 rounded-md"
+                className={`px-8 py-2 placeholder:text-[10px] placeholder:text-slate-700  ${
+                  error
+                    ? "shadow-red-700 shadow-lg"
+                    : "shadow-slate-600 shadow-sm"
+                } rounded-md`}
               />
               <div className="relative">
                 <input
@@ -90,7 +116,11 @@ const Signin = () => {
                   placeholder="Password"
                   onChange={handleChange}
                   value={formData.password}
-                  className="w-full px-8 -z-10 py-2 placeholder:text-[10px] placeholder:text-slate-700 shadow-sm shadow-slate-600 rounded-md"
+                  className={`w-full px-8 -z-10 py-2 placeholder:text-[10px] placeholder:text-slate-700 ${
+                    error
+                      ? "shadow-lg shadow-red-700"
+                      : "shadow-sm shadow-slate-600"
+                  } rounded-md`}
                 />
                 <button
                   type="button"

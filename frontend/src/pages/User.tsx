@@ -4,9 +4,14 @@ import Navbar from "../components/Navbar";
 import Reviews from "../components/Reviews";
 import Works from "../components/Works";
 import { styles } from "../styles";
+import { useSetRecoilState } from "recoil";
+import { currUser } from "../store";
+import { useNavigate } from "react-router-dom";
 
 const User = () => {
+  const setCurrentUser = useSetRecoilState(currUser);
   const [editable, setEditable] = useState(false);
+  const navigate = useNavigate();
 
   const handleEditClick = () => {
     setEditable(true);
@@ -83,7 +88,13 @@ const User = () => {
             </div>
           </div>
           <div className="w-[80%] h-[10%] flex items-center justify-center">
-            <button className="px-14 py-1 text-white bg-[#1F2123] rounded-full text-[18px] font-serif">
+            <button
+              className="px-14 py-1 text-white bg-[#1F2123] rounded-full text-[18px] font-serif"
+              onClick={() => {
+                setCurrentUser({ email: "" });
+                navigate("/signin");
+              }}
+            >
               Logout
             </button>
           </div>
