@@ -1,16 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { heroBg } from "../assets";
+import ImageSlider from "./ImageSlider";
 
 const Hero = () => {
   const navigate = useNavigate();
   return (
     <div className="w-full relative bg-[#1F2123] h-[650px] flex justify-between">
-      <div className="w-[75%] h-full absolute left-0 ">
-        <img
-          src={heroBg}
-          alt="heroBg"
-          className="w-full h-full  object-cover"
-        />
+      <div className="w-[75%] h-full absolute left-3 top-10 ">
+        <ImageSlider />
       </div>
       <div className="w-[33%] absolute right-0 -z-1 h-full flex flex-col items-center justify-center gap-2">
         <p className="font-serif text-white text-[30px]">You Dream It,</p>

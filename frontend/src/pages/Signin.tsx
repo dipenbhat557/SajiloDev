@@ -50,7 +50,6 @@ const Signin = () => {
         setError(true);
         console.log(err);
       });
-    console.log("Form submitted with data:", formData);
   };
 
   return (

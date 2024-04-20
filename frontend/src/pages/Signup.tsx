@@ -65,7 +65,6 @@ const Signup = () => {
         console.log(err);
       });
 
-    // Add your form submission logic here
     console.log("Form submitted with data:", formData);
   };
 

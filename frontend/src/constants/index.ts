@@ -117,21 +117,25 @@ export const workItems = [
   },
   {
     img: work3,
+
     title: "Deukhuri Campus",
     link: "https://deukhurimultiplecampus.edu.np",
   },
   {
     img: work4,
+
     title: "DAED Dang",
     link: "https://daedang.org.np",
   },
   {
     img: work5,
+
     title: "Personal Portfolio",
     link: "http://dipendrabhatta.netlify.app",
   },
   {
     img: work6,
+
     title: "Personal Portfolio",
     link: "https://sajilodev.com",
   },
@@ -236,4 +240,13 @@ export const founders = [
     linkedin: "https://www.linkedin.com/in/dipendra-bhatta-38ba32259/",
     facebook: "https://www.facebook.com/",
   },
+];
+
+export const images = [
+  { img: work1, link: "https://www.deukhurimultiplecampus.edu.np" },
+  { img: work2, link: "https://www.deukhurimultiplecampus.edu.np" },
+  { img: work3, link: "https://www.deukhurimultiplecampus.edu.np" },
+  { img: work4, link: "https://www.deukhurimultiplecampus.edu.np" },
+  { img: work5, link: "https://www.deukhurimultiplecampus.edu.np" },
+  { img: work6, link: "https://www.deukhurimultiplecampus.edu.np" },
 ];
