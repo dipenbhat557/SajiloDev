@@ -5,6 +5,7 @@ import Signin from "./Signin";
 import User from "./User";
 import ContactUs from "./ContactUs";
 import AfterService from "./AfterService";
+import Orders from "./Orders";
 
 const Pages = () => {
   return (
@@ -43,6 +44,7 @@ const Pages = () => {
           path="/afterservice/6"
           element={<AfterService currentServiceIncoming={6} />}
         />
+        <Route path="/orders" element={<Orders />} />
       </Routes>
     </BrowserRouter>
   );

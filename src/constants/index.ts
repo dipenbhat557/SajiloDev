@@ -33,7 +33,7 @@ export const navLinks = [
   },
   {
     title: "Orders",
-    link: "#",
+    link: "/orders",
   },
   {
     title: "Connect with us",
