@@ -78,7 +78,7 @@ const ContactUs: React.FC = () => {
               </div>
               <div className="flex gap-3">
                 <IoIosMail className="text-[#0766FF]" />
-                <p className="text-[14px] font-light">sajilodev@gmail.com</p>
+                <p className="text-[14px] font-light">sajilodev557@gmail.com</p>
               </div>
             </div>
             <div className="w-[45%] h-full flex flex-col gap-9 text-slate-500">
@@ -125,7 +125,7 @@ const ContactUs: React.FC = () => {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Type your message here"
-                    className="w-full border-b placeholder:text-[10px] border-slate-400"
+                    className="w-full p-3 border-b placeholder:text-[10px] border-slate-400"
                   />
                 </div>
                 <button

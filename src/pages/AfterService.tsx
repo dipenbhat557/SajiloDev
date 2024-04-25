@@ -68,10 +68,10 @@ const AfterService = ({
             {afterClickItems[currentService]?.desc}
           </p>
         </div>
-        <div className="h-[370px] w-full -z-20" />
+        <div className="h-[370px] w-full -z-20 " />
 
         <div
-          className={`${styles.padding} top-[520px] absolute bg-white left-auto  w-[90%]  h-[400px] rounded-md shadow-slate-400 shadow-sm `}
+          className={`${styles.padding} top-[520px] absolute bg-white left-[5%]  w-[90%]  h-[400px] rounded-md shadow-slate-400 shadow-sm `}
         >
           <form
             onSubmit={handleProceed}
