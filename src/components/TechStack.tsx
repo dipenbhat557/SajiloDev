@@ -31,7 +31,7 @@ const TechStack = () => {
                 className={`text-[18px] cursor-pointer underline ${
                   currentIndex === index ? "text-black" : "text-slate-400"
                 }`}
-                onClick={() => setCurrentIndex(index)}
+                onMouseOver={() => setCurrentIndex(index)}
               >
                 {item?.title}
               </p>
@@ -41,12 +41,14 @@ const TechStack = () => {
         <div className="w-[50%] h-auto justify-around flex flex-wrap gap-3 p-3 border-2 border-[#0766FF] rounded-md">
           {techStack[currentIndex]?.stack?.map((item, index) => {
             return (
-              <img
-                src={item}
-                alt="stack"
-                className="h-[80px] w-[20%] object-contain"
-                key={index}
-              />
+              <div className="h-[80px] w-[20%]">
+                <img
+                  src={item}
+                  alt="stack"
+                  className=" w-full h-full object-contain"
+                  key={index}
+                />
+              </div>
             );
           })}
         </div>

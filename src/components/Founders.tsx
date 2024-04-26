@@ -5,22 +5,22 @@ import { styles } from "../styles";
 const Founders = () => {
   return (
     <div
-      className={`${styles.padding} w-full h-[400px] flex flex-col items-center gap-3`}
+      className={`${styles.padding} w-full h-[500px] flex flex-col items-center gap-3`}
     >
-      <div className="h-[15%] flex items-center gap-2">
+      <div className="h-[10%] flex items-center gap-2">
         <p className="font-serif text-[22px] italic ">Sajilo</p>
         <div className="font-serif text-[22px] italic bg-[#0766FF] flex items-center justify-center p-2 rounded-[50%] text-white">
           Dev's
         </div>
         <p className="font-serif text-[22px] italic ">Founders</p>
       </div>
-      <div className="w-full h-[80%] flex items-center justify-around">
+      <div className="w-full h-[90%] flex items-center justify-around">
         {founders?.map((founder, index) => (
           <div
             key={index}
-            className="w-[40%] h-[70%] shadow-sm rounded-md shadow-slate-300 flex flex-col items-center justify-around"
+            className="w-[30%] h-[90%] shadow-xl rounded-md shadow-slate-300 flex flex-col items-center justify-around"
           >
-            <div className="w-[3] h-[35%] overflow-hidden rounded-[50%]">
+            <div className="w-[3] h-[25%] overflow-hidden rounded-[50%]">
               <img
                 src={founder?.img}
                 alt="founder image"
@@ -28,7 +28,7 @@ const Founders = () => {
               />
             </div>
             <p className="font-serif">{founder?.vanai}</p>
-            <div className="w-[90%] flex justify-around items-center h-[20%]">
+            <div className="w-[90%] flex justify-around items-center h-[10%]">
               <img
                 src={github}
                 alt="github"

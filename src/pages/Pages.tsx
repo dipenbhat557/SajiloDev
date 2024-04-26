@@ -6,8 +6,10 @@ import User from "./User";
 import ContactUs from "./ContactUs";
 import AfterService from "./AfterService";
 import Orders from "./Orders";
+import { listenForAuthChanges } from "../store";
 
 const Pages = () => {
+  listenForAuthChanges();
   return (
     <BrowserRouter>
       <Routes>

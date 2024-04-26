@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { images } from "../constants";
+import { heroBg } from "../assets";
 
 interface Images {
   img: string;
@@ -37,15 +38,16 @@ const ImageSlider = () => {
   }, [currentIndex, images, 3000]);
 
   return (
-    <div className="w-auto h-[550px] ">
+    <div className="w-auto h-[550px] relative ">
+      <img src={heroBg} alt="heroBg" className="w-[90%] h-[90%] object-cover" />
       <div
         style={clipPathStyle}
-        className=" flex w-full h-full justify-around items-center"
+        className=" flex w-[76%] h-[70%] absolute z-30 justify-around top-10 left-24 items-center"
       >
         {currentImages.map((item, index) => (
           <div
             key={index}
-            className={`w-[32%] h-[90%]`}
+            className={`w-[33.33%] h-[90%]`}
             onClick={() => (window.location.href = item?.link)}
           >
             <img

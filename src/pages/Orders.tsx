@@ -3,11 +3,16 @@ import Footer from "../components/Footer";
 import GettingSite from "../components/GettingSite";
 import Navbar from "../components/Navbar";
 import { styles } from "../styles";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../firebaseConfig";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { auth, db } from "../firebaseConfig";
 import { TiTick } from "react-icons/ti";
+import { useRecoilValue } from "recoil";
+import { currUser } from "../store";
+import { onAuthStateChanged } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 interface OrderItem {
+  orderId: String;
   details: string;
   email: string;
   location: string;
@@ -20,34 +25,49 @@ interface OrderItem {
 
 const Orders = () => {
   const [orderItems, setOrderItems] = useState<OrderItem[]>([]);
+  const currentUser = useRecoilValue(currUser);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchOrderItems = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(db, "orders"));
-        const ordersData: OrderItem[] = [];
-        for (const doc of querySnapshot.docs) {
-          const data = doc.data();
-          const orderItem: OrderItem = {
-            details: data.details,
-            email: data.email,
-            location: data.location,
-            meeting: data.meeting,
-            orderStatus: data.orderStatus,
-            orderType: data.orderType,
-            serviceType: data.serviceType,
-            time: data.time,
-          };
-          ordersData.push(orderItem);
-        }
-        setOrderItems(ordersData);
-      } catch (error) {
-        console.error("Error fetching work items:", error);
+    console.log("current user is ", currentUser);
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const uid = user.uid;
+        const fetchOrderItems = async () => {
+          try {
+            const q = query(
+              collection(db, "orders"),
+              where("email", "==", currentUser?.email)
+            );
+            const querySnapshot = await getDocs(q);
+            const ordersData: OrderItem[] = [];
+            querySnapshot.forEach((doc) => {
+              const data = doc.data();
+              const orderItem: OrderItem = {
+                orderId: data.orderId,
+                details: data.details,
+                email: data.email,
+                location: data.location,
+                meeting: data.meeting,
+                orderStatus: data.orderStatus,
+                orderType: data.orderType,
+                serviceType: data.serviceType,
+                time: data.time,
+              };
+              ordersData.push(orderItem);
+            });
+            setOrderItems(ordersData);
+          } catch (error) {
+            console.error("Error fetching work items:", error);
+          }
+        };
+        fetchOrderItems();
+      } else {
+        navigate("/signin");
       }
-    };
-
-    fetchOrderItems();
-  }, []);
+    });
+    return () => unsubscribe();
+  }, [currentUser, navigate]);
 
   return (
     <>
@@ -62,7 +82,7 @@ const Orders = () => {
         </div>
         <div
           className={`h-[${
-            orderItems?.length * 150
+            orderItems?.length * 100
           }px] min-h-[200px] w-full -z-20`}
         />
 
@@ -90,25 +110,31 @@ const Orders = () => {
                   className="w-full h-auto py-5 border-b border-slate-100 items-center flex  justify-around"
                   key={index}
                 >
-                  <p className="w-[15%] text-center">{order?.serviceType}</p>
-                  <p className="w-[15%] text-center">{order?.location}</p>
-                  <p className="w-[20%] text-center">{order?.details}</p>
-                  <p className="w-[15%] text-center">{order?.orderType}</p>
+                  <div className="w-[15%] text-center">
+                    {order?.serviceType}
+                  </div>
+                  <div className="w-[15%] text-center">{order?.location}</div>
+                  <div className="w-[20%] flex flex-col">
+                    <div className="w-[20%] text-center">{order?.orderId}</div>
+                    <div className="line-clamp-1">{order?.details}</div>
+                  </div>
+
+                  <div className="w-[15%]  text-center">{order?.orderType}</div>
                   {order?.meeting === "Cancel" ? (
-                    <button className="border border-slate-300 rounded-md py-1 px-3 text-red-500">
+                    <button className="border cursor-pointer border-slate-300 rounded-md py-1 px-3 text-red-500">
                       Cancel
                     </button>
                   ) : order?.meeting === "Join" ? (
-                    <div className="border border-slate-300 rounded-md py-1 px-3 text-blue-600">
+                    <div className="border border-slate-300 cursor-pointer rounded-md py-1 px-3 text-blue-600">
                       Join
                     </div>
                   ) : (
-                    <div className="flex gap-1 justify-between p-2 border border-slate-300 rounded-md">
-                      <p className="text-[12px] text-slate-300">#orderId</p>
+                    <div className="flex gap-1 justify-between  p-2 border border-slate-300 rounded-md">
+                      <div className="text-[12px] text-slate-300">#orderId</div>
                       <TiTick className="text-xl bg-[#0DA06A] text-white rounded-full" />
                     </div>
                   )}
-                  <p className="w-[10%] text-center">
+                  <div className="w-[10%] text-center">
                     {order?.orderStatus === "Confirmed" ? (
                       <button className="rounded-md py-1 px-3 text-[#FB7E15] bg-[#FFF5EB]">
                         Confirmed
@@ -126,8 +152,8 @@ const Orders = () => {
                         Cancelled
                       </div>
                     )}
-                  </p>
-                  <p className="w-[15%] text-center">{order?.time}</p>
+                  </div>
+                  <div className="w-[15%] text-center">{order?.time}</div>
                 </div>
               ))}
             </>

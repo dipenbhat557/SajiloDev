@@ -20,7 +20,6 @@ const Navbar = ({
   const [showDropdown, setShowDropdown] = useState(false);
   let timeoutId: NodeJS.Timeout;
 
-
   const handleMouseLeave = () => {
     timeoutId = setTimeout(() => {
       setShowDropdown(false);
