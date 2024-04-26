@@ -8,6 +8,8 @@ import { styles } from "../styles";
 import { useRecoilValue } from "recoil";
 import { isLoggedIn } from "../store";
 import { useNavigate } from "react-router-dom";
+import { db } from "../firebaseConfig";
+import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 
 const AfterService = ({
   currentServiceIncoming,
@@ -15,10 +17,13 @@ const AfterService = ({
   currentServiceIncoming: number;
 }) => {
   const [currentService, setCurrentService] = useState(currentServiceIncoming);
+  const collectionRef = collection(db, "orders");
   const [formData, setFormData] = useState({
     email: "",
     contact: "",
     additionalInfo: "",
+    location: "",
+    orderType: "",
     selectedService: 0,
   });
   const isLogIn = useRecoilValue<boolean>(isLoggedIn);
@@ -42,7 +47,7 @@ const AfterService = ({
     }));
   };
 
-  const handleProceed = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleProceed = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (!isLogIn) {
@@ -51,8 +56,37 @@ const AfterService = ({
       const formDataToSend = {
         ...formData,
       };
-      console.log("Form submitted:", formDataToSend);
-      // Now you can send formDataToSend to the backend
+
+      try {
+        const docRef = await addDoc(collectionRef, {
+          email: formData.email,
+          location: formData.location,
+          meeting: "Cancel",
+          orderStatus: "Pending",
+          orderType: formData.orderType,
+          serviceType: afterClickItems[currentService]?.title,
+          time: new Date().toLocaleString(),
+        });
+
+        await updateDoc(doc(collectionRef, docRef.id), {
+          details: `order Id #${docRef.id}`,
+        });
+
+        alert("Data added successfully");
+
+        // Clear form fields after successful submission
+        setFormData({
+          email: "",
+          contact: "",
+          additionalInfo: "",
+          location: "",
+          orderType: "",
+          selectedService: 0,
+        });
+      } catch (error) {
+        console.error("Error adding document: ", error);
+        alert("Failed to add data. Please try again.");
+      }
     }
   };
 
@@ -68,10 +102,10 @@ const AfterService = ({
             {afterClickItems[currentService]?.desc}
           </p>
         </div>
-        <div className="h-[370px] w-full -z-20 " />
+        <div className="h-[400px] w-full -z-20 " />
 
         <div
-          className={`${styles.padding} top-[520px] absolute bg-white left-[5%]  w-[90%]  h-[400px] rounded-md shadow-slate-400 shadow-sm `}
+          className={`${styles.padding} top-[520px] absolute bg-white left-[5%]  w-[90%]  h-[450px] rounded-md shadow-slate-400 shadow-sm `}
         >
           <form
             onSubmit={handleProceed}
@@ -113,8 +147,28 @@ const AfterService = ({
                   onChange={handleInputChange}
                   required
                 />
+                <p className="font-serif">Location *</p>
+                <input
+                  type="text"
+                  className="p-2 border border-slate-200 rounded-md shadow-sm shadow-slate-300 mb-2 placeholder:text-[12px]"
+                  placeholder="Write your Location"
+                  name="location"
+                  value={formData.location}
+                  onChange={handleInputChange}
+                  required
+                />
               </div>
               <div className="w-[35%] h-full flex flex-col gap-3 justify-end">
+                <p className="font-serif">Order Type *</p>
+                <input
+                  type="text"
+                  className="p-2 border border-slate-200 rounded-md shadow-sm shadow-slate-300 mb-2 placeholder:text-[12px]"
+                  placeholder="Write your order type"
+                  name="orderType"
+                  value={formData.orderType}
+                  onChange={handleInputChange}
+                  required
+                />
                 <p className="font-serif">Additional Information</p>
                 <textarea
                   rows={10}

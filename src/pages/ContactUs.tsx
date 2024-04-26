@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 import { styles } from "../styles";
 import { IoCall } from "react-icons/io5";
 import { IoIosMail } from "react-icons/io";
-
+import emailjs from "emailjs-com";
 interface FormData {
   name: string;
   email: string;
@@ -21,6 +21,7 @@ const ContactUs: React.FC = () => {
     message: "",
   });
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -29,22 +30,42 @@ const ContactUs: React.FC = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Here you can implement the logic to submit the form data
-    console.log("Form submitted:", formData);
-    // Reset form fields
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
-    // Set formSubmitted to true to display a confirmation message
-    setFormSubmitted(true);
-    setTimeout(() => {
-      setFormSubmitted(false);
-    }, 3000);
+    setLoading(true);
+
+    emailjs
+      .send(
+        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          to_name: "Sajilo Dev",
+          from_email: formData.email,
+          to_email: "sajilodev557@gmail.com",
+          message: formData.message,
+        },
+        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+      )
+      .then(
+        () => {
+          setFormSubmitted(true);
+          setLoading(false);
+
+          setFormData({
+            name: "",
+            email: "",
+            subject: "",
+            message: "",
+          });
+          setTimeout(() => setFormSubmitted(false), 5000);
+        },
+        (error) => {
+          setLoading(false);
+          console.error(error);
+          alert("Something went wrong");
+        }
+      );
   };
 
   return (
@@ -84,7 +105,7 @@ const ContactUs: React.FC = () => {
             <div className="w-[45%] h-full flex flex-col gap-9 text-slate-500">
               <form
                 onSubmit={handleSubmit}
-                className="w-full h-full flex flex-col gap-9"
+                className="w-full h-full flex flex-col gap-6 "
               >
                 <div className="flex w-full items-center justify-between gap-3">
                   <div className="flex w-[45%] flex-col gap-3">
@@ -94,7 +115,7 @@ const ContactUs: React.FC = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full border-b border-slate-400"
+                      className="w-full border-b text-[13px] p-1 border-slate-400"
                     />
                   </div>
                   <div className="flex w-[45%] flex-col gap-3">
@@ -104,7 +125,7 @@ const ContactUs: React.FC = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full border-b border-slate-400"
+                      className="w-full border-b  text-[13px] p-1 border-slate-400"
                     />
                   </div>
                 </div>
@@ -115,7 +136,7 @@ const ContactUs: React.FC = () => {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full border-b border-slate-400"
+                    className="w-full border-b  text-[13px] p-1 border-slate-400"
                   />
                 </div>
                 <div className="flex flex-col gap-3">
@@ -125,14 +146,14 @@ const ContactUs: React.FC = () => {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Type your message here"
-                    className="w-full p-3 border-b placeholder:text-[10px] border-slate-400"
+                    className="w-full p-3 border-b  text-[13px] placeholder:text-[10px] border-slate-400"
                   />
                 </div>
                 <button
                   type="submit"
                   className="bg-[#0766FF] text-serif text-white px-4  mx-auto font-serif text-[12px] py-2 rounded-full hover:bg-blue-700"
                 >
-                  Send message
+                  {loading ? "Sending..." : "Send message"}
                 </button>
               </form>
             </div>
