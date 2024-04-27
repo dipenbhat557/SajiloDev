@@ -1,5 +1,5 @@
 import { useRecoilValue } from "recoil";
-import { def, logo } from "../assets";
+import { def } from "../assets";
 import { navLinks, serviceDropdowns } from "../constants";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { useNavigate } from "react-router-dom";

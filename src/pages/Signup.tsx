@@ -1,13 +1,5 @@
 import { useState } from "react";
-import {
-  facebook,
-  google,
-  insta,
-  login,
-  logo,
-  logo1,
-  twitter,
-} from "../assets";
+import { facebook, google, insta, login, logo1, twitter } from "../assets";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
