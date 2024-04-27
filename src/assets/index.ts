@@ -1,4 +1,5 @@
 import logo from "./logo.png";
+import logo1 from "./logo1.png";
 import def from "./default.svg";
 import pdf from "./pdf.png";
 
@@ -54,6 +55,7 @@ import login from "./login.svg";
 
 export {
   logo,
+  logo1,
   def,
   pdf,
   facebook,

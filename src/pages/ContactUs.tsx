@@ -6,6 +6,7 @@ import { styles } from "../styles";
 import { IoCall } from "react-icons/io5";
 import { IoIosMail } from "react-icons/io";
 import emailjs from "emailjs-com";
+import { logo } from "../assets";
 interface FormData {
   name: string;
   email: string;
@@ -70,7 +71,12 @@ const ContactUs: React.FC = () => {
 
   return (
     <>
-      <Navbar bgColor="bg-[#1F2123]" textColor="text-white" borderColor="" />
+      <Navbar
+        logo={logo}
+        bgColor="bg-[#1F2123]"
+        textColor="text-white"
+        borderColor=""
+      />
       <div className="relative">
         <div className="w-full bg-[#1F2123] h-[400px] sm:h-[550px] text-white relative -z-10 flex flex-col items-center justify-center gap-5">
           <p className="font-serif text-[30px] font-medium">Get in touch</p>
@@ -89,7 +95,7 @@ const ContactUs: React.FC = () => {
 
         {!formSubmitted && (
           <div
-            className={`${styles.padding} top-[360px] sm:top-[520px] absolute bg-white left-[5%] sm:left-[15%] w-[90%] sm:w-[70%] mx-auto h-[700px] sm:h-[400px] rounded-md shadow-slate-400 shadow-sm flex flex-col justify-between sm:justify-around items-center`}
+            className={`${styles.padding} top-[360px] sm:top-[390px] absolute bg-white left-[5%] sm:left-[15%] w-[90%] sm:w-[70%] mx-auto h-[700px] sm:h-[400px] rounded-md shadow-slate-400 shadow-sm flex flex-col justify-between sm:justify-around items-center`}
           >
             <div className="w-full gap-3 h-full sm:h-[90%] flex flex-col sm:flex-row justify-between sm:justify-around items-center">
               <div className="w-[90%] sm:w-[45%] text-white p-3 px-7 rounded-lg bg-[#1F2123] h-[35%] sm:h-full justify-around flex flex-col gap-2">

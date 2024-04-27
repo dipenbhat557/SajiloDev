@@ -7,6 +7,7 @@ import { styles } from "../styles";
 import { useSetRecoilState } from "recoil";
 import { currUser } from "../store";
 import { useNavigate } from "react-router-dom";
+import { logo } from "../assets";
 
 const User = () => {
   const setCurrentUser = useSetRecoilState(currUser);
@@ -21,7 +22,12 @@ const User = () => {
   };
   return (
     <>
-      <Navbar bgColor="bg-[#1F2123]" textColor="text-white" borderColor="" />
+      <Navbar
+        logo={logo}
+        bgColor="bg-[#1F2123]"
+        textColor="text-white"
+        borderColor=""
+      />
       <div className="relative">
         <div className="w-full bg-[#1F2123] h-[400px] sm:h-[550px] text-white relative -z-10 flex flex-col items-center justify-center gap-5">
           <p className="font-serif text-[30px] font-medium">User Credentials</p>

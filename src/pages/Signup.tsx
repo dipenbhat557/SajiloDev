@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { facebook, google, insta, login, twitter } from "../assets";
+import {
+  facebook,
+  google,
+  insta,
+  login,
+  logo,
+  logo1,
+  twitter,
+} from "../assets";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
@@ -93,8 +101,9 @@ const Signup = () => {
   return (
     <>
       <Navbar
+        logo={logo}
         bgColor="bg-white"
-        textColor="text-black"
+        textColor="text-white"
         borderColor="border border-[#E0E0E9]"
       />
       <div className="h-screen w-full flex flex-col">
