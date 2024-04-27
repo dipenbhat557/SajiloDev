@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { facebook, google, insta, login, logo1, twitter } from "../assets";
+import { login, logo1 } from "../assets";
 import Navbar from "../components/Navbar";
 import { useSetRecoilState } from "recoil";
 import { currUser } from "../store";
@@ -10,7 +10,15 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../firebaseConfig";
-
+import { FaInstagram } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaGoogle } from "react-icons/fa";
+import { MdOutlineFactory } from "react-icons/md";
+import { MdOutlineConnectWithoutContact } from "react-icons/md";
+import { FcSupport } from "react-icons/fc";
+import { FaRegMoneyBill1 } from "react-icons/fa6";
+import { MdOutlineUnsubscribe } from "react-icons/md";
 interface FormData {
   email: string;
   password: string;
@@ -82,16 +90,16 @@ const Signin = () => {
         textColor="text-black"
         borderColor="border border-[#E0E0E9]"
       />
-      <div className="h-screen w-full flex flex-col">
+      <div className="  flex flex-col gap-7 overflow-y-hidden">
         <div
-          className={`items-center justify-center p-36 w-full h-[92%] flex  bg-[#F0F4FC] shadow-slate-500 shadow-sm`}
+          className={`items-center justify-center  p-8  flex  bg-[#F0F4FC] shadow-slate-500 shadow-sm`}
         >
-          <div className="w-[60%] h-[80%]  flex flex-col gap-3">
-            <div className="flex flex-col w-[40%]">
+          <div className="lg:w-[60%] lg:h-[80%] lg:p-44 hidden  lg:flex flex-col gap-3">
+            <div className="flex flex-col lg:w-[40%]">
               <p className="font-semibold text-[25px] font-serif">Welcome to</p>
               <p className="font-bold text-[35px] font-serif">SajiloDev</p>
             </div>
-            <p className="leading-loose text-[10px]">
+            <p className="leading-loose text-[12px]">
               Here, we believe that building a strong professional network
               begins with your participation.
               <br />
@@ -107,14 +115,14 @@ const Signin = () => {
             <img
               src={login}
               alt="login bg"
-              className="w-[80%] h-[60%] object-contain"
+              className="lg:w-[60%] lg:h-[60%] lg:object-contain"
             />
           </div>
-          <div className="w-[38%] h-[80%] flex flex-col gap-8">
+          <div className=" flex flex-col gap-8 items-center justify-center h-2/3 lg:w-3/4 ">
             <p className="text-[22px] font-semibold">Log in</p>
             <form
               onSubmit={handleSubmit}
-              className="w-full h-[70%] gap-8 flex flex-col"
+              className=" gap-5 flex justify-center items-center flex-col"
             >
               {error && (
                 <p className="text-red-500 text-[8px] p-2">Try again !!</p>
@@ -125,20 +133,18 @@ const Signin = () => {
                 placeholder="Enter Email or Phone"
                 onChange={handleChange}
                 value={formData.email}
-                className={`px-8 py-2 placeholder:text-[10px] placeholder:text-slate-700  ${
-                  error
-                    ? "shadow-red-700 shadow-lg"
-                    : "shadow-slate-600 shadow-sm"
+                className={` w-96  px-8 py-2  placeholder:text-[10px] placeholder:text-slate-700 rounded-md  ${
+                  error ? "shadow-red-700 " : "shadow-slate-600 "
                 } rounded-md`}
               />
-              <div className="relative">
+              <div className="relative w-96">
                 <input
                   type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="Password"
                   onChange={handleChange}
                   value={formData.password}
-                  className={`w-full px-8 -z-10 py-2 placeholder:text-[10px] placeholder:text-slate-700 ${
+                  className={`w-96  lg:w-96 px-8 py-2 placeholder:text-[10px] placeholder:text-slate-700 ${
                     error
                       ? "shadow-lg shadow-red-700"
                       : "shadow-sm shadow-slate-600"
@@ -147,14 +153,14 @@ const Signin = () => {
                 <button
                   type="button"
                   onClick={togglePasswordVisibility}
-                  className="absolute right-2 top-2 z-50 "
+                  className="absolute right-1 top-2 z-50 pr-6 "
                 >
                   {showPassword ? "🙈" : "👁️"}
                 </button>
               </div>
               <button
                 type="submit"
-                className="px-8 py-2 rounded-lg bg-[#4461F2] text-white text-[12px] font-medium"
+                className="px-8 w-44 py-2  rounded-lg bg-[#4461F2] text-white text-[12px] font-medium"
               >
                 Sign in
               </button>
@@ -166,53 +172,48 @@ const Signin = () => {
               </p>
               <div className="border-b border-slate-700 w-[25px]" />
             </div>
-            <div className="w-[70%] h-[13%] flex items-center mx-auto justify-around">
+            <div className=" w-2/5 flex justify-evenly items-center mx-auto ">
               <div
                 onClick={handleGoogleSignIn}
-                className="cursor-pointer w-[15%] h-full shadow-black shadow-sm rounded-3xl"
+                className=" cursor-pointer  rounded-3xl "
               >
-                <img
-                  src={google}
-                  alt="google"
-                  className="w-[3]  h-full object-contain rounded-full"
-                />
+                <FaGoogle className="w-8 text-green-500" />
               </div>
-              <div className="w-[15%] cursor-pointer h-full shadow-black shadow-sm rounded-3xl">
-                <img
-                  src={twitter}
-                  alt="twitter"
-                  className="w-[3]  h-full object-contain rounded-full"
-                />
+              <div className=" cursor-pointer rounded-3xl">
+                <FaXTwitter className="w-8 " />
               </div>
-              <div className="w-[15%] cursor-pointer h-full shadow-black shadow-sm rounded-3xl">
-                <img
-                  src={facebook}
-                  alt="facebook"
-                  className="w-[3]  h-full object-contain rounded-full"
-                />
+              <div className=" cursor-pointer  rounded-3xl">
+                <FaFacebook className="w-8 text-blue-400 " />
               </div>
-              <div className="w-[15%] cursor-pointer h-full shadow-black shadow-sm rounded-3xl">
-                <img
-                  src={insta}
-                  alt="insta"
-                  className="w-[3]  h-full object-contain rounded-full"
-                />
+              <div className="cursor-pointer  rounded-3xl">
+                <FaInstagram className="w-8 text-pink-500 " />
               </div>
             </div>
           </div>
         </div>
-        <div className="w-full h-[6%] flex items-center justify-between">
+        <div className="w-full h-fit  flex  flex-col gap-6 items-center justify-between">
           <div className="w-[30%] h-full flex items-center justify-center">
-            <p className="font-serif font-light text-[14px]">
-              Copyright@2024 sajiloDev
-            </p>
+            <div className="font-serif font-light text-[12px]">
+              <p> Copyright@2024 </p>
+              <p className="text-center">Sajilo Dev</p>
+            </div>
           </div>
-          <div className="w-[50%] text-[14px] h-full flex items-center justify-evenly">
-            <p className="cursor-pointer">About</p>
-            <p className="cursor-pointer">Contact us</p>
-            <p className="cursor-pointer">Customer Support</p>
-            <p className="cursor-pointer">Jobs</p>
-            <p className="cursor-pointer">Subscription</p>
+          <div className="w-[40%] h-[20%] text-[14px] lg:h-full flex  flex-col  overflow-y-hidden lg:flex-row   lg:justify-evenly ">
+            <p className="cursor-pointer flex justify-between items-center ">
+              About <MdOutlineFactory />
+            </p>
+            <p className="cursor-pointer flex justify-between items-center">
+              Contact us <MdOutlineConnectWithoutContact />
+            </p>
+            <p className="cursor-pointer flex justify-between items-center">
+              Customer Support <FcSupport />
+            </p>
+            <p className="cursor-pointer flex justify-between items-center">
+              Jobs <FaRegMoneyBill1 />
+            </p>
+            <p className="cursor-pointer flex justify-between items-center">
+              Subscription <MdOutlineUnsubscribe />
+            </p>
           </div>
         </div>
       </div>
