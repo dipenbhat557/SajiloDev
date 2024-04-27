@@ -1,16 +1,7 @@
-import { useEffect, useState } from "react";
 import { styles } from "../styles";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../firebaseConfig";
-import { getDownloadURL, getStorage, ref } from "firebase/storage";
+
 import Loading from "./Loading";
 import { workItems } from "../constants";
-
-interface WorkItem {
-  img: string;
-  title: string;
-  link: string;
-}
 
 const Works = () => {
   return (
