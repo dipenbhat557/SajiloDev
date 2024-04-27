@@ -40,11 +40,11 @@ const Navbar = ({
   return (
     <>
       <div
-        className={`${bgColor} fixed z-50 w-full h-[70px] hidden sm:flex items-center justify-between  `}
+        className={` bg-black bg-opacity-70 backdrop-blur-sm hover:backdrop-blur-lg	border-radius: 0.5rem  	 fixed w-full h-[60px] hidden sm:flex items-center justify-between z-30`}
       >
         <div className="flex items-center justify-around w-[65%]">
           <div
-            className="w-[30%] cursor-pointer
+            className="w-[20%] cursor-pointer
         "
             onClick={() => navigate("/")}
           >
@@ -54,7 +54,7 @@ const Navbar = ({
               className="w-full h-full object-contain"
             />
           </div>
-          <div className="flex items-center justify-around w-[90%]">
+          <div className="flex items-center  justify-around w-[50%]">
             {navLinks?.map((nav, index) => (
               <div
                 key={index}
@@ -115,7 +115,7 @@ const Navbar = ({
 
         {showDropdown && (
           <div
-            className="dropdown-menu top-14 ml-60 p-3 rounded-b-xl rounded-r-xl text-black bg-white w-[16%] absolute z-30"
+            className="dropdown-menu top-14 ml-60 p-3 rounded-b-xl rounded-r-xl left-[10%] text-black bg-white w-[16%] absolute z-50 "
             onMouseLeave={() => setShowDropdown(false)}
             onMouseOver={() => handleMouseOverDropdown()}
           >
@@ -124,7 +124,7 @@ const Navbar = ({
                 return (
                   <li
                     key={index}
-                    className="hover:bg-[#0766FF30] text-[#0B619E] px-2 py-1 rounded-sm text-[12px] cursor-pointer"
+                    className="hover:bg-[#0766FF30] text-[#0B619E] px-2 py-1 rounded-sm text-[12px] cursor-pointer "
                   >
                     <p onClick={() => navigate(`/afterservice/${index + 1}`)}>
                       {service?.title}
