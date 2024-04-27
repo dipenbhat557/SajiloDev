@@ -72,14 +72,14 @@ const ContactUs: React.FC = () => {
     <>
       <Navbar bgColor="bg-[#1F2123]" textColor="text-white" borderColor="" />
       <div className="relative">
-        <div className="w-full bg-[#1F2123] h-[550px] text-white relative -z-10 flex flex-col items-center justify-center gap-5">
+        <div className="w-full bg-[#1F2123] h-[400px] sm:h-[550px] text-white relative -z-10 flex flex-col items-center justify-center gap-5">
           <p className="font-serif text-[30px] font-medium">Get in touch</p>
           <p className="leading-loose text-[14px] font-light text-center">
             We will create our services the best in the town We will
             <br /> create our services the best in the town
           </p>
         </div>
-        <div className="h-[390px] w-full flex items-center justify-center -z-20">
+        <div className="h-[680px] sm:h-[390px] w-full flex items-center justify-center -z-20">
           {formSubmitted && (
             <div className=" text-green-500 p-2 rounded-md border border-gray-300">
               <p className="text-[#0766FF]">Thank you for choosing us!</p>
@@ -89,10 +89,10 @@ const ContactUs: React.FC = () => {
 
         {!formSubmitted && (
           <div
-            className={`${styles.padding} top-[520px] absolute bg-white left-[15%]  w-[70%] mx-auto h-[400px] rounded-md shadow-slate-400 shadow-sm flex flex-col justify-around items-center`}
+            className={`${styles.padding} top-[360px] sm:top-[520px] absolute bg-white left-[5%] sm:left-[15%] w-[90%] sm:w-[70%] mx-auto h-[700px] sm:h-[400px] rounded-md shadow-slate-400 shadow-sm flex flex-col justify-between sm:justify-around items-center`}
           >
-            <div className="w-full h-[90%] flex  justify-around">
-              <div className="w-[45%] text-white p-3 px-7 rounded-lg bg-[#1F2123] h-full justify-around flex flex-col gap-2">
+            <div className="w-full gap-3 h-full sm:h-[90%] flex flex-col sm:flex-row justify-between sm:justify-around items-center">
+              <div className="w-[90%] sm:w-[45%] text-white p-3 px-7 rounded-lg bg-[#1F2123] h-[35%] sm:h-full justify-around flex flex-col gap-2">
                 <p className="text-center font-serif text-[18px]">
                   Contact information
                 </p>
@@ -111,30 +111,30 @@ const ContactUs: React.FC = () => {
                   </p>
                 </div>
               </div>
-              <div className="w-[45%] h-full flex flex-col gap-9 text-slate-500">
+              <div className="w-[90%] sm:w-[45%] h-[65%] sm:h-full flex flex-col justify-around text-slate-500">
                 <form
                   onSubmit={handleSubmit}
                   className="w-full h-full flex flex-col gap-6 "
                 >
-                  <div className="flex w-full items-center justify-between gap-3">
-                    <div className="flex w-[45%] flex-col gap-3">
+                  <div className="flex flex-col sm:flex-row w-full items-center justify-between gap-6 sm:gap-3">
+                    <div className="flex w-[90%] sm:w-[45%] flex-col gap-3">
                       <p className="text-[13px]">Your name</p>
                       <input
                         type="text"
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full border-b text-[13px] p-1 border-slate-400"
+                        className="w-full border-b text-[13px] px-1 border-slate-400"
                       />
                     </div>
-                    <div className="flex w-[45%] flex-col gap-3">
+                    <div className="flex  w-[90%] sm:w-[45%] flex-col gap-3">
                       <p className="text-[13px]">Your Email</p>
                       <input
                         type="text"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full border-b  text-[13px] p-1 border-slate-400"
+                        className="w-full border-b  text-[13px] px-1 border-slate-400"
                       />
                     </div>
                   </div>

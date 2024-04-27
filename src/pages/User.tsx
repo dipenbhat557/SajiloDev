@@ -23,20 +23,20 @@ const User = () => {
     <>
       <Navbar bgColor="bg-[#1F2123]" textColor="text-white" borderColor="" />
       <div className="relative">
-        <div className="w-full bg-[#1F2123] h-[550px] text-white relative -z-10 flex flex-col items-center justify-center gap-5">
+        <div className="w-full bg-[#1F2123] h-[400px] sm:h-[550px] text-white relative -z-10 flex flex-col items-center justify-center gap-5">
           <p className="font-serif text-[30px] font-medium">User Credentials</p>
           <p className="leading-loose text-[14px] font-light text-center">
             We will create our services the best in the town We will
             <br /> create our services the best in the town
           </p>
         </div>
-        <div className="h-[370px] w-full -z-20" />
+        <div className="h-[530px] sm:h-[370px] w-full -z-20" />
 
         <div
-          className={`${styles.padding} top-[520px] absolute bg-white left-[15%]  w-[70%] mx-auto h-[400px] rounded-md shadow-slate-400 shadow-sm flex flex-col justify-around items-center`}
+          className={`${styles.padding} top-[360px] sm:top-[520px] absolute bg-white left-[5%] sm:left-[15%] w-[90%] sm:w-[70%] mx-auto h-[550px] sm:h-[400px] rounded-md shadow-slate-400 shadow-sm flex flex-col justify-around items-center`}
         >
           <div className="w-full h-[10%] flex items-center justify-end">
-            {editable && (
+            {!editable && (
               <button
                 className="text-white bg-[#0766FF] px-12 rounded-full py-1"
                 onClick={handleEditClick}
@@ -44,7 +44,7 @@ const User = () => {
                 Edit
               </button>
             )}
-            {!editable && (
+            {editable && (
               <button
                 className="text-white bg-[#0766FF] px-12 rounded-full py-1"
                 onClick={handleSaveClick}
@@ -53,8 +53,8 @@ const User = () => {
               </button>
             )}
           </div>
-          <div className="w-[80%] h-[75%] flex  justify-around">
-            <div className="w-[40%] h-full justify-around flex flex-col gap-3">
+          <div className="w-[80%] h-[90%] sm:h-[75%] flex flex-col sm:flex-row justify-around gap-5">
+            <div className="w-[90%] sm:w-[40%] h-[90%] sm:h-full justify-around flex flex-col gap-3">
               <p className="font-serif">Email</p>
               <input
                 type="text"
@@ -77,7 +77,7 @@ const User = () => {
                 placeholder="Enter your contact number"
               />
             </div>
-            <div className="w-[40%] h-full flex flex-col gap-3 ">
+            <div className="w-[90%] sm:w-[40%] h-[30%] sm:h-full flex flex-col gap-3 ">
               <p className="font-serif">Additional Email ID</p>
               <input
                 type="text"

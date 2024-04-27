@@ -98,15 +98,15 @@ const AfterService = ({
     <>
       <Navbar bgColor="bg-[#1F2123]" textColor="text-white" borderColor="" />
       <div className="relative">
-        <div className="w-full bg-[#1F2123] h-[550px] text-white relative -z-10 flex flex-col items-center justify-center gap-5">
-          <p className="font-serif text-[44px] font-medium">
+        <div className="w-full bg-[#1F2123] h-[400px] sm:h-[550px] text-white relative -z-10 flex flex-col items-center justify-center gap-5">
+          <p className="font-serif text-[30px] sm:text-[44px] font-medium">
             {afterClickItems[currentService]?.title}
           </p>
-          <p className="leading-relaxed font-serif text-[19px] w-[50%] font-light text-center">
+          <p className="leading-relaxed font-serif text-[18px] sm:text-[19px] w-[80%] sm:w-[50%] font-light text-center">
             {afterClickItems[currentService]?.desc}
           </p>
         </div>
-        <div className="h-[370px] w-full -z-20 flex justify-center items-center">
+        <div className="h-[850px] sm:h-[370px] w-full -z-20 flex justify-center items-center">
           {formSubmitted && (
             <div className=" text-green-500 p-2 rounded-md border border-gray-300">
               <p className="text-[#0766FF]">Thank you for choosing us!</p>
@@ -116,17 +116,17 @@ const AfterService = ({
 
         {!formSubmitted && (
           <div
-            className={`${styles.padding} top-[520px] absolute bg-white left-[5%]  w-[90%]  h-[400px] rounded-md shadow-slate-400 shadow-sm `}
+            className={`${styles.padding} top-[370px] sm:top-[520px] absolute bg-white left-[5%]  w-[90%] h-[870px] sm:h-[400px] rounded-md shadow-slate-400 shadow-sm `}
           >
             <form
               onSubmit={handleProceed}
               className="w-full h-full flex flex-col justify-around items-center"
             >
-              <div className="w-full h-[90%] flex  justify-around">
-                <div className="w-[35%] h-full justify-around flex flex-col gap-3">
-                  <p className="font-serif">Services</p>
+              <div className="w-full h-full sm:h-[90%] flex flex-col sm:flex-row  justify-around items-center">
+                <div className="w-[80%] sm:w-[35%] h-[40%] sm:h-full justify-around flex flex-col gap-1 sm:gap-3">
+                  <p className="font-serif ">Services</p>
                   <select
-                    className="p-2 border border-slate-200 rounded-md shadow-sm shadow-slate-300 mb-2 placeholder:text-[12px]"
+                    className="p-2 border border-slate-200 rounded-md shadow-sm shadow-slate-300 mb-2 placeholder:text-[10px] sm:placeholder:text-[12px]"
                     onChange={handleServiceChange}
                     value={currentService}
                   >
@@ -160,7 +160,7 @@ const AfterService = ({
                     required
                   />
                 </div>
-                <div className="w-[35%] h-full flex flex-col gap-3 justify-end">
+                <div className="w-[80%] sm:w-[35%] h-[60%] sm:h-full flex flex-col gap-3 justify-end">
                   <p className="font-serif">Order Type *</p>
                   <input
                     type="text"
@@ -183,7 +183,7 @@ const AfterService = ({
                   <p className="font-serif">* Mandatory fields</p>
                   <button
                     type="submit"
-                    className="h-[15%] w-[70%] mx-auto  text-white text-[18px] bg-[#0766FF] rounded-full  font-serif"
+                    className="h-[8%] sm:h-[15%] w-[70%] mx-auto  text-white text-[18px] bg-[#0766FF] rounded-full  font-serif"
                   >
                     Proceed
                   </button>

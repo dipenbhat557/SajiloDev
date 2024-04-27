@@ -14,17 +14,21 @@ const Services = () => {
         {serviceItems?.map((item, index) => {
           return (
             <div
-              className="w-[25%] cursor-pointer h-auto mt-4 flex flex-col gap-2"
+              className="w-[45%] sm:w-[25%] cursor-pointer h-auto mt-4 flex flex-col gap-2 "
               key={index}
               onClick={() => navigate(`/afterservice/${index + 1}`)}
             >
               <img
                 src={item?.img}
                 alt={item?.title}
-                className="w-[50%] h-[180px] object-cover rounded-t-lg"
+                className="w-[90%] sm:w-[50%] h-[180px] object-contain sm:object-cover rounded-t-lg"
               />
-              <div className="font-semibold  font-serif">{item?.title}</div>
-              <div>{item?.desc}</div>
+              <div className="font-semibold  font-serif text-[13px] sm:text-[16px]">
+                {item?.title}
+              </div>
+              <div className="line-clamp-4 text-[11px] sm:text-[16px] sm:line-clamp-none">
+                {item?.desc}
+              </div>
             </div>
           );
         })}

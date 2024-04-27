@@ -41,22 +41,24 @@ const Domain = () => {
 
   return (
     <div className="w-full h-[300px] flex flex-col items-center justify-center bg-[#1F2123]">
-      <p className="font-bold text-white text-[28px]">Secure your domain now</p>
-      <p className="font-extralight tracking-widest leading-loose text-slate-300 w-[50%] my-4 text-[12px]">
+      <p className="font-bold text-white text-[18px] sm:text-[28px]">
+        Secure your domain now
+      </p>
+      <p className="font-extralight text-center tracking-widest leading-loose text-slate-300 w-[80%] sm:w-[50%] my-4 text-[10px] sm:text-[12px]">
         Unlock your digital potential with our domain registration service. Your
         domain is your unique online identity, your digital storefront in the
         vast landscape of the internet.
       </p>
-      <div className="w-[70%] h-[80px] rounded-lg flex justify-around items-center bg-slate-300">
+      <div className="w-[90%] sm:w-[70%] h-[50px] sm:h-[80px] rounded-lg flex justify-around items-center bg-slate-300">
         <input
           type="text"
           placeholder="my-website.com"
-          className="px-12 h-[50%] w-[80%] rounded-lg py-3 bg-slate-300 placeholder:text-[22px] placeholder:font-extralight"
+          className="px-12 h-[30%] sm:h-[50%] w-[70%] sm:w-[80%] rounded-lg py-3 bg-slate-300 placeholder:text-[17px] sm:placeholder:text-[22px] placeholder:font-extralight"
           value={domainName}
           onChange={(e) => setDomainName(e.target.value)}
         />
         <button
-          className="h-[50%] my-auto px-2 text-white bg-[#0766FF] rounded-lg"
+          className="h-[50%] w-[30%] sm:w-auto text-[10px] sm:text-[16px] my-auto mx-1 px-2 text-white bg-[#0766FF] rounded-lg"
           onClick={handleFindDomain}
           disabled={loading}
         >

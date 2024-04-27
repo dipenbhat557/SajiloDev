@@ -6,10 +6,10 @@ const GettingSite = () => {
   const navigate = useNavigate();
   return (
     <div
-      className={`${styles.padding}  bg-[#EFEAE1] w-full h-[400px] flex items-center justify-between`}
+      className={`${styles.padding}  bg-[#EFEAE1] w-full h-[400px] flex flex-col sm:flex-row items-center justify-between`}
     >
-      <div className="w-[45%] h-[80%] flex flex-col items-center justify-center gap-4">
-        <p className="text-[22px] font-semibold font-serif leading-loose">
+      <div className="w-[80%] text-center sm:w-[45%] h-[40%] sm:h-[80%] flex flex-col items-center justify-center gap-4">
+        <p className="text-[14px] sm:text-[22px] font-semibold font-serif leading-loose">
           "From your imagination to reality, let's craft our digital domain."
         </p>
         <button
@@ -19,7 +19,7 @@ const GettingSite = () => {
           Get your own site
         </button>
       </div>
-      <div className="w-[50%] h-[90%] relative">
+      <div className="w-[90%] sm:w-[50%] h-[60%] sm:h-[90%] relative">
         <div className="w-[90%] h-[80%] -z-1">
           <img
             src={getSite1}

@@ -11,9 +11,9 @@ const Reviews = () => {
 
   const updateCurrentReviews = () => {
     const startIndex = currentIndex;
-    const endIndex = startIndex + 3;
+    const endIndex = window?.innerWidth > 640 ? startIndex + 3 : startIndex + 1;
     const nextIndex = endIndex % reviewItems?.length;
-    if (endIndex !== reviewItems?.length - 1) {
+    if (endIndex !== reviewItems?.length - 1 && window?.innerWidth > 640) {
       setCurrentReviews(
         reviewItems
           ?.slice(startIndex, endIndex)
@@ -40,30 +40,34 @@ const Reviews = () => {
   }, [currentIndex]);
 
   return (
-    <div className={`${styles.padding} w-full h-[700px] flex flex-col`}>
-      <div className="w-full h-[30%] ">
+    <div
+      className={`${styles.padding} w-full h-[500px] sm:h-[700px] flex flex-col`}
+    >
+      <div className="w-full h-[20%] sm:h-[30%] ">
         <img src={reviewBg} alt="bg" className="w-full h-full object-contain" />
       </div>
       <div className="w-full h-[70%] flex flex-col rounded-t-lg shadow-black shadow-lg">
         <div className="w-full h-[10%] rounded-t-lg bg-[#1F2123]" />
         <div
-          className={`${styles.paddingX} pt-2 w-full h-[20%] flex items-center justify-between`}
+          className={`${styles.paddingX} pt-2 w-full h-[30%] sm:h-[20%] flex flex-col sm:flex-row sm:items-center justify-between`}
         >
-          <div className="w-[19%] h-full flex flex-col gap-3">
-            <p className="font-semibold text-[18px] font-serif">
+          <div className="w-[70%] sm:w-[19%] left-0 h-[58%] sm:h-full flex flex-col gap-3">
+            <p className="overflow-y-hidden font-semibold text-[16px] sm:text-[18px] font-serif">
               Customers testimonials
             </p>
-            <div className="w-full h-[50%] flex items-center justify-between">
+            <div className="w-full h-[30%] sm:h-[50%] flex items-center justify-center gap-3">
               <img
                 src={rating}
                 alt="rating"
-                className="w-[70%] h-full object-contain"
+                className="w-[40%] sm:w-[70%] h-full object-contain"
               />
-              <p className="font-serif">5.0 rating</p>
+              <p className="overflow-y-hidden font-serif text-[12px] sm:text-[16px]">
+                5.0 rating
+              </p>
             </div>
           </div>
-          <div className="w-[80%] h-full flex items-center justify-end">
-            <button className="px-4 py-2 text-white bg-[#0766FF] rounded-lg">
+          <div className="w-full sm:w-[80%] h-[38%] sm:h-full flex items-center justify-end">
+            <button className="text-[13px] sm:text-[16px] px-4 py-2 text-white bg-[#0766FF] rounded-lg">
               Leave a Review
             </button>
           </div>
@@ -84,7 +88,7 @@ const Reviews = () => {
             return (
               <div
                 key={index}
-                className="p-2 border border-black rounded-lg flex flex-col justify-between items-center w-[28%] h-[60%]"
+                className="p-2 border border-black rounded-lg flex flex-col justify-between items-center w-[60%] sm:w-[28%] h-[80%] sm:h-[60%]"
               >
                 <div className="h-[30%] w-full flex gap-2">
                   <img
@@ -104,7 +108,7 @@ const Reviews = () => {
                   alt="rating"
                   className="h-[10%] w-[40%] object-contain"
                 />
-                <p className="text-[14px] h-[55%] line-clamp-5 tracking-wide leading-relaxed">
+                <p className="text-[14px] h-[55%] line-clamp-3 sm:line-clamp-5 tracking-wide leading-relaxed">
                   {item?.review}
                 </p>
               </div>

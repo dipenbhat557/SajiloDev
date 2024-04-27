@@ -5,10 +5,12 @@ const Footer = () => {
   const handleSubscribe = () => {};
   return (
     <div
-      className={`${styles.paddingX} flex flex-col bg-[#1F2123] w-full h-[300px] items-center`}
+      className={`${styles.paddingX} flex flex-col bg-[#1F2123] w-full h-[500px] sm:h-[300px] items-center`}
     >
-      <div className={` w-full h-[82%] flex justify-around items-center`}>
-        <div className="w-[20%] h-[50%] flex flex-col items-center justify-around">
+      <div
+        className={` w-full h-full sm:h-[82%] flex  flex-col-reverse sm:flex-row justify-around items-center`}
+      >
+        <div className="w-[60%] sm:w-[20%] h-[30%] sm:h-[50%] flex flex-col items-center justify-around">
           <div className=" w-[60%] h-[40%]">
             <img
               src={logo}
@@ -41,22 +43,31 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="w-[40%] flex justify-around">
-          <a href="#" className="text-white text-[18px] underline font-serif">
+        <div className="w-[95%] sm:w-[40%] h-[10%] sm:h-auto flex justify-around">
+          <a
+            href="#"
+            className="text-white text-[14px] sm:text-[18px] underline font-serif"
+          >
             Contact us
           </a>
-          <a href="#" className="text-white text-[18px] underline font-serif">
+          <a
+            href="#"
+            className="text-white  text-[14px] sm:text-[18px] underline font-serif"
+          >
             Jobs
           </a>
-          <a href="#" className="text-white text-[18px] underline font-serif">
+          <a
+            href="#"
+            className="text-white  text-[14px] sm:text-[18px] underline font-serif"
+          >
             Customer support
           </a>
         </div>
 
-        <div className="flex flex-col w-[30%] h-[70%] justify-center items-center pt-4">
-          <div className="flex flex-row w-[25%] items-center justify-center mt-2">
+        <div className="flex flex-col w-[95%] sm:w-[30%] h-[60%] sm:h-[70%] justify-center items-center pt-4">
+          <div className="flex flex-row w-[90%] sm:w-[25%] items-center justify-center mt-2">
             <div className="w-[8%] h-[2px] border-b-4 border-[#0766FF] mr-2 rounded-3xl flex-grow" />
-            <p className="font-extrabold text-xl text-white sm:text-2xl">
+            <p className="font-extrabold  text-xl text-white sm:text-2xl">
               SUBSCRIPTION
             </p>
             <div className="w-[8%] h-[2px] border-b-4 ml-2 border-[#0766FF] rounded-3xl flex-grow" />
@@ -72,20 +83,20 @@ const Footer = () => {
             <input
               type="text"
               placeholder="Enter your mail address"
-              className="p-2 px-6 rounded-xl"
+              className="p-2 px-2 sm:px-6 placeholder:text-[14px] sm:placeholder:text-[16px] rounded-xl"
             />
             <button
               onClick={handleSubscribe}
-              className="bg-[#0766FF] font-bold text-white hover:shadow-2xl mt-2 hover:bg-blue-500 ml-3 p-2 px-4 rounded-2xl"
+              className="bg-[#0766FF] text-[12px] sm:text-[16px] font-medium sm:font-bold text-white hover:shadow-2xl mt-2 hover:bg-blue-500 ml-1 sm:ml-3 p-1 sm:p-2 px-4 rounded-2xl"
             >
               Subscribe
             </button>
           </div>
         </div>
       </div>
-      <div className="w-[20%] border-t border-slate-400 p-2">
+      <div className="w-[80%] sm:w-[20%] h-[10%] sm:h-auto border-t border-slate-400 flex items-center justify-center p-2">
         {" "}
-        <p className="font-serif text-[22px] text-slate-400">
+        <p className="font-serif text-[18px] sm:text-[22px] text-slate-400">
           Copyright@SajiloDev
         </p>
       </div>
