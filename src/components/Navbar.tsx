@@ -113,7 +113,7 @@ const Navbar = ({
 
         {showDropdown && (
           <div
-            className="dropdown-menu top-14 ml-60 p-3 rounded-b-xl rounded-r-xl text-black bg-white w-[16%] absolute z-30"
+            className="dropdown-menu top-14 ml-60 p-3 rounded-b-xl rounded-r-xl text-black bg-white w-[16%] absolute z-50"
             onMouseLeave={() => setShowDropdown(false)}
             onMouseOver={() => handleMouseOverDropdown()}
           >
