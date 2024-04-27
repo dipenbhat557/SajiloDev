@@ -4,7 +4,11 @@ import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { currUser } from "../store";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
 import { auth } from "../firebaseConfig";
 
 interface FormData {
@@ -19,6 +23,7 @@ const Signup = () => {
     password: "",
     confirmPassword: "",
   });
+  let googleProvider = new GoogleAuthProvider();
 
   const [showPassword1, setShowPassword1] = useState<boolean>(false);
   const [showPassword2, setShowPassword2] = useState<boolean>(false);
@@ -66,6 +71,23 @@ const Signup = () => {
       });
 
     console.log("Form submitted with data:", formData);
+  };
+
+  const handleGoogleSignUp = () => {
+    signInWithPopup(auth, googleProvider)
+      .then((res) => {
+        if (res?.user?.email) {
+          setCurrentUser({ email: res.user.email });
+          navigate("/");
+          console.log(res.user);
+        } else {
+          setError(true);
+        }
+      })
+      .catch((err) => {
+        setError(true);
+        console.log(err);
+      });
   };
 
   return (
@@ -194,7 +216,10 @@ const Signup = () => {
               <div className="border-b border-slate-700 w-[25px]" />
             </div>
             <div className="w-[70%] h-[13%] flex items-center mx-auto justify-around">
-              <div className="w-[15%] cursor-pointer h-full shadow-black shadow-sm rounded-3xl">
+              <div
+                onClick={handleGoogleSignUp}
+                className="w-[15%] cursor-pointer h-full shadow-black shadow-sm rounded-3xl"
+              >
                 <img
                   src={google}
                   alt="google"

@@ -4,7 +4,11 @@ import Navbar from "../components/Navbar";
 import { useSetRecoilState } from "recoil";
 import { currUser } from "../store";
 import { useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 import { auth } from "../firebaseConfig";
 
 interface FormData {
@@ -23,6 +27,7 @@ const Signin = () => {
 
   const setCurrentUser = useSetRecoilState(currUser);
   const navigate = useNavigate();
+  let googleProvider = new GoogleAuthProvider();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -37,6 +42,23 @@ const Signin = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, formData.email, formData.password)
+      .then((res) => {
+        if (res?.user?.email) {
+          setCurrentUser({ email: res.user.email });
+          navigate("/");
+          console.log(res.user);
+        } else {
+          setError(true);
+        }
+      })
+      .catch((err) => {
+        setError(true);
+        console.log(err);
+      });
+  };
+
+  const handleGoogleSignIn = () => {
+    signInWithPopup(auth, googleProvider)
       .then((res) => {
         if (res?.user?.email) {
           setCurrentUser({ email: res.user.email });
@@ -144,7 +166,10 @@ const Signin = () => {
               <div className="border-b border-slate-700 w-[25px]" />
             </div>
             <div className="w-[70%] h-[13%] flex items-center mx-auto justify-around">
-              <div className="cursor-pointer w-[15%] h-full shadow-black shadow-sm rounded-3xl">
+              <div
+                onClick={handleGoogleSignIn}
+                className="cursor-pointer w-[15%] h-full shadow-black shadow-sm rounded-3xl"
+              >
                 <img
                   src={google}
                   alt="google"

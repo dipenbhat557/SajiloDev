@@ -41,7 +41,7 @@ const TechStack = () => {
         <div className="w-[50%] h-auto justify-around flex flex-wrap gap-3 p-3 border-2 border-[#0766FF] rounded-md">
           {techStack[currentIndex]?.stack?.map((item, index) => {
             return (
-              <div className="h-[80px] w-[20%]">
+              <div key={index} className="h-[80px] w-[20%]">
                 <img
                   src={item}
                   alt="stack"

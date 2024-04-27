@@ -39,24 +39,43 @@ const ImageSlider = () => {
 
   return (
     <div className="w-auto h-[550px] relative ">
-      <img src={heroBg} alt="heroBg" className="w-[90%] h-[90%] object-cover" />
+      <img
+        src={heroBg}
+        alt="heroBg"
+        className="w-[90%] h-[90%] mt-4 object-cover"
+      />
       <div
         style={clipPathStyle}
-        className=" flex w-[76%] h-[70%] absolute z-30 justify-around top-10 left-24 items-center"
+        className={`w-[23%] h-[80%] top-0 left-28 absolute z-30`}
+        onClick={() => (window.location.href = currentImages?.[0]?.link)}
       >
-        {currentImages.map((item, index) => (
-          <div
-            key={index}
-            className={`w-[33.33%] h-[90%]`}
-            onClick={() => (window.location.href = item?.link)}
-          >
-            <img
-              src={item?.img}
-              alt={`image_${index}`}
-              className="w-full h-full object-cover "
-            />
-          </div>
-        ))}
+        <img
+          src={currentImages?.[0]?.img}
+          alt={`image`}
+          className="w-full h-full object-cover "
+        />
+      </div>
+      <div
+        style={clipPathStyle}
+        className={`w-[25%] h-[70%] top-10 left-1/3 absolute z-30`}
+        onClick={() => (window.location.href = currentImages?.[1]?.link)}
+      >
+        <img
+          src={currentImages?.[1]?.img}
+          alt={`image`}
+          className="w-full h-full object-cover "
+        />
+      </div>
+      <div
+        style={clipPathStyle}
+        className={`w-[20%] h-[50%] top-14 left-2/3 absolute z-30`}
+        onClick={() => (window.location.href = currentImages?.[2]?.link)}
+      >
+        <img
+          src={currentImages?.[2]?.img}
+          alt={`image`}
+          className="w-full h-full object-cover "
+        />
       </div>
     </div>
   );
