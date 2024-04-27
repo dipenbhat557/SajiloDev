@@ -101,9 +101,9 @@ const Signup = () => {
   return (
     <>
       <Navbar
-        logo={logo}
+        logo={logo1}
         bgColor="bg-white"
-        textColor="text-white"
+        textColor="text-black"
         borderColor="border border-[#E0E0E9]"
       />
       <div className="h-screen w-full flex flex-col">

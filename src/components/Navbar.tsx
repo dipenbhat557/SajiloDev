@@ -40,7 +40,7 @@ const Navbar = ({
   return (
     <>
       <div
-        className={` bg-black bg-opacity-70 backdrop-blur-sm hover:backdrop-blur-lg	border-radius: 0.5rem  	 fixed w-full h-[60px] hidden sm:flex items-center justify-between z-30`}
+        className={` ${bgColor} bg-opacity-70 backdrop-blur-sm hover:backdrop-blur-lg	border-radius: 0.5rem  	 fixed w-full h-[60px] hidden sm:flex items-center ${textColor} justify-between z-30`}
       >
         <div className="flex items-center justify-around w-[65%]">
           <div

@@ -17,7 +17,9 @@ const Works = () => {
               <div
                 className="w-[45%] sm:w-[25%] cursor-pointer h-[200px] sm:h-[300px] mt-4 flex flex-col hover:bg-[#1F2123] hover:text-white rounded-t-lg border-b border-[#1877F2]"
                 key={index}
-                onClick={() => (window.location.href = item?.link)}
+                onClick={() =>
+                  window.open(item?.link, "_blank", "rel=noopener noreferrer")
+                }
               >
                 <img
                   src={item?.img}

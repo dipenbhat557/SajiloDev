@@ -99,7 +99,7 @@ const AfterService = ({
     <>
       <Navbar
         logo={logo}
-        bgColor="bg-[#1F2123]"
+        bgColor="bg-black"
         textColor="text-white"
         borderColor=""
       />
