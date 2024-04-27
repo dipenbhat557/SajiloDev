@@ -15,6 +15,9 @@ export default {
       animation: {
         spotlight: "spotlight 2s ease .75s 1 forwards",
       },
+      backdropBlur: {
+        xs: "2px",
+      },
       keyframes: {
         spotlight: {
           "0%": {
