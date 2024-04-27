@@ -11,10 +11,12 @@ const Navbar = ({
   bgColor,
   textColor,
   borderColor,
+  logo,
 }: {
   bgColor: string;
   textColor: string;
   borderColor: string;
+  logo: string;
 }) => {
   const navigate = useNavigate();
   const isLogIn = useRecoilValue(isLoggedIn);
@@ -38,7 +40,7 @@ const Navbar = ({
   return (
     <>
       <div
-        className={`${bgColor} fixed z-50 w-full h-[70px] hidden sm:flex items-center justify-between shadow-2xl shadow-slate-500 `}
+        className={`${bgColor} fixed z-50 w-full h-[70px] hidden sm:flex items-center justify-between  `}
       >
         <div className="flex items-center justify-around w-[65%]">
           <div

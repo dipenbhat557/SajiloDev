@@ -6,6 +6,7 @@ import { styles } from "../styles";
 import { IoCall } from "react-icons/io5";
 import { IoIosMail } from "react-icons/io";
 import emailjs from "emailjs-com";
+import { logo } from "../assets";
 interface FormData {
   name: string;
   email: string;
@@ -70,7 +71,12 @@ const ContactUs: React.FC = () => {
 
   return (
     <>
-      <Navbar bgColor="bg-[#1F2123]" textColor="text-white" borderColor="" />
+      <Navbar
+        logo={logo}
+        bgColor="bg-[#1F2123]"
+        textColor="text-white"
+        borderColor=""
+      />
       <div className="relative">
         <div className="w-full bg-[#1F2123] h-[400px] sm:h-[550px] text-white relative -z-10 flex flex-col items-center justify-center gap-5">
           <p className="font-serif text-[30px] font-medium">Get in touch</p>

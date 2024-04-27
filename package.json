@@ -13,6 +13,7 @@
     "@types/react-router-dom": "5.3.3",
     "@types/uuid": "^9.0.8",
     "axios": "^1.6.8",
+    "clsx": "^2.1.1",
     "email-js": "^2.0.3",
     "emailjs-com": "^3.2.0",
     "firebase": "^10.10.0",
@@ -25,6 +26,7 @@
     "react-tilt": "^1.0.2",
     "recoil": "^0.7.7",
     "styled-components": "^6.1.8",
+    "tailwind-merge": "^2.3.0",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
