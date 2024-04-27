@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { facebook, google, insta, login, twitter } from "../assets";
+import { facebook, google, insta, login, logo1, twitter } from "../assets";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
@@ -93,6 +93,7 @@ const Signup = () => {
   return (
     <>
       <Navbar
+        logo={logo1}
         bgColor="bg-white"
         textColor="text-black"
         borderColor="border border-[#E0E0E9]"

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { facebook, google, insta, login, twitter } from "../assets";
+import { facebook, google, insta, login, logo1, twitter } from "../assets";
 import Navbar from "../components/Navbar";
 import { useSetRecoilState } from "recoil";
 import { currUser } from "../store";
@@ -77,6 +77,7 @@ const Signin = () => {
   return (
     <>
       <Navbar
+        logo={logo1}
         bgColor="bg-white"
         textColor="text-black"
         borderColor="border border-[#E0E0E9]"
