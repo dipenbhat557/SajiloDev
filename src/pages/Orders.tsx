@@ -6,8 +6,8 @@ import { styles } from "../styles";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { auth, db } from "../firebaseConfig";
 import { TiTick } from "react-icons/ti";
-import { useRecoilValue } from "recoil";
-import { currUser } from "../store";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { currUser, loginErr } from "../store";
 import { onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { logo } from "../assets";
@@ -28,6 +28,7 @@ const Orders = () => {
   const [orderItems, setOrderItems] = useState<OrderItem[]>([]);
   const currentUser = useRecoilValue(currUser);
   const navigate = useNavigate();
+  const setLoginError = useSetRecoilState(loginErr);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -63,6 +64,7 @@ const Orders = () => {
         fetchOrderItems();
       } else {
         navigate("/signin");
+        setLoginError(true);
       }
     });
     return () => unsubscribe();

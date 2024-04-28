@@ -1,15 +1,19 @@
 import { useState } from "react";
-import { facebook, google, insta, login, logo1, twitter } from "../assets";
+import { login, logo1 } from "../assets";
 import Navbar from "../components/Navbar";
-import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { currUser } from "../store";
+import { useNavigate } from "react-router-dom";
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../firebaseConfig";
+import { FaInstagram } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaGoogle } from "react-icons/fa";
 
 interface FormData {
   email: string;
@@ -91,18 +95,18 @@ const Signup = () => {
   };
 
   return (
-    <>
+    <div className="h-screen overflow-y-hidden">
       <Navbar
         logo={logo1}
         bgColor="bg-white"
         textColor="text-black"
         borderColor="border border-[#E0E0E9]"
       />
-      <div className="h-screen w-full flex flex-col">
+      <div className=" sm:h-[97%] h-[95%] w-full flex flex-col">
         <div
-          className={`items-center justify-center p-36 w-full h-[92%] flex  bg-[#F0F4FC] shadow-slate-500 shadow-sm`}
+          className={`items-center justify-center sm:p-36 w-full h-[89%] sm:h-[96%] flex  bg-[#F0F4FC] shadow-slate-500 shadow-sm`}
         >
-          <div className="w-[60%] h-[80%]  flex flex-col gap-3">
+          <div className="w-[60%] h-[80%]  hidden sm:flex flex-col gap-3">
             <div className="flex flex-col w-[40%]">
               <p className="font-semibold text-[25px] font-serif">Welcome to</p>
               <p className="font-bold text-[35px] font-serif">SajiloDev</p>
@@ -126,30 +130,27 @@ const Signup = () => {
               className="w-[80%] h-[60%] object-contain"
             />
           </div>
-          <div className="w-[38%] h-full flex flex-col gap-8">
-            <p className="text-[22px] font-semibold h-[10%]">Register</p>
+          <div className="w-[80%] sm:w-[38%] h-auto sm:h-full flex flex-col justify-around gap-8">
+            <p className="text-[22px] font-semibold">Register</p>
             <form
               onSubmit={handleSubmit}
-              className="w-full h-[70%] mb-4 gap-8 flex flex-col"
+              className="w-full h-[50%] sm:h-[65%] gap-6 flex flex-col"
             >
-              <div>
-                {error && (
-                  <p className="text-red-500 text-[8px] p-2">Try again !!</p>
-                )}
-
-                <input
-                  type="text"
-                  name="email"
-                  placeholder="Enter Email or Phone"
-                  onChange={handleChange}
-                  value={formData.email}
-                  className={` w-full px-8 py-2 placeholder:text-[10px] placeholder:text-slate-700  ${
-                    error
-                      ? "shadow-red-700 shadow-lg"
-                      : "shadow-slate-600 shadow-sm"
-                  } rounded-md`}
-                />
-              </div>
+              {error && (
+                <p className="text-red-500 text-[8px] p-2">Try again !!</p>
+              )}
+              <input
+                type="text"
+                name="email"
+                placeholder="Enter Email or Phone"
+                onChange={handleChange}
+                value={formData.email}
+                className={`px-8 py-2 placeholder:text-[10px] placeholder:text-slate-700  ${
+                  error
+                    ? "shadow-red-700 shadow-lg"
+                    : "shadow-slate-600 shadow-sm"
+                } rounded-md`}
+              />
               <div className="relative">
                 {diffPassword && (
                   <p className="text-red-500 text-[8px] p-2">
@@ -178,7 +179,6 @@ const Signup = () => {
                   {showPassword1 ? "🙈" : "👁️"}
                 </button>
               </div>
-
               <div className="relative">
                 <input
                   type="password"
@@ -200,64 +200,36 @@ const Signup = () => {
                   {showPassword2 ? "🙈" : "👁️"}
                 </button>
               </div>
-
               <button
                 type="submit"
-                className="px-8 py-2 rounded-lg bg-[#4461F2] text-white text-[12px] font-medium "
+                className="w-[45%] mx-auto sm:px-8 py-2 rounded-lg bg-[#4461F2] text-white text-[12px] font-medium"
               >
                 Register
               </button>
             </form>
-
-            <div className="flex h-[7%] gap-3 items-center justify-center">
+            <div className="flex gap-3 h-[5%] sm:h-[13%] items-center justify-center">
               <div className="border-b border-slate-700 w-[25px]" />
-              <p className="text-slate-700 text-[10px] my-2">
+              <p className="text-slate-700 text-[10px] my-4">
                 Or Continue with
               </p>
               <div className="border-b border-slate-700 w-[25px]" />
             </div>
-            <div className="w-[70%] h-[13%] flex items-center mx-auto justify-around">
-              <div
-                onClick={handleGoogleSignUp}
-                className="w-[15%] cursor-pointer h-full shadow-black shadow-sm rounded-3xl"
-              >
-                <img
-                  src={google}
-                  alt="google"
-                  className="w-[3]  h-full object-contain rounded-full"
-                />
-              </div>
-              <div className="w-[15%] cursor-pointer h-full shadow-black shadow-sm rounded-3xl">
-                <img
-                  src={twitter}
-                  alt="twitter"
-                  className="w-[3]  h-full object-contain rounded-full"
-                />
-              </div>
-              <div className="w-[15%] cursor-pointer h-full shadow-black shadow-sm rounded-3xl">
-                <img
-                  src={facebook}
-                  alt="facebook"
-                  className="w-[3]  h-full object-contain rounded-full"
-                />
-              </div>
-              <div className="w-[15%] cursor-pointer h-full shadow-black shadow-sm rounded-3xl">
-                <img
-                  src={insta}
-                  alt="insta"
-                  className="w-[3]  h-full object-contain rounded-full"
-                />
-              </div>
+            <div className="w-[70%] h-[13%] sm:h-[16%] flex items-center mx-auto justify-around">
+              <FaGoogle className="text-xl" onClick={handleGoogleSignUp} />
+              <FaXTwitter className="text-xl" />
+              <FaFacebook className="text-xl" />
+
+              <FaInstagram className="text-xl" />
             </div>
           </div>
         </div>
-        <div className="w-full h-[6%] flex items-center justify-between">
-          <div className="w-[30%] h-full flex items-center justify-center">
+        <div className="w-full h-[6%] flex flex-col-reverse sm:flex-row items-center justify-around sm:justify-between">
+          <div className="w-auto sm:w-[30%] h-full flex items-center justify-center">
             <p className="font-serif font-light text-[14px]">
               Copyright@2024 sajiloDev
             </p>
           </div>
-          <div className="w-[50%] text-[14px] h-full flex items-center justify-evenly">
+          <div className="w-full sm:w-[50%] text-[12px] sm:text-[14px] h-full flex items-center justify-evenly">
             <p className="cursor-pointer">About</p>
             <p className="cursor-pointer">Contact us</p>
             <p className="cursor-pointer">Customer Support</p>
@@ -266,7 +238,7 @@ const Signup = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 export default Signup;

@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { facebook, google, insta, login, logo1, twitter } from "../assets";
+import { useEffect, useState } from "react";
+import { login, logo1 } from "../assets";
 import Navbar from "../components/Navbar";
-import { useSetRecoilState } from "recoil";
-import { currUser } from "../store";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { currUser, loginErr } from "../store";
 import { useNavigate } from "react-router-dom";
 import {
   signInWithEmailAndPassword,
@@ -10,6 +10,10 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../firebaseConfig";
+import { FaInstagram } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaGoogle } from "react-icons/fa";
 
 interface FormData {
   email: string;
@@ -28,6 +32,7 @@ const Signin = () => {
   const setCurrentUser = useSetRecoilState(currUser);
   const navigate = useNavigate();
   let googleProvider = new GoogleAuthProvider();
+  const [loginError, setLoginError] = useRecoilState(loginErr);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -74,23 +79,33 @@ const Signin = () => {
       });
   };
 
+  useEffect(() => {
+    setTimeout(() => setLoginError(false), 3000);
+  }, []);
+
   return (
-    <>
+    <div className="h-screen overflow-y-hidden">
       <Navbar
         logo={logo1}
         bgColor="bg-white"
         textColor="text-black"
         borderColor="border border-[#E0E0E9]"
       />
-      <div className="h-screen w-full flex flex-col">
+      {loginError && (
+        <div className="w-full h-[50px] text-red-800 font-semibold text-[17px] top-20 text-center absolute p-2">
+          Please Login before performing this action !!
+        </div>
+      )}
+      <div className=" sm:h-[97%] h-[95%] w-full flex flex-col">
         <div
-          className={`items-center justify-center p-36 w-full h-[92%] flex  bg-[#F0F4FC] shadow-slate-500 shadow-sm`}
+          className={`items-center justify-center sm:p-36 w-full h-[89%] sm:h-[96%] flex  bg-[#F0F4FC] shadow-slate-500 shadow-sm`}
         >
-          <div className="w-[60%] h-[80%]  flex flex-col gap-3">
+          <div className="w-[60%] h-[80%]  hidden sm:flex flex-col gap-3">
             <div className="flex flex-col w-[40%]">
               <p className="font-semibold text-[25px] font-serif">Welcome to</p>
               <p className="font-bold text-[35px] font-serif">SajiloDev</p>
             </div>
+            <p className="leading-loose text-[10px]">
             <p className="leading-loose text-[10px]">
               Here, we believe that building a strong professional network
               begins with your participation.
@@ -110,11 +125,11 @@ const Signin = () => {
               className="w-[80%] h-[60%] object-contain"
             />
           </div>
-          <div className="w-[38%] h-[80%] flex flex-col gap-8">
+          <div className="w-[80%] sm:w-[38%] h-auto sm:h-[80%] flex flex-col justify-around gap-8">
             <p className="text-[22px] font-semibold">Log in</p>
             <form
               onSubmit={handleSubmit}
-              className="w-full h-[70%] gap-8 flex flex-col"
+              className="w-full h-[50%] sm:h-[70%] gap-8 flex flex-col"
             >
               {error && (
                 <p className="text-red-500 text-[8px] p-2">Try again !!</p>
@@ -149,17 +164,17 @@ const Signin = () => {
                   onClick={togglePasswordVisibility}
                   className="absolute right-2 top-2 z-50 "
                 >
-                  {showPassword ? "🙈" : "👁️"}
+                  {showPassword ? "🙈" : "👁"}
                 </button>
               </div>
               <button
                 type="submit"
-                className="px-8 py-2 rounded-lg bg-[#4461F2] text-white text-[12px] font-medium"
+                className="w-[45%] mx-auto sm:px-8 py-2 rounded-lg bg-[#4461F2] text-white text-[12px] font-medium"
               >
                 Sign in
               </button>
             </form>
-            <div className="flex gap-3 items-center justify-center">
+            <div className="flex gap-3 h-[5%] items-center justify-center">
               <div className="border-b border-slate-700 w-[25px]" />
               <p className="text-slate-700 text-[10px] my-4">
                 Or Continue with
@@ -167,56 +182,41 @@ const Signin = () => {
               <div className="border-b border-slate-700 w-[25px]" />
             </div>
             <div className="w-[70%] h-[13%] flex items-center mx-auto justify-around">
-              <div
-                onClick={handleGoogleSignIn}
-                className="cursor-pointer w-[15%] h-full shadow-black shadow-sm rounded-3xl"
-              >
-                <img
-                  src={google}
-                  alt="google"
-                  className="w-[3]  h-full object-contain rounded-full"
-                />
-              </div>
-              <div className="w-[15%] cursor-pointer h-full shadow-black shadow-sm rounded-3xl">
-                <img
-                  src={twitter}
-                  alt="twitter"
-                  className="w-[3]  h-full object-contain rounded-full"
-                />
-              </div>
-              <div className="w-[15%] cursor-pointer h-full shadow-black shadow-sm rounded-3xl">
-                <img
-                  src={facebook}
-                  alt="facebook"
-                  className="w-[3]  h-full object-contain rounded-full"
-                />
-              </div>
-              <div className="w-[15%] cursor-pointer h-full shadow-black shadow-sm rounded-3xl">
-                <img
-                  src={insta}
-                  alt="insta"
-                  className="w-[3]  h-full object-contain rounded-full"
-                />
-              </div>
+              <FaGoogle className="text-xl" onClick={handleGoogleSignIn} />
+              <FaXTwitter className="text-xl" />
+              <FaFacebook className="text-xl" />
+
+              <FaInstagram className="text-xl" />
             </div>
           </div>
         </div>
-        <div className="w-full h-[6%] flex items-center justify-between">
+        <div className="w-full h-fit  flex  flex-col gap-6 items-center justify-between">
           <div className="w-[30%] h-full flex items-center justify-center">
-            <p className="font-serif font-light text-[14px]">
-              Copyright@2024 sajiloDev
-            </p>
+            <div className="font-serif font-light text-[12px]">
+              <p> Copyright@2024 </p>
+              <p className="text-center">Sajilo Dev</p>
+            </div>
           </div>
-          <div className="w-[50%] text-[14px] h-full flex items-center justify-evenly">
-            <p className="cursor-pointer">About</p>
-            <p className="cursor-pointer">Contact us</p>
-            <p className="cursor-pointer">Customer Support</p>
-            <p className="cursor-pointer">Jobs</p>
-            <p className="cursor-pointer">Subscription</p>
+          <div className="w-[40%] h-[20%] text-[14px] lg:h-full flex  flex-col  overflow-y-hidden lg:flex-row   lg:justify-evenly ">
+            <p className="cursor-pointer flex justify-between items-center ">
+              About <MdOutlineFactory />
+            </p>
+            <p className="cursor-pointer flex justify-between items-center">
+              Contact us <MdOutlineConnectWithoutContact />
+            </p>
+            <p className="cursor-pointer flex justify-between items-center">
+              Customer Support <FcSupport />
+            </p>
+            <p className="cursor-pointer flex justify-between items-center">
+              Jobs <FaRegMoneyBill1 />
+            </p>
+            <p className="cursor-pointer flex justify-between items-center">
+              Subscription <MdOutlineUnsubscribe />
+            </p>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 export default Signin;
