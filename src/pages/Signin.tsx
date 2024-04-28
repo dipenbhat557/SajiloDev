@@ -106,7 +106,6 @@ const Signin = () => {
               <p className="font-bold text-[35px] font-serif">SajiloDev</p>
             </div>
             <p className="leading-loose text-[10px]">
-            <p className="leading-loose text-[10px]">
               Here, we believe that building a strong professional network
               begins with your participation.
               <br />
@@ -190,29 +189,18 @@ const Signin = () => {
             </div>
           </div>
         </div>
-        <div className="w-full h-fit  flex  flex-col gap-6 items-center justify-between">
-          <div className="w-[30%] h-full flex items-center justify-center">
-            <div className="font-serif font-light text-[12px]">
-              <p> Copyright@2024 </p>
-              <p className="text-center">Sajilo Dev</p>
-            </div>
+        <div className="w-full h-[6%] flex flex-col-reverse sm:flex-row items-center justify-around sm:justify-between">
+          <div className="w-auto sm:w-[30%] h-full flex items-center justify-center">
+            <p className="font-serif font-light text-[14px]">
+              Copyright@2024 sajiloDev
+            </p>
           </div>
-          <div className="w-[40%] h-[20%] text-[14px] lg:h-full flex  flex-col  overflow-y-hidden lg:flex-row   lg:justify-evenly ">
-            <p className="cursor-pointer flex justify-between items-center ">
-              About <MdOutlineFactory />
-            </p>
-            <p className="cursor-pointer flex justify-between items-center">
-              Contact us <MdOutlineConnectWithoutContact />
-            </p>
-            <p className="cursor-pointer flex justify-between items-center">
-              Customer Support <FcSupport />
-            </p>
-            <p className="cursor-pointer flex justify-between items-center">
-              Jobs <FaRegMoneyBill1 />
-            </p>
-            <p className="cursor-pointer flex justify-between items-center">
-              Subscription <MdOutlineUnsubscribe />
-            </p>
+          <div className="w-full sm:w-[50%] text-[12px] sm:text-[14px] h-full flex items-center justify-evenly">
+            <p className="cursor-pointer">About</p>
+            <p className="cursor-pointer">Contact us</p>
+            <p className="cursor-pointer">Customer Support</p>
+            <p className="cursor-pointer">Jobs</p>
+            <p className="cursor-pointer">Subscription</p>
           </div>
         </div>
       </div>
