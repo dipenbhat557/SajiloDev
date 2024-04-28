@@ -8,6 +8,8 @@ import { useSetRecoilState } from "recoil";
 import { currUser } from "../store";
 import { useNavigate } from "react-router-dom";
 import { logo } from "../assets";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebaseConfig";
 
 const User = () => {
   const setCurrentUser = useSetRecoilState(currUser);
@@ -19,6 +21,16 @@ const User = () => {
   };
   const handleSaveClick = () => {
     setEditable(false);
+  };
+
+  const handleLogOut = async () => {
+    try {
+      await signOut(auth);
+      navigate("/signin");
+    } catch (error) {
+      console.error("Error signing out:", error);
+      throw error;
+    }
   };
   return (
     <>
@@ -96,10 +108,7 @@ const User = () => {
           <div className="w-[80%] h-[10%] flex items-center justify-center">
             <button
               className="px-14 py-1 text-white bg-[#1F2123] rounded-full text-[18px] font-serif"
-              onClick={() => {
-                setCurrentUser({ email: "" });
-                navigate("/signin");
-              }}
+              onClick={handleLogOut}
             >
               Logout
             </button>

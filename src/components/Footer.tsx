@@ -5,7 +5,7 @@ const Footer = () => {
   const handleSubscribe = () => {};
   return (
     <div
-      className={`${styles.paddingX} flex flex-col bg-[#1F2123] w-full h-[500px] sm:h-[300px] items-center`}
+      className={`${styles.paddingX} flex flex-col bg-[#1F2123] w-full h-[550px] sm:h-[300px] items-center`}
     >
       <div
         className={` w-full h-full sm:h-[82%] flex  flex-col-reverse sm:flex-row justify-around items-center`}

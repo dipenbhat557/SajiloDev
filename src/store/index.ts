@@ -14,11 +14,10 @@ export const isLoggedIn = selector({
 export const currUser = atom({
   key: "currUser",
   default: {
-    email: null as string | null, // Update the default value to null
+    email: null as string | null,
   },
 });
 
-// Function to listen for authentication state changes
 export const listenForAuthChanges = () => {
   const setCurrentUser = useSetRecoilState(currUser);
   useEffect(() => {
@@ -28,3 +27,9 @@ export const listenForAuthChanges = () => {
     return () => unsubscribe();
   }, [setCurrentUser]);
 };
+
+//handles the error when user tries to access orders without being authenticated
+export const loginErr = atom({
+  key: "loginErr",
+  default: false,
+});
