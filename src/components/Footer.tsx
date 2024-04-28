@@ -79,7 +79,7 @@ const Footer = () => {
             Subscribe to our Newsletter to get the latest news, updates
             delivered directly to your inbox.
           </p>
-          <div className="my-2 mb-6 justify-center items-center flex flex-row">
+          <div className=" w-[90%] sm:w-auto my-2 mb-6 justify-center items-center flex flex-row">
             <input
               type="text"
               placeholder="Enter your mail address"
