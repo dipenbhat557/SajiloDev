@@ -6,7 +6,9 @@ import { IoMdArrowDropright } from "react-icons/io";
 import { IoMdArrowDropleft } from "react-icons/io";
 
 const Reviews = () => {
-  const [currentReviews, setCurrentReviews] = useState<any>([]);
+  const [currentReviews, setCurrentReviews] = useState<any>(
+    reviewItems.slice(0, 3)
+  );
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const updateCurrentReviews = () => {
@@ -22,22 +24,38 @@ const Reviews = () => {
     } else {
       setCurrentReviews(reviewItems?.slice(startIndex, endIndex));
     }
+    // console.log(reviewItems?.slice(1, 4));
+    // console.log(
+    //   "start index is ",
+    //   startIndex,
+    //   " end index is ",
+    //   endIndex,
+    //   " current reviews are ",
+    //   currentReviews,
+    //   "next index is ",
+    //   nextIndex
+    // );
   };
 
-  const handleAutoSwitch = () => {
+  const handleLeftButtonClick = () => {
     setCurrentIndex((prevIndex: number) => {
-      const newIndex = (prevIndex + 1) % reviewItems?.length;
+      const newIndex =
+        (prevIndex - 1 + reviewItems.length) % reviewItems.length;
+
       return newIndex;
     });
   };
-
   useEffect(() => {
     updateCurrentReviews();
-
-    const interval = setInterval(handleAutoSwitch, 3000);
-
-    return () => clearInterval(interval);
   }, [currentIndex]);
+
+  const handleRightButtonClick = () => {
+    setCurrentIndex((prevIndex: number) => {
+      const newIndex = (prevIndex + 1) % reviewItems?.length;
+
+      return newIndex;
+    });
+  };
 
   return (
     <div
@@ -74,17 +92,10 @@ const Reviews = () => {
         </div>
         <div className="w-full h-[70%] flex items-center justify-around">
           <IoMdArrowDropleft
-            onClick={() => {
-              setCurrentIndex((prevIndex: number) => {
-                const newIndex =
-                  (prevIndex - 1 + reviewItems.length) % reviewItems.length;
-
-                return newIndex;
-              });
-            }}
+            onClick={handleLeftButtonClick}
             className="text-6xl cursor-pointer"
           />
-          {currentReviews?.map((item: any, index: number) => {
+          {currentReviews?.slice(0, 3)?.map((item: any, index: number) => {
             return (
               <div
                 key={index}
@@ -115,12 +126,7 @@ const Reviews = () => {
             );
           })}
           <IoMdArrowDropright
-            onClick={() => {
-              setCurrentIndex((prevIndex: number) => {
-                const newIndex = (prevIndex + 1) % reviewItems?.length;
-                return newIndex;
-              });
-            }}
+            onClick={handleRightButtonClick}
             className="text-6xl cursor-pointer"
           />
         </div>

@@ -1,10 +1,26 @@
 import {
   angular,
   avash,
-  css,
+  css, 
+  canva,
+  JavaScript,
+  mongoDB,
+  postgres,
+  prisma,
+  sql,
+ Figma ,
+ express,
+ DockerLogo,
+ GitHub,
+ jenkins,
+  Kubernetes,
+
+
+  
   customer1,
   customer2,
   customer3,
+  customer4, customer5,
   dipen,
   next,
   react,
@@ -178,49 +194,56 @@ export const serviceItems = [
 export const reviewItems = [
   {
     img: customer1,
-    name: "Avash Neupane",
-    time: "10 months ago",
-    review: "Really like the service and what a team wohhhh. Guys go for it",
+    name: " Ajaya Neupane",
+    time: "2 months ago",
+    review: "Incredible experience with sajiloDev ! They brought our vision to life with a stunning website that perfectly represents our brand. The process was smooth, and the team was highly responsive to our needs. Highly recommended!",
   },
   {
     img: customer2,
-    name: "Dipendra Bhatta",
+    name: "Shiv Raj Khanal",
     time: "10 months ago",
-    review: "Really like the service and what a team wohhhh. Guys go for it",
+    review:" I couldn't be happier with the website sajiloDev created for my business. From start to finish, they were professional, efficient, and attentive to detail. The end result exceeded my ex",
   },
   {
     img: customer3,
-    name: "Siddhant Acharya",
-    time: "10 months ago",
-    review: "Really like the service and what a team wohhhh. Guys go for it",
+    name: " Shiva Oli",
+    time: "1 months ago",
+    review: "मैले सजिलो डेभको साथ अत्यधिक सन्तुलित संवाद सहित निर्माणाधिकारीको साथ सफल अनुभव गरेँ। प्रारम्भिक परामर्शदेखि अन्तिम लान्चसम्म, उनीहरू मेरो आवश्यकताहरूको लागि अत्यधिक प्रतिकूल र सावधानीपूर्वक छिरें। उनीहरूको कामको गुणस्तर शीर्ष-स्तरको छ, र म आफ्ना नयाँ वेबसाइटलाई ग्राहक र सहकर्मीहरूलाई गर्व गर्न सक्छु। उत्कृष्ट सेवाको लागि धन्यवाद!"
+
+   
   },
+  
   {
-    img: customer2,
-    name: "Khem Raj Bhatta",
-    time: "10 months ago",
-    review: "Really like the service and what a team wohhhh. Guys go for it",
-  },
+    img: customer4,
+    name: "Shashi Pariyar ",
+    time: "1 months ago",
+    review: "Working with sajiloDev was a game-changer for my online presence. They took the time to understand my goals and delivered a website that not only looks fantastic but also performs exceptionally well. Their expertise and dedication are unmatched!"},
+  {
+    img: customer5,
+    name: "Tek Bahadhur Pun  ",
+    time: "1 months ago",
+    review:  "मेरो स्टार्टअपको लागि सजिलो डेभ छान्नु मेरो एकै राम्रो निर्णय थियो। उनीहरूले मलाई प्रक्रियाको प्रत्येक चरणमा मार्गदर्शन गरेँ, मूल्यवान परामर्श प्रदान गरेँ, र मेरो वेबसाइटलाई मेरो ब्राण्ड पहिचानसँग पूर्णरूपमा मेल खानु निश्चित गरेँ। म उत्कृष्ट परिणामबाट उत्साहित छु र मेरो व्यवसायमा यसको प्रभाव कसरी हुनेछ हेर्न बिर्सनु छ।"}
 ];
 
 export const frontend = {
   title: "Front-end",
-  stack: [angular, css, next, react, tailwind, ts, wordpress],
+  stack: [angular,  next, react, tailwind,  ],
 };
 export const backend = {
   title: "Back-end",
-  stack: [angular, springBoot, css, next, react, wordpress],
+  stack: [ springBoot,express,  next,  wordpress],
 };
 export const uiux = {
   title: "UI/UX",
-  stack: [css, next, react, ts, wordpress],
+  stack: [Figma,canva],
 };
 export const devOps = {
   title: "DevOps",
-  stack: [next, react, tailwind, wordpress],
+  stack: [DockerLogo, GitHub,jenkins,Kubernetes,],
 };
 export const database = {
   title: "Database",
-  stack: [angular, css, wordpress],
+  stack: [mongoDB,postgres,prisma,sql],
 };
 
 export const techStack = [frontend, backend, uiux, devOps, database];
