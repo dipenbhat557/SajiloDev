@@ -10,7 +10,7 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../firebaseConfig";
-import { FaInstagram, FaTwitter } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaGoogle } from "react-icons/fa";
@@ -216,7 +216,7 @@ const Signup = () => {
             </div>
             <div className="w-[70%] h-[13%] sm:h-[16%] flex items-center mx-auto justify-around">
               <FaGoogle className="text-xl" onClick={handleGoogleSignUp} />
-              <FaTwitter className="text-xl" />
+              <FaXTwitter className="text-xl" />
               <FaFacebook className="text-xl" />
 
               <FaInstagram className="text-xl" />

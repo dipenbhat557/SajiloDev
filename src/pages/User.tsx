@@ -4,15 +4,12 @@ import Navbar from "../components/Navbar";
 import Reviews from "../components/Reviews";
 import Works from "../components/Works";
 import { styles } from "../styles";
-import { useSetRecoilState } from "recoil";
-import { currUser } from "../store";
 import { useNavigate } from "react-router-dom";
 import { logo } from "../assets";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 
 const User = () => {
-  const setCurrentUser = useSetRecoilState(currUser);
   const [editable, setEditable] = useState(false);
   const navigate = useNavigate();
 

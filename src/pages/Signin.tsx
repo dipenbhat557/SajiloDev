@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { facebook, google, insta, login, logo1, twitter } from "../assets";
+import { login, logo1 } from "../assets";
 import Navbar from "../components/Navbar";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { currUser, loginErr } from "../store";
 import { useNavigate } from "react-router-dom";
 import {
@@ -10,7 +10,7 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../firebaseConfig";
-import { FaInstagram, FaTwitter } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaGoogle } from "react-icons/fa";
@@ -182,7 +182,7 @@ const Signin = () => {
             </div>
             <div className="w-[70%] h-[13%] flex items-center mx-auto justify-around">
               <FaGoogle className="text-xl" onClick={handleGoogleSignIn} />
-              <FaTwitter className="text-xl" />
+              <FaXTwitter className="text-xl" />
               <FaFacebook className="text-xl" />
 
               <FaInstagram className="text-xl" />
