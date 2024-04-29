@@ -100,9 +100,9 @@ const Signup = () => {
       />
       <div className="h-screen w-full flex flex-col">
         <div
-          className={`items-center justify-center p-36 w-full h-[92%] flex  bg-[#F0F4FC] shadow-slate-500 shadow-sm`}
+          className={`ilg:tems-center lg:justify-center  lg:p-36 lg:w-full h-[92%] flex  bg-[#F0F4FC] shadow-slate-500 shadow-sm`}
         >
-          <div className="w-[60%] h-[80%]  flex flex-col gap-3">
+          <div className="w-[60%] h-[80%]  lg:flex lg:flex-col lg:gap-3 hidden ">
             <div className="flex flex-col w-[40%]">
               <p className="font-semibold text-[25px] font-serif">Welcome to</p>
               <p className="font-bold text-[35px] font-serif">SajiloDev</p>
@@ -126,11 +126,11 @@ const Signup = () => {
               className="w-[80%] h-[60%] object-contain"
             />
           </div>
-          <div className="w-[38%] h-full flex flex-col gap-8">
+          <div className="lg:w-[38%] p-5 h-full flex flex-col  lg:gap-8">
             <p className="text-[22px] font-semibold h-[10%]">Register</p>
             <form
               onSubmit={handleSubmit}
-              className="w-full h-[70%] mb-4 gap-8 flex flex-col"
+              className="w-full lg:h-[70%]  gap-4 flex flex-col justify-center items-center"
             >
               <div>
                 {error && (
@@ -203,7 +203,7 @@ const Signup = () => {
 
               <button
                 type="submit"
-                className="px-8 py-2 rounded-lg bg-[#4461F2] text-white text-[12px] font-medium "
+                className=" w-56 lg:w-full px-8 py-2 rounded-lg bg-[#4461F2] text-white text-[12px] font-medium "
               >
                 Register
               </button>
