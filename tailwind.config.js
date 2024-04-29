@@ -26,10 +26,10 @@ export default {
         },
         scroll: {
           "0%": { transform: "translateY(0)" },
-          "100%": { transform: "translateY(calc(-250px * 3))" },
+          "100%": { transform: "translateY(calc(-250px * 4))" },
         },
         scrolled: {
-          "0%": { transform: "translateY(calc(-250px * 3))" },
+          "0%": { transform: "translateY(calc(-250px * 4))" },
           "100%": { transform: "translateY(0)" },
         },
         horiz: {
