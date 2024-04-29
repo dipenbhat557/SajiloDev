@@ -21,7 +21,7 @@ const Services = () => {
               <img
                 src={item?.img}
                 alt={item?.title}
-                className="w-[90%] sm:w-[50%] h-[180px] object-contain sm:object-cover rounded-t-lg"
+                className="w-[90%] sm:w-[50%] h-[180px] object-contain  rounded-t-lg"
               />
               <div className="font-semibold  font-serif text-[13px] sm:text-[16px]">
                 {item?.title}

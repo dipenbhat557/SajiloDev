@@ -1,26 +1,22 @@
 import {
   angular,
   avash,
- 
   canva,
-
   mongoDB,
   postgres,
   prisma,
   sql,
- Figma ,
- express,
- DockerLogo,
- GitHub,
- jenkins,
+  Figma,
+  express,
+  DockerLogo,
+  GitHub,
+  jenkins,
   Kubernetes,
-
-
-  
   customer1,
   customer2,
   customer3,
-  customer4, customer5,
+  customer4,
+  customer5,
   dipen,
   next,
   react,
@@ -32,7 +28,6 @@ import {
   service6,
   springBoot,
   tailwind,
-
   wordpress,
   work1,
   work2,
@@ -55,7 +50,6 @@ export const navLinks = [
     title: "Connect with us",
     link: "/contactus",
   },
- 
 ];
 
 export const serviceDropdowns = [
@@ -193,54 +187,59 @@ export const reviewItems = [
     img: customer1,
     name: " Ajaya Neupane",
     time: "2 months ago",
-    review: "Incredible experience with sajiloDev ! They brought our vision to life with a stunning website that perfectly represents our brand. The process was smooth, and the team was highly responsive to our needs. Highly recommended!",
+    review:
+      "Incredible experience with sajiloDev ! They brought our vision to life with a stunning website that perfectly represents our brand. The process was smooth, and the team was highly responsive to our needs. Highly recommended!",
   },
   {
     img: customer2,
     name: "Shiv Raj Khanal",
     time: "10 months ago",
-    review:" I couldn't be happier with the website sajiloDev created for my business. From start to finish, they were professional, efficient, and attentive to detail. The end result exceeded my ex",
+    review:
+      " I couldn't be happier with the website sajiloDev created for my business. From start to finish, they were professional, efficient, and attentive to detail. The end result exceeded my ex",
   },
   {
     img: customer3,
     name: " Shiva Oli",
     time: "1 months ago",
-    review: "मैले सजिलो डेभको साथ अत्यधिक सन्तुलित संवाद सहित निर्माणाधिकारीको साथ सफल अनुभव गरेँ। प्रारम्भिक परामर्शदेखि अन्तिम लान्चसम्म, उनीहरू मेरो आवश्यकताहरूको लागि अत्यधिक प्रतिकूल र सावधानीपूर्वक छिरें। उनीहरूको कामको गुणस्तर शीर्ष-स्तरको छ, र म आफ्ना नयाँ वेबसाइटलाई ग्राहक र सहकर्मीहरूलाई गर्व गर्न सक्छु। उत्कृष्ट सेवाको लागि धन्यवाद!"
-
-   
+    review:
+      "मैले सजिलो डेभको साथ अत्यधिक सन्तुलित संवाद सहित निर्माणाधिकारीको साथ सफल अनुभव गरेँ। प्रारम्भिक परामर्शदेखि अन्तिम लान्चसम्म, उनीहरू मेरो आवश्यकताहरूको लागि अत्यधिक प्रतिकूल र सावधानीपूर्वक छिरें। उनीहरूको कामको गुणस्तर शीर्ष-स्तरको छ, र म आफ्ना नयाँ वेबसाइटलाई ग्राहक र सहकर्मीहरूलाई गर्व गर्न सक्छु। उत्कृष्ट सेवाको लागि धन्यवाद!",
   },
-  
+
   {
     img: customer4,
     name: "Shashi Pariyar ",
     time: "1 months ago",
-    review: "Working with sajiloDev was a game-changer for my online presence. They took the time to understand my goals and delivered a website that not only looks fantastic but also performs exceptionally well. Their expertise and dedication are unmatched!"},
+    review:
+      "Working with sajiloDev was a game-changer for my online presence. They took the time to understand my goals and delivered a website that not only looks fantastic but also performs exceptionally well. Their expertise and dedication are unmatched!",
+  },
   {
     img: customer5,
     name: "Tek Bahadhur Pun  ",
     time: "1 months ago",
-    review:  "मेरो स्टार्टअपको लागि सजिलो डेभ छान्नु मेरो एकै राम्रो निर्णय थियो। उनीहरूले मलाई प्रक्रियाको प्रत्येक चरणमा मार्गदर्शन गरेँ, मूल्यवान परामर्श प्रदान गरेँ, र मेरो वेबसाइटलाई मेरो ब्राण्ड पहिचानसँग पूर्णरूपमा मेल खानु निश्चित गरेँ। म उत्कृष्ट परिणामबाट उत्साहित छु र मेरो व्यवसायमा यसको प्रभाव कसरी हुनेछ हेर्न बिर्सनु छ।"}
+    review:
+      "मेरो स्टार्टअपको लागि सजिलो डेभ छान्नु मेरो एकै राम्रो निर्णय थियो। उनीहरूले मलाई प्रक्रियाको प्रत्येक चरणमा मार्गदर्शन गरेँ, मूल्यवान परामर्श प्रदान गरेँ, र मेरो वेबसाइटलाई मेरो ब्राण्ड पहिचानसँग पूर्णरूपमा मेल खानु निश्चित गरेँ। म उत्कृष्ट परिणामबाट उत्साहित छु र मेरो व्यवसायमा यसको प्रभाव कसरी हुनेछ हेर्न बिर्सनु छ।",
+  },
 ];
 
 export const frontend = {
   title: "Front-end",
-  stack: [angular,  next, react, tailwind,  ],
+  stack: [angular, next, react, tailwind],
 };
 export const backend = {
   title: "Back-end",
-  stack: [ springBoot,express,  next,  wordpress],
+  stack: [springBoot, express, next, wordpress],
 };
 export const uiux = {
   title: "UI/UX",
-  stack: [Figma,canva],
+  stack: [Figma, canva],
 };
 export const devOps = {
   title: "DevOps",
-  stack: [DockerLogo, GitHub,jenkins,Kubernetes,],
+  stack: [DockerLogo, GitHub, jenkins, Kubernetes],
 };
 export const database = {
   title: "Database",
-  stack: [mongoDB,postgres,prisma,sql],
+  stack: [mongoDB, postgres, prisma, sql],
 };
 
 export const techStack = [frontend, backend, uiux, devOps, database];
@@ -248,14 +247,16 @@ export const techStack = [frontend, backend, uiux, devOps, database];
 export const founders = [
   {
     img: dipen,
-    vanai: "Finally, launced it !!",
+    vanai:
+      "With three of tech expertise, we came up with this to simplify digital solutions, ensuring every client's success.",
     github: "https://github.com/dipenbhat557",
     linkedin: "https://www.linkedin.com/in/dipendra-bhatta-38ba32259/",
     facebook: "https://www.facebook.com/",
   },
   {
     img: avash,
-    vanai: "Finally, launced it !!",
+    vanai:
+      "Bringing a wealth of experience, I co-founded sajiloDev, dedicated to delivering innovative and reliable technical services.",
     github: "https://github.com/dipenbhat557",
     linkedin: "https://www.linkedin.com/in/dipendra-bhatta-38ba32259/",
     facebook: "https://www.facebook.com/",

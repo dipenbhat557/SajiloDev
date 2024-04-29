@@ -64,7 +64,7 @@ const Footer = () => {
           </a>
         </div>
 
-        <div className="flex flex-col w-[95%] sm:w-[30%] h-[60%] sm:h-[70%] justify-center items-center pt-4">
+        <div className="flex flex-col w-[75%] sm:w-[30%] h-[60%] sm:h-[70%] justify-center items-center pt-4">
           <div className="flex flex-row w-[90%] sm:w-[25%] items-center justify-center mt-2">
             <div className="w-[8%] h-[2px] border-b-4 border-[#0766FF] mr-2 rounded-3xl flex-grow" />
             <p className="font-extrabold  text-xl text-white sm:text-2xl">
@@ -83,7 +83,7 @@ const Footer = () => {
             <input
               type="text"
               placeholder="Enter your mail address"
-              className="p-2 px-2 sm:px-6 placeholder:text-[14px] sm:placeholder:text-[16px] rounded-xl"
+              className="py-2 px-1 sm:px-6 placeholder:text-[14px] sm:placeholder:text-[16px] rounded-xl"
             />
             <button
               onClick={handleSubscribe}

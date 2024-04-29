@@ -22,14 +22,16 @@ const Founders = () => {
             key={index}
             className="w-[45%] sm:w-[30%] h-[90%] shadow-xl rounded-md shadow-slate-300 flex flex-col items-center justify-around"
           >
-            <div className="w-[3] h-[25%] overflow-hidden rounded-[50%]">
+            <div className="w-[30%] h-[25%] sm:h-[35%] overflow-hidden rounded-[50%]">
               <img
                 src={founder?.img}
                 alt="founder image"
-                className="w-full h-full object-contain"
+                className="w-full h-full object-cover"
               />
             </div>
-            <p className="font-serif">{founder?.vanai}</p>
+            <p className="font-serif text-[13px] sm:text-[16px] px-3 text-center">
+              {founder?.vanai}
+            </p>
             <div className="w-[90%] flex justify-around items-center h-[10%]">
               <img
                 src={github}
