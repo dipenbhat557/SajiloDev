@@ -1,9 +1,9 @@
 import {
   angular,
   avash,
-  css, 
+ 
   canva,
-  JavaScript,
+
   mongoDB,
   postgres,
   prisma,
@@ -32,7 +32,7 @@ import {
   service6,
   springBoot,
   tailwind,
-  ts,
+
   wordpress,
   work1,
   work2,
@@ -55,10 +55,7 @@ export const navLinks = [
     title: "Connect with us",
     link: "/contactus",
   },
-  {
-    title: "About us",
-    link: "#",
-  },
+ 
 ];
 
 export const serviceDropdowns = [
@@ -123,8 +120,8 @@ export const afterClickItems = [
 export const workItems = [
   {
     img: work1,
-    title: "Campaign Kart",
-    link: "http://campaignkart.netlify.app",
+    title: "Ghar Sanchar",
+    link: "http://gharsanchar.com",
   },
   {
     img: work2,
@@ -152,8 +149,8 @@ export const workItems = [
   {
     img: work6,
 
-    title: "Personal Portfolio",
-    link: "https://sajilodev.com",
+    title: "Campaign Kart",
+    link: "https://campaignkart.netlify.app",
   },
 ];
 

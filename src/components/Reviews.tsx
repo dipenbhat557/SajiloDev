@@ -93,7 +93,7 @@ const Reviews = () => {
         <div className="w-full h-[70%] flex items-center justify-around">
           <IoMdArrowDropleft
             onClick={handleLeftButtonClick}
-            className="text-6xl cursor-pointer"
+            className=" animate-bounce text-6xl cursor-pointer"
           />
           {currentReviews?.slice(0, 3)?.map((item: any, index: number) => {
             return (
@@ -127,7 +127,7 @@ const Reviews = () => {
           })}
           <IoMdArrowDropright
             onClick={handleRightButtonClick}
-            className="text-6xl cursor-pointer"
+            className=" animate-bounce text-6xl cursor-pointer"
           />
         </div>
       </div>

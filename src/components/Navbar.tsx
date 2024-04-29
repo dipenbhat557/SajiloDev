@@ -42,7 +42,7 @@ const Navbar = ({
       <div
         className={` ${bgColor} bg-opacity-70 backdrop-blur-sm hover:backdrop-blur-lg	border-radius: 0.5rem  	 fixed w-full h-[60px] hidden sm:flex items-center ${textColor} justify-between z-30`}
       >
-        <div className="flex items-center justify-around w-[65%]">
+        <div className="flex items-center gap-10 w-[65%]">
           <div
             className="w-[20%] cursor-pointer
         "
@@ -54,7 +54,7 @@ const Navbar = ({
               className="w-full h-full object-contain"
             />
           </div>
-          <div className="flex items-center  justify-around w-[50%]">
+          <div className="flex items-center  gap-10 w-[50%]">
             {navLinks?.map((nav, index) => (
               <div
                 key={index}
@@ -79,7 +79,9 @@ const Navbar = ({
                     <IoMdArrowDropdown className={`inline ${textColor} `} />
                   </>
                 ) : (
-                  <a href={nav?.link}>{nav?.title}</a>
+                  <a className="hover:text-slate-400" href={nav?.link}>
+                    {nav?.title}
+                  </a>
                 )}
               </div>
             ))}
@@ -88,13 +90,13 @@ const Navbar = ({
         {!isLogIn && (
           <div className="w-[18%] gap-3 flex items-center justify-around pr-2">
             <p
-              className="text-[#0766FF] cursor-pointer"
+              className="text-[#0766FF] hover:text-[#799fdc] cursor-pointer"
               onClick={() => navigate("/signin")}
             >
               Log in
             </p>
             <p
-              className={`px-4 py-1 bg-white cursor-pointer text-[#0766FF] rounded-lg ${borderColor}`}
+              className={`px-4 py-1 bg-white cursor-pointer text-[#0766FF] hover:bg-slate-200    rounded-lg ${borderColor}`}
               onClick={() => navigate("/signup")}
             >
               Register
@@ -115,7 +117,7 @@ const Navbar = ({
 
         {showDropdown && (
           <div
-            className="dropdown-menu top-14 ml-60 p-3 rounded-b-xl rounded-r-xl left-[10%] text-black bg-white w-[16%] absolute z-50 "
+            className="dropdown-menu top-14 p-3 rounded-b-xl rounded-r-xl left-[15%] text-black bg-white w-[16%] absolute z-50 "
             onMouseLeave={() => setShowDropdown(false)}
             onMouseOver={() => handleMouseOverDropdown()}
           >
