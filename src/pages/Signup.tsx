@@ -10,6 +10,8 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../firebaseConfig";
+import { FaFacebook, FaGoogle, FaInstagram } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 interface FormData {
   email: string;
@@ -100,7 +102,7 @@ const Signup = () => {
       />
       <div className="h-screen w-full flex flex-col">
         <div
-          className={`ilg:tems-center lg:justify-center  lg:p-36 lg:w-full h-[92%] flex  bg-[#F0F4FC] shadow-slate-500 shadow-sm`}
+          className={`lg:items-center lg:justify-center  lg:p-36 lg:w-full h-[92%] flex  bg-[#F0F4FC] shadow-slate-500 shadow-sm`}
         >
           <div className="w-[60%] h-[80%]  lg:flex lg:flex-col lg:gap-3 hidden ">
             <div className="flex flex-col w-[40%]">
@@ -126,11 +128,11 @@ const Signup = () => {
               className="w-[80%] h-[60%] object-contain"
             />
           </div>
-          <div className="lg:w-[38%] p-5 h-full flex flex-col  lg:gap-8">
+          <div className="lg:w-[38%] p-5 lg:h-full flex flex-col   items-center lg:gap-8">
             <p className="text-[22px] font-semibold h-[10%]">Register</p>
             <form
               onSubmit={handleSubmit}
-              className="w-full lg:h-[70%]  gap-4 flex flex-col justify-center items-center"
+              className="w-full lg:h-[70%]  gap-4 flex flex-col  items-center"
             >
               <div>
                 {error && (
@@ -203,7 +205,7 @@ const Signup = () => {
 
               <button
                 type="submit"
-                className=" w-56 lg:w-full px-8 py-2 rounded-lg bg-[#4461F2] text-white text-[12px] font-medium "
+                className=" w-56 lg:w-[50%] px-8 py-2 rounded-lg bg-[#4461F2] text-white text-[12px] font-medium "
               >
                 Register
               </button>
@@ -216,37 +218,21 @@ const Signup = () => {
               </p>
               <div className="border-b border-slate-700 w-[25px]" />
             </div>
-            <div className="w-[70%] h-[13%] flex items-center mx-auto justify-around">
+            <div className="w-[70%] h-[13%] flex items-center  justify-center  gap-4">
               <div
                 onClick={handleGoogleSignUp}
-                className="w-[15%] cursor-pointer h-full shadow-black shadow-sm rounded-3xl"
+                className=" cursor-pointer  shadow-black "
               >
-                <img
-                  src={google}
-                  alt="google"
-                  className="w-[3]  h-full object-contain rounded-full"
-                />
+                <FaGoogle className="w-8 text-green-500 text-xl" />
               </div>
-              <div className="w-[15%] cursor-pointer h-full shadow-black shadow-sm rounded-3xl">
-                <img
-                  src={twitter}
-                  alt="twitter"
-                  className="w-[3]  h-full object-contain rounded-full"
-                />
+              <div className=" cursor-pointer ">
+                <FaFacebook className="w-8 text-blue-400  text-xl" />
               </div>
-              <div className="w-[15%] cursor-pointer h-full shadow-black shadow-sm rounded-3xl">
-                <img
-                  src={facebook}
-                  alt="facebook"
-                  className="w-[3]  h-full object-contain rounded-full"
-                />
+              <div className="cursor-pointer ">
+                <FaXTwitter className="w-8 text-black text-xl " />
               </div>
-              <div className="w-[15%] cursor-pointer h-full shadow-black shadow-sm rounded-3xl">
-                <img
-                  src={insta}
-                  alt="insta"
-                  className="w-[3]  h-full object-contain rounded-full"
-                />
+              <div className="cursor-pointer">
+                <FaInstagram className="w-8 text-pink-500 text-xl" />
               </div>
             </div>
           </div>
