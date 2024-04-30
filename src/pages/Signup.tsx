@@ -1,19 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { google, login, logo1 } from "../assets";
 import Navbar from "../components/Navbar";
 import { useSetRecoilState } from "recoil";
 import { currUser } from "../store";
 import { useNavigate } from "react-router-dom";
 import {
+  FacebookAuthProvider,
+  GithubAuthProvider,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithPopup,
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../firebaseConfig";
-import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa6";
+import { FaGithub, FaLinkedin } from "react-icons/fa6";
 
 interface FormData {
   name: string;
@@ -30,6 +31,8 @@ const Signup = () => {
     confirmPassword: "",
   });
   let googleProvider = new GoogleAuthProvider();
+  let githubProvider = new GithubAuthProvider();
+  let facebookProvider = new FacebookAuthProvider();
 
   const [showPassword1, setShowPassword1] = useState<boolean>(false);
   const [showPassword2, setShowPassword2] = useState<boolean>(false);
@@ -89,6 +92,46 @@ const Signup = () => {
 
   const handleGoogleSignUp = () => {
     signInWithPopup(auth, googleProvider)
+      .then((res) => {
+        if (res?.user?.email) {
+          setCurrentUser({
+            email: res.user.email,
+            name: res?.user?.displayName,
+          });
+          navigate("/");
+          console.log(res.user);
+        } else {
+          setError(true);
+        }
+      })
+      .catch((err) => {
+        setError(true);
+        console.log(err);
+      });
+  };
+
+  const handleGithubSignUp = () => {
+    signInWithPopup(auth, githubProvider)
+      .then((res) => {
+        if (res?.user?.email) {
+          setCurrentUser({
+            email: res.user.email,
+            name: res?.user?.displayName,
+          });
+          navigate("/");
+          console.log(res.user);
+        } else {
+          setError(true);
+        }
+      })
+      .catch((err) => {
+        setError(true);
+        console.log(err);
+      });
+  };
+
+  const handleFacebookSignUp = () => {
+    signInWithPopup(auth, facebookProvider)
       .then((res) => {
         if (res?.user?.email) {
           setCurrentUser({
@@ -249,10 +292,16 @@ const Signup = () => {
                   onClick={handleGoogleSignUp}
                 />
               </div>
-              <FaLinkedin className="cursor-pointer text-3xl text-blue-500" />
-              <FaFacebook className="cursor-pointer text-3xl text-blue-800" />
 
-              <FaInstagram className="cursor-pointer text-3xl text-pink-600" />
+              <FaGithub
+                onClick={handleGithubSignUp}
+                className="cursor-pointer text-3xl"
+              />
+              <FaLinkedin className="cursor-pointer text-3xl text-blue-500" />
+              <FaFacebook
+                onClick={handleFacebookSignUp}
+                className="cursor-pointer text-3xl text-blue-800"
+              />
             </div>
           </div>
         </div>

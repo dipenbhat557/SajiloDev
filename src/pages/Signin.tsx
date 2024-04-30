@@ -8,11 +8,12 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
+  GithubAuthProvider,
+  FacebookAuthProvider,
 } from "firebase/auth";
 import { auth } from "../firebaseConfig";
-import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa6";
+import { FaGithub, FaLinkedin } from "react-icons/fa6";
 
 interface FormData {
   email: string;
@@ -31,6 +32,8 @@ const Signin = () => {
   const setCurrentUser = useSetRecoilState(currUser);
   const navigate = useNavigate();
   let googleProvider = new GoogleAuthProvider();
+  let githubProvider = new GithubAuthProvider();
+  let facebookProvider = new FacebookAuthProvider();
   const [loginError, setLoginError] = useRecoilState(loginErr);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -66,6 +69,46 @@ const Signin = () => {
 
   const handleGoogleSignIn = () => {
     signInWithPopup(auth, googleProvider)
+      .then((res) => {
+        if (res?.user?.email) {
+          setCurrentUser({
+            email: res.user.email,
+            name: res?.user?.displayName,
+          });
+          navigate("/");
+          console.log(res.user);
+        } else {
+          setError(true);
+        }
+      })
+      .catch((err) => {
+        setError(true);
+        console.log(err);
+      });
+  };
+
+  const handleGithubSignIn = () => {
+    signInWithPopup(auth, githubProvider)
+      .then((res) => {
+        if (res?.user?.email) {
+          setCurrentUser({
+            email: res.user.email,
+            name: res?.user?.displayName,
+          });
+          navigate("/");
+          console.log(res.user);
+        } else {
+          setError(true);
+        }
+      })
+      .catch((err) => {
+        setError(true);
+        console.log(err);
+      });
+  };
+
+  const handleFacebookSignIn = () => {
+    signInWithPopup(auth, facebookProvider)
       .then((res) => {
         if (res?.user?.email) {
           setCurrentUser({
@@ -195,10 +238,16 @@ const Signin = () => {
                 />
               </div>
 
-              <FaLinkedin className="cursor-pointer text-3xl text-blue-500" />
-              <FaFacebook className="cursor-pointer text-3xl text-blue-800" />
+              <FaGithub
+                onClick={handleGithubSignIn}
+                className="cursor-pointer text-3xl "
+              />
 
-              <FaInstagram className="cursor-pointer text-3xl text-pink-600" />
+              <FaLinkedin className="cursor-pointer text-3xl text-blue-500" />
+              <FaFacebook
+                onClick={handleFacebookSignIn}
+                className="cursor-pointer text-3xl text-blue-800"
+              />
             </div>
           </div>
         </div>
