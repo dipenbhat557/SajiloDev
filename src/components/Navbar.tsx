@@ -140,7 +140,7 @@ const Navbar = ({
       </div>
       {/* Mobile menu */}
       <div
-        className={`shadow-2xl shadow-slate-500 sm:hidden cursor-pointer flex items-center h-[70px] px-6 w-full mr-3 justify-between ${bgColor}`}
+        className={`shadow-2xl shadow-slate-500 sm:hidden cursor-pointer z-40 flex items-center h-[70px] px-6 w-full mr-3 justify-between ${bgColor}`}
       >
         <div className="w-[30%] cursor-pointer" onClick={() => navigate("/")}>
           <img src={logo} alt="logo" className="w-full h-full object-contain" />

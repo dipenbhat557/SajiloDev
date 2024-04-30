@@ -24,9 +24,9 @@ const Hero = () => {
           onMouseLeave={() => {
             setHovering(false);
           }}
-          className={` absolute left-[10%] sm:w-[700px] rounded-full sm:left-[50%] top-[34%] sm:top-[15%] z-20 flex gap-3`}
+          className={` absolute left-[10%] sm:w-[700px]  sm:left-[50%] top-[34%] sm:top-[15%] z-20 flex gap-3`}
         >
-          <div className="h-[300px] sm:h-[500px] rounded-l-full m-auto overflow-hidden relative w-auto">
+          <div className="h-[300px] sm:h-[500px]  m-auto overflow-hidden relative w-auto">
             <ul className="flex flex-col gap-2 h-[calc(250px*6)] animate-scroll">
               {workItems?.map((work: Works, i: number) => (
                 <div

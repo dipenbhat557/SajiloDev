@@ -158,7 +158,7 @@ const Signup = () => {
         textColor="text-black"
         borderColor="border border-[#E0E0E9]"
       />
-      <div className=" sm:h-[97%] h-[95%] w-full flex flex-col">
+      <div className=" sm:h-[97%] h-[90%] justify-around  w-full flex flex-col">
         <div
           className={`items-center justify-center sm:p-36 w-full h-[89%] sm:h-[96%] flex  bg-[#F0F4FC] shadow-slate-500 shadow-sm`}
         >
@@ -243,7 +243,7 @@ const Signup = () => {
                   onClick={togglePasswordVisibility1}
                   className={`${
                     diffPassword ? "top-9" : "top-2"
-                  } absolute right-2  z-50 `}
+                  } absolute right-2  z-30 `}
                 >
                   {showPassword1 ? "🙈" : "👁️"}
                 </button>
@@ -264,7 +264,7 @@ const Signup = () => {
                 <button
                   type="button"
                   onClick={togglePasswordVisibility2}
-                  className="absolute right-2 top-2 z-50"
+                  className="absolute right-2 top-2 z-30"
                 >
                   {showPassword2 ? "🙈" : "👁️"}
                 </button>

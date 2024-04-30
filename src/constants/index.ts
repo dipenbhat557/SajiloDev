@@ -248,7 +248,7 @@ export const founders = [
   {
     img: dipen,
     vanai:
-      "<q>With three years of tech expertise, we came up with this to simplify digital solutions, ensuring every client&s success.</q>",
+      "<q>With three years of tech expertise, we came up with this to simplify digital solutions, ensuring every client's success.</q>",
     github: "https://github.com/dipenbhat557",
     linkedin: "https://www.linkedin.com/in/dipendra-bhatta-38ba32259/",
     instagram: "https://www.instagram.com/dipenbhat557/",

@@ -144,7 +144,7 @@ const Signin = () => {
           Please Login before performing this action !!
         </div>
       )}
-      <div className=" sm:h-[97%] h-[95%] w-full flex flex-col">
+      <div className=" sm:h-[97%] h-[90%] w-full flex justify-around flex-col">
         <div
           className={`items-center justify-center sm:p-36 w-full h-[89%] sm:h-[96%] flex  bg-[#F0F4FC] shadow-slate-500 shadow-sm`}
         >
@@ -209,7 +209,7 @@ const Signin = () => {
                 <button
                   type="button"
                   onClick={togglePasswordVisibility}
-                  className="absolute right-2 top-2 z-50 "
+                  className="absolute right-2 top-2 z-30 "
                 >
                   {showPassword ? "🙈" : "👁"}
                 </button>

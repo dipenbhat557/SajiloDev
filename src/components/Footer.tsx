@@ -93,11 +93,11 @@ const Footer = () => {
             Subscribe to our Newsletter to get the latest news, updates
             delivered directly to your inbox.
           </p>
-          <div className=" w-[60%] sm:w-auto my-2 mb-6 justify-center items-center flex flex-row">
+          <div className="w-[90%] sm:w-auto my-2 mb-6 justify-center items-center flex flex-row">
             <input
               type="text"
               placeholder="Enter your mail address"
-              className="py-2 placeholder:text-center sm:px-6 placeholder:text-[14px] sm:placeholder:text-[16px] rounded-xl"
+              className="flex-grow py-1 sm:py-2 w-[80%] sm:w-auto placeholder:text-center sm:px-6 placeholder:text-[10px] sm:placeholder:text-[16px] rounded-xl"
             />
             <button
               onClick={handleSubscribe}

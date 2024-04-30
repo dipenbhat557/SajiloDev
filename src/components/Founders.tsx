@@ -29,10 +29,11 @@ const Founders = () => {
                 className="w-full h-full object-cover"
               />
             </div>
-            <p className="font-serif text-[13px] sm:text-[16px] px-3 text-center">
-              {founder?.vanai}
-            </p>
-            <div className="w-[90%] flex justify-around items-center h-[10%]">
+            <p
+              dangerouslySetInnerHTML={{ __html: founder?.vanai }}
+              className="font-serif text-[13px] h-[55%] sm:h-[60%] flex items-center sm:text-[16px] px-3 text-center overflow-y-scroll sm:overflow-auto"
+            ></p>
+            <div className="w-[90%] flex justify-around items-center h-[13%] sm:h-[20%]">
               <FaGithub
                 onClick={() =>
                   window.open(
@@ -41,7 +42,7 @@ const Founders = () => {
                     "rel=noopener noreferrer"
                   )
                 }
-                className="text-3xl cursor-pointer "
+                className="text-xl sm:text-3xl cursor-pointer "
               />
 
               <FaLinkedin
@@ -52,7 +53,7 @@ const Founders = () => {
                     "rel=noopener noreferrer"
                   )
                 }
-                className="text-3xl cursor-pointer text-blue-800"
+                className="text-xl sm:text-3xl cursor-pointer text-blue-800"
               />
 
               <FaInstagram
@@ -63,7 +64,7 @@ const Founders = () => {
                     "rel=noopener noreferrer"
                   )
                 }
-                className="text-3xl cursor-pointer text-red-600"
+                className="text-xl sm:text-3xl cursor-pointer text-red-600"
               />
             </div>
           </div>

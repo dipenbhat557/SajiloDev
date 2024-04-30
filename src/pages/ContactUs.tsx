@@ -7,6 +7,7 @@ import { IoCall } from "react-icons/io5";
 import { IoIosMail } from "react-icons/io";
 import emailjs from "emailjs-com";
 import { logo } from "../assets";
+import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa6";
 interface FormData {
   name: string;
   email: string;
@@ -97,8 +98,8 @@ const ContactUs: React.FC = () => {
           <div
             className={`${styles.padding} top-[360px] sm:top-[390px] absolute bg-white left-[5%] sm:left-[15%] w-[90%] sm:w-[70%] mx-auto h-[700px] sm:h-[400px] rounded-md shadow-slate-400 shadow-sm flex flex-col justify-between sm:justify-around items-center`}
           >
-            <div className="w-full gap-3 h-full sm:h-[90%] flex flex-col sm:flex-row justify-between sm:justify-around items-center">
-              <div className="w-[90%] sm:w-[45%] text-white p-3 px-7 rounded-lg bg-[#1F2123] h-[35%] sm:h-full justify-around flex flex-col gap-2">
+            <div className="w-full gap-6 sm:gap-3 h-full sm:h-[90%] flex flex-col sm:flex-row justify-between sm:justify-around items-center">
+              <div className="w-[90%] sm:w-[45%] text-white p-3 px-7 rounded-lg bg-[#1F2123] h-[40%] sm:h-full justify-around flex flex-col gap-2">
                 <p className="text-center font-serif text-[18px]">
                   Contact information
                 </p>
@@ -108,7 +109,7 @@ const ContactUs: React.FC = () => {
                 </p>
                 <div className="flex gap-3">
                   <IoCall className="text-[#0766FF]" />
-                  <p className="text-[14px] font-light">8545866043</p>
+                  <p className="text-[14px] font-light">+91-8545866043</p>
                 </div>
                 <div className="flex gap-3">
                   <IoIosMail className="text-[#0766FF]" />
@@ -116,14 +117,26 @@ const ContactUs: React.FC = () => {
                     sajilodev557@gmail.com
                   </p>
                 </div>
+                <div className="flex gap-3">
+                  <FaInstagram className="text-[#0766FF]" />
+                  <p className="text-[14px] font-light">sajilodev</p>
+                </div>
+                <div className="flex gap-3">
+                  <FaFacebook className="text-[#0766FF]" />
+                  <p className="text-[14px] font-light">Sajilo Dev</p>
+                </div>
+                <div className="flex gap-3">
+                  <FaLinkedin className="text-[#0766FF]" />
+                  <p className="text-[14px] font-light">sajilo-dev</p>
+                </div>
               </div>
-              <div className="w-[90%] sm:w-[45%] h-[65%] sm:h-full flex flex-col justify-around text-slate-500">
+              <div className="w-[90%] sm:w-[45%] h-[60%] sm:h-full flex flex-col justify-around text-slate-500">
                 <form
                   onSubmit={handleSubmit}
                   className="w-full h-full flex flex-col gap-6 "
                 >
                   <div className="flex flex-col sm:flex-row w-full items-center justify-between gap-6 sm:gap-3">
-                    <div className="flex w-[90%] sm:w-[45%] flex-col gap-3">
+                    <div className="flex w-full sm:w-[45%] flex-col gap-3">
                       <p className="text-[13px]">Your name</p>
                       <input
                         type="text"
@@ -133,7 +146,7 @@ const ContactUs: React.FC = () => {
                         className="w-full border-b text-[13px] px-1 border-slate-400"
                       />
                     </div>
-                    <div className="flex  w-[90%] sm:w-[45%] flex-col gap-3">
+                    <div className="flex  w-full sm:w-[45%] flex-col gap-3">
                       <p className="text-[13px]">Your Email</p>
                       <input
                         type="text"
