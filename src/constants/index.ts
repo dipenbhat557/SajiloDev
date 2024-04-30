@@ -248,18 +248,18 @@ export const founders = [
   {
     img: dipen,
     vanai:
-      "With three of tech expertise, we came up with this to simplify digital solutions, ensuring every client's success.",
+      "<q>With three years of tech expertise, we came up with this to simplify digital solutions, ensuring every client&s success.</q>",
     github: "https://github.com/dipenbhat557",
     linkedin: "https://www.linkedin.com/in/dipendra-bhatta-38ba32259/",
-    facebook: "https://www.facebook.com/",
+    instagram: "https://www.instagram.com/dipenbhat557/",
   },
   {
     img: avash,
     vanai:
-      "Bringing a wealth of experience, I co-founded sajiloDev, dedicated to delivering innovative and reliable technical services.",
-    github: "https://github.com/dipenbhat557",
-    linkedin: "https://www.linkedin.com/in/dipendra-bhatta-38ba32259/",
-    facebook: "https://www.facebook.com/",
+      "<q>Bringing a wealth of experience, I co-founded sajiloDev, dedicated to delivering innovative and reliable technical services.</q>",
+    github: "https://github.com/Avashneupane9857",
+    linkedin: "https://www.linkedin.com/in/avash-neupane-a85877264/",
+    instagram: "https://www.instagram.com/avash__22/",
   },
 ];
 

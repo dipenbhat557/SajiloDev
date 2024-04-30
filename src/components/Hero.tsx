@@ -30,6 +30,7 @@ const Hero = () => {
             <ul className="flex flex-col gap-2 h-[calc(250px*6)] animate-scroll">
               {workItems?.map((work: Works, i: number) => (
                 <div
+                  key={i}
                   onClick={() =>
                     window.open(work?.link, "_blank", "rel=noopener noreferrer")
                   }
@@ -48,6 +49,7 @@ const Hero = () => {
             <ul className="flex flex-col gap-2 h-[calc(250px*6)] animate-scrolled">
               {workItems?.map((work: Works, i: number) => (
                 <div
+                  key={i}
                   onClick={() =>
                     window.open(work?.link, "_blank", "rel=noopener noreferrer")
                   }

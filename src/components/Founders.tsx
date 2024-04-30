@@ -1,6 +1,6 @@
-import { facebook, github, linkedin } from "../assets";
 import { founders } from "../constants";
 import { styles } from "../styles";
+import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa6";
 
 const Founders = () => {
   return (
@@ -33,20 +33,37 @@ const Founders = () => {
               {founder?.vanai}
             </p>
             <div className="w-[90%] flex justify-around items-center h-[10%]">
-              <img
-                src={github}
-                alt="github"
-                className="w-[20%] h-[90%] cursor-pointer object-contain rounded-full"
+              <FaGithub
+                onClick={() =>
+                  window.open(
+                    founder?.github,
+                    "_blank",
+                    "rel=noopener noreferrer"
+                  )
+                }
+                className="text-3xl cursor-pointer "
               />
-              <img
-                src={linkedin}
-                alt="linkedin"
-                className="w-[20%] h-[90%] cursor-pointer object-contain rounded-full"
+
+              <FaLinkedin
+                onClick={() =>
+                  window.open(
+                    founder?.linkedin,
+                    "_blank",
+                    "rel=noopener noreferrer"
+                  )
+                }
+                className="text-3xl cursor-pointer text-blue-800"
               />
-              <img
-                src={facebook}
-                alt="facebook"
-                className="w-[20%] h-[90%] cursor-pointer object-contain rounded-full"
+
+              <FaInstagram
+                onClick={() =>
+                  window.open(
+                    founder?.instagram,
+                    "_blank",
+                    "rel=noopener noreferrer"
+                  )
+                }
+                className="text-3xl cursor-pointer text-red-600"
               />
             </div>
           </div>

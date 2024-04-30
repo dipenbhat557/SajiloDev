@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { login, logo1 } from "../assets";
+import { google, login, logo1 } from "../assets";
 import Navbar from "../components/Navbar";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { currUser, loginErr } from "../store";
@@ -12,8 +12,7 @@ import {
 import { auth } from "../firebaseConfig";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import { FaGoogle } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa6";
 
 interface FormData {
   email: string;
@@ -49,7 +48,10 @@ const Signin = () => {
     signInWithEmailAndPassword(auth, formData.email, formData.password)
       .then((res) => {
         if (res?.user?.email) {
-          setCurrentUser({ email: res.user.email });
+          setCurrentUser({
+            email: res.user.email,
+            name: res?.user?.displayName,
+          });
           navigate("/");
           console.log(res.user);
         } else {
@@ -66,7 +68,10 @@ const Signin = () => {
     signInWithPopup(auth, googleProvider)
       .then((res) => {
         if (res?.user?.email) {
-          setCurrentUser({ email: res.user.email });
+          setCurrentUser({
+            email: res.user.email,
+            name: res?.user?.displayName,
+          });
           navigate("/");
           console.log(res.user);
         } else {
@@ -181,11 +186,19 @@ const Signin = () => {
               <div className="border-b border-slate-700 w-[25px]" />
             </div>
             <div className="w-[70%] h-[13%] flex items-center mx-auto justify-around">
-              <FaGoogle className="text-xl" onClick={handleGoogleSignIn} />
-              <FaXTwitter className="text-xl" />
-              <FaFacebook className="text-xl" />
+              <div className="w-[12%] sm:w-[8%] h-full">
+                <img
+                  src={google}
+                  alt="google logo"
+                  className="w-full h-full object-contain cursor-pointer  "
+                  onClick={handleGoogleSignIn}
+                />
+              </div>
 
-              <FaInstagram className="text-xl" />
+              <FaLinkedin className="cursor-pointer text-3xl text-blue-500" />
+              <FaFacebook className="cursor-pointer text-3xl text-blue-800" />
+
+              <FaInstagram className="cursor-pointer text-3xl text-pink-600" />
             </div>
           </div>
         </div>

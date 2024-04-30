@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { login, logo1 } from "../assets";
+import { google, login, logo1 } from "../assets";
 import Navbar from "../components/Navbar";
 import { useSetRecoilState } from "recoil";
 import { currUser } from "../store";
@@ -8,14 +8,15 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithPopup,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import { FaGoogle } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa6";
 
 interface FormData {
+  name: string;
   email: string;
   password: string;
   confirmPassword: string;
@@ -23,6 +24,7 @@ interface FormData {
 
 const Signup = () => {
   const [formData, setFormData] = useState<FormData>({
+    name: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -62,7 +64,17 @@ const Signup = () => {
     createUserWithEmailAndPassword(auth, formData.email, formData.password)
       .then((res) => {
         if (res?.user?.email) {
-          setCurrentUser({ email: res.user.email });
+          updateProfile(res.user, {
+            displayName: formData.name,
+          })
+            .then(() => {
+              console.log("Display name updated successfully");
+            })
+            .catch((error) => {
+              console.error("Error updating display name: ", error);
+            });
+
+          setCurrentUser({ email: res.user.email, name: formData.name });
           navigate("/");
           console.log(res.user);
         } else {
@@ -73,15 +85,16 @@ const Signup = () => {
         setError(true);
         console.log(err);
       });
-
-    console.log("Form submitted with data:", formData);
   };
 
   const handleGoogleSignUp = () => {
     signInWithPopup(auth, googleProvider)
       .then((res) => {
         if (res?.user?.email) {
-          setCurrentUser({ email: res.user.email });
+          setCurrentUser({
+            email: res.user.email,
+            name: res?.user?.displayName,
+          });
           navigate("/");
           console.log(res.user);
         } else {
@@ -134,11 +147,23 @@ const Signup = () => {
             <p className="text-[22px] font-semibold">Register</p>
             <form
               onSubmit={handleSubmit}
-              className="w-full h-[50%] sm:h-[65%] gap-6 flex flex-col"
+              className="w-full h-[50%] sm:h-[75%] gap-6 flex flex-col"
             >
               {error && (
                 <p className="text-red-500 text-[8px] p-2">Try again !!</p>
               )}
+              <input
+                type="text"
+                name="name"
+                placeholder="Enter your full name"
+                onChange={handleChange}
+                value={formData.name}
+                className={`px-8 py-2 placeholder:text-[10px] placeholder:text-slate-700  ${
+                  error
+                    ? "shadow-red-700 shadow-lg"
+                    : "shadow-slate-600 shadow-sm"
+                } rounded-md`}
+              />
               <input
                 type="text"
                 name="email"
@@ -151,6 +176,7 @@ const Signup = () => {
                     : "shadow-slate-600 shadow-sm"
                 } rounded-md`}
               />
+
               <div className="relative">
                 {diffPassword && (
                   <p className="text-red-500 text-[8px] p-2">
@@ -215,11 +241,18 @@ const Signup = () => {
               <div className="border-b border-slate-700 w-[25px]" />
             </div>
             <div className="w-[70%] h-[13%] sm:h-[16%] flex items-center mx-auto justify-around">
-              <FaGoogle className="text-xl" onClick={handleGoogleSignUp} />
-              <FaXTwitter className="text-xl" />
-              <FaFacebook className="text-xl" />
+              <div className="w-[12%] sm:w-[8%] h-full">
+                <img
+                  src={google}
+                  alt="google logo"
+                  className="w-full h-full object-contain cursor-pointer  "
+                  onClick={handleGoogleSignUp}
+                />
+              </div>
+              <FaLinkedin className="cursor-pointer text-3xl text-blue-500" />
+              <FaFacebook className="cursor-pointer text-3xl text-blue-800" />
 
-              <FaInstagram className="text-xl" />
+              <FaInstagram className="cursor-pointer text-3xl text-pink-600" />
             </div>
           </div>
         </div>

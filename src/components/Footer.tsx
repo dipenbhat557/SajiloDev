@@ -1,7 +1,10 @@
-import { facebook, insta, linkedin, logo, twitter } from "../assets";
+import { useNavigate } from "react-router-dom";
+import { logo } from "../assets";
 import { styles } from "../styles";
+import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa6";
 
 const Footer = () => {
+  const navigate = useNavigate();
   const handleSubscribe = () => {};
   return (
     <div
@@ -13,51 +16,62 @@ const Footer = () => {
         <div className="w-[60%] sm:w-[20%] h-[30%] sm:h-[50%] flex flex-col items-center justify-around">
           <div className=" w-[60%] h-[40%]">
             <img
+              onClick={() => navigate("/")}
               src={logo}
               alt="logo"
-              className="w-full h-full object-contain"
+              className="cursor-pointer w-full h-full object-contain"
             />
           </div>
 
           <div className="w-full h-[55%] flex items-center justify-between">
-            <img
-              src={linkedin}
-              alt="linkedin"
-              className="w-[3] h-[40%] cursor-pointer object-contain rounded-full"
+            <FaLinkedin
+              onClick={() =>
+                window.open(
+                  "https://www.linkedin.com/company/sajilo-dev/",
+                  "_blank",
+                  "rel=noopener noreferrer"
+                )
+              }
+              className="cursor-pointer text-3xl text-blue-400"
             />
-            <img
-              src={facebook}
-              alt="facebook"
-              className="w-[3] h-[40%] cursor-pointer object-contain rounded-full"
+            <FaInstagram
+              onClick={() =>
+                window.open(
+                  "https://www.instagram.com/sajilodev/",
+                  "_blank",
+                  "rel=noopener noreferrer"
+                )
+              }
+              className="cursor-pointer text-3xl text-pink-600"
             />
-            <img
-              src={insta}
-              alt="insta"
-              className="w-[2] h-[40%] cursor-pointer object-contain rounded-full"
-            />
-            <img
-              src={twitter}
-              alt="twitter"
-              className="w-[3] h-[40%] cursor-pointer object-contain rounded-full"
+            <FaFacebook
+              onClick={() =>
+                window.open(
+                  "https://www.facebook.com/profile.php?id=61558938183182",
+                  "_blank",
+                  "rel=noopener noreferrer"
+                )
+              }
+              className="cursor-pointer text-3xl text-blue-600"
             />
           </div>
         </div>
 
         <div className="w-[95%] sm:w-[40%] h-[10%] sm:h-auto flex justify-around">
           <a
-            href="#"
+            href="/contactus"
             className="text-white text-[14px] sm:text-[18px] underline font-serif"
           >
             Contact us
           </a>
           <a
-            href="#"
+            href="/contactus"
             className="text-white  text-[14px] sm:text-[18px] underline font-serif"
           >
             Jobs
           </a>
           <a
-            href="#"
+            href="/contactus"
             className="text-white  text-[14px] sm:text-[18px] underline font-serif"
           >
             Customer support
@@ -79,11 +93,11 @@ const Footer = () => {
             Subscribe to our Newsletter to get the latest news, updates
             delivered directly to your inbox.
           </p>
-          <div className=" w-[80%] sm:w-auto my-2 mb-6 justify-center items-center flex flex-row">
+          <div className=" w-[60%] sm:w-auto my-2 mb-6 justify-center items-center flex flex-row">
             <input
               type="text"
               placeholder="Enter your mail address"
-              className="py-2 px-1 sm:px-6 placeholder:text-[14px] sm:placeholder:text-[16px] rounded-xl"
+              className="py-2 placeholder:text-center sm:px-6 placeholder:text-[14px] sm:placeholder:text-[16px] rounded-xl"
             />
             <button
               onClick={handleSubscribe}

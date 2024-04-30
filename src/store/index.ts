@@ -15,6 +15,7 @@ export const currUser = atom({
   key: "currUser",
   default: {
     email: null as string | null,
+    name: null as string | null,
   },
 });
 
@@ -22,7 +23,11 @@ export const listenForAuthChanges = () => {
   const setCurrentUser = useSetRecoilState(currUser);
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setCurrentUser({ email: user ? user.email : "" });
+      setCurrentUser({
+        email: user ? user.email : "",
+        name: user ? user.displayName : null,
+      });
+      console.log("user is ", user);
     });
     return () => unsubscribe();
   }, [setCurrentUser]);
