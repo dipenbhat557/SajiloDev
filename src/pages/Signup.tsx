@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { google, login, logo1 } from "../assets";
 import Navbar from "../components/Navbar";
 import { useSetRecoilState } from "recoil";

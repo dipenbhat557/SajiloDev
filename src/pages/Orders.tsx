@@ -3,7 +3,14 @@ import Footer from "../components/Footer";
 import GettingSite from "../components/GettingSite";
 import Navbar from "../components/Navbar";
 import { styles } from "../styles";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDocs,
+  query,
+  updateDoc,
+  where,
+} from "firebase/firestore";
 import { auth, db } from "../firebaseConfig";
 import { TiTick } from "react-icons/ti";
 import { useRecoilValue, useSetRecoilState } from "recoil";
@@ -69,6 +76,27 @@ const Orders = () => {
     });
     return () => unsubscribe();
   }, [currentUser, navigate]);
+
+  const handleCancelMeeting = async (orderId: string) => {
+    try {
+      const orderRef = doc(db, "orders", orderId); // Provide the complete document reference including the orderId
+      await updateDoc(orderRef, {
+        meeting: "Cancelled",
+        orderStatus: "Cancelled",
+      });
+
+      const updatedOrderItems = orderItems.map((order) => {
+        if (order.orderId === orderId) {
+          return { ...order, meeting: "Cancelled", orderStatus: "Cancelled" };
+        }
+        return order;
+      });
+      setOrderItems(updatedOrderItems);
+      console.log("Meeting cancelled successfully");
+    } catch (error) {
+      console.error("Error cancelling meeting:", error);
+    }
+  };
 
   return (
     <>
@@ -145,12 +173,24 @@ const Orders = () => {
                     </td>
                     <td className="text-[12px] sm:text-[16px] p-2">
                       {order?.meeting === "Cancel" ? (
-                        <button className="border cursor-pointer border-slate-300 rounded-md py-1 px-3 text-red-500">
+                        <button
+                          onClick={() =>
+                            order?.orderId &&
+                            handleCancelMeeting(
+                              order.orderId.slice(1).toString().trim()
+                            )
+                          }
+                          className="border cursor-pointer border-slate-300 rounded-md py-1 px-3 text-red-500"
+                        >
                           Cancel
                         </button>
                       ) : order?.meeting === "Join" ? (
                         <div className="border border-slate-300 cursor-pointer rounded-md py-1 px-3 text-blue-600">
                           Join
+                        </div>
+                      ) : order?.meeting === "Cancelled" ? (
+                        <div className="py-1 px-3 text-[#F34A7C]  bg-[#FFF5F5] rounded-2xl">
+                          Cancelled
                         </div>
                       ) : (
                         <div className="flex gap-1 justify-between  p-2 border border-slate-300 rounded-md">
