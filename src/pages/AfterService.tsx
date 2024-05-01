@@ -14,6 +14,7 @@ import { logo } from "../assets";
 
 interface User {
   email: string | null;
+  name: string | null;
 }
 
 const AfterService = ({
@@ -66,10 +67,12 @@ const AfterService = ({
           email: currentUser?.email,
           location: formData.location,
           meeting: "Cancel",
+          meetingLink: "",
           orderStatus: "Pending",
           orderType: formData.orderType,
           serviceType: afterClickItems[currentService]?.title,
-          time: new Date().toLocaleString(),
+          orderTime: new Date().toLocaleString(),
+          meetingTime: "",
         });
 
         await updateDoc(doc(collectionRef, docRef.id), {

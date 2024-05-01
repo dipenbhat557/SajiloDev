@@ -47,7 +47,7 @@ const Reviews = () => {
   };
   useEffect(() => {
     updateCurrentReviews();
-  }, [currentIndex]);
+  }, [currentIndex, window.innerWidth]);
 
   const handleRightButtonClick = () => {
     setCurrentIndex((prevIndex: number) => {

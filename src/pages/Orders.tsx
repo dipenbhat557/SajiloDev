@@ -25,10 +25,12 @@ interface OrderItem {
   email: string;
   location: string;
   meeting: string;
+  meetingLink: string;
   orderStatus: string;
   orderType: string;
   serviceType: string;
-  time: string;
+  orderTime: string;
+  meetingTime: string;
 }
 
 const Orders = () => {
@@ -56,10 +58,12 @@ const Orders = () => {
                 email: data.email,
                 location: data.location,
                 meeting: data.meeting,
+                meetingLink: data.meetingLink,
                 orderStatus: data.orderStatus,
                 orderType: data.orderType,
                 serviceType: data.serviceType,
-                time: data.time,
+                orderTime: data.orderTime,
+                meetingTime: data.meetingTime,
               };
               ordersData.push(orderItem);
             });
@@ -130,26 +134,26 @@ const Orders = () => {
           ) : (
             <table className="w-full border-collapse">
               <thead>
-                <tr className="border-b border-slate-100">
-                  <th className="text-[12px] sm:text-[16px] text-left p-2">
+                <tr className="border-b border-slate-100 ">
+                  <th className="text-[12px] sm:text-[16px] text-center p-2">
                     Types of Services
                   </th>
-                  <th className="text-[12px] sm:text-[16px] text-left p-2">
+                  <th className="text-[12px] sm:text-[16px] text-center p-2">
                     Location
                   </th>
-                  <th className="text-[12px] sm:text-[16px] text-left p-2">
+                  <th className="text-[12px] sm:text-[16px] text-center p-2">
                     Order Details
                   </th>
-                  <th className="text-[12px] sm:text-[16px] text-left p-2">
+                  <th className="text-[12px] sm:text-[16px] text-center p-2">
                     Order Type
                   </th>
-                  <th className="text-[12px] sm:text-[16px] text-left p-2">
+                  <th className="text-[12px] sm:text-[16px] text-center p-2">
                     Meeting
                   </th>
-                  <th className="text-[12px] sm:text-[16px] text-left p-2">
+                  <th className="text-[12px] sm:text-[16px] text-center p-2">
                     Order Status
                   </th>
-                  <th className="text-[12px] sm:text-[16px] text-left p-2">
+                  <th className="text-[12px] sm:text-[16px] text-center p-2 ">
                     Time
                   </th>
                 </tr>
@@ -157,21 +161,21 @@ const Orders = () => {
               <tbody>
                 {orderItems?.map((order, index) => (
                   <tr key={index} className="border-b border-slate-100">
-                    <td className="text-[12px] sm:text-[16px] p-2">
+                    <td className="text-[12px] text-center  sm:text-[16px] p-2">
                       {order?.serviceType}
                     </td>
-                    <td className="text-[12px] sm:text-[16px] p-2">
+                    <td className="text-[12px] text-center sm:text-[16px] p-2">
                       {order?.location}
                     </td>
-                    <td className="text-[12px] sm:text-[16px] p-2">
+                    <td className="text-[12px] text-center sm:text-[16px] p-2">
                       {order?.orderId}
                       <br />
                       {order?.details}
                     </td>
-                    <td className="text-[12px] sm:text-[16px] p-2">
+                    <td className="text-[12px] text-center sm:text-[16px] p-2">
                       {order?.orderType}
                     </td>
-                    <td className="text-[12px] sm:text-[16px] p-2">
+                    <td className="text-[12px] text-center sm:text-[16px] p-2">
                       {order?.meeting === "Cancel" ? (
                         <button
                           onClick={() =>
@@ -185,7 +189,16 @@ const Orders = () => {
                           Cancel
                         </button>
                       ) : order?.meeting === "Join" ? (
-                        <div className="border border-slate-300 cursor-pointer rounded-md py-1 px-3 text-blue-600">
+                        <div
+                          onClick={() =>
+                            window.open(
+                              order?.meetingLink,
+                              "_blank",
+                              "rel=noopener noreferrer"
+                            )
+                          }
+                          className="border border-slate-300 cursor-pointer rounded-md py-1 px-3 text-blue-600"
+                        >
                           Join
                         </div>
                       ) : order?.meeting === "Cancelled" ? (
@@ -201,7 +214,7 @@ const Orders = () => {
                         </div>
                       )}
                     </td>
-                    <td className="text-[12px] sm:text-[16px] p-2">
+                    <td className="text-[12px] text-center sm:text-[16px] p-2">
                       {order?.orderStatus === "Confirmed" ? (
                         <button className="rounded-md py-1 px-3 text-[#FB7E15] bg-[#FFF5EB]">
                           Confirmed
@@ -220,9 +233,15 @@ const Orders = () => {
                         </div>
                       )}
                     </td>
-                    <td className="text-[12px] sm:text-[16px] p-2">
-                      {order?.time}
-                    </td>
+                    {order?.meetingTime === "" ? (
+                      <td className="text-[12px] text-center sm:text-[16px] p-2">
+                        {order?.orderTime}
+                      </td>
+                    ) : (
+                      <td className="text-[12px] text-center sm:text-[16px] p-2">
+                        {order?.meetingTime}
+                      </td>
+                    )}
                   </tr>
                 ))}
               </tbody>
