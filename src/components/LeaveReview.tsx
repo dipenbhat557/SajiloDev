@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { FaRegStar, FaS, FaStar } from "react-icons/fa6";
-import { useRecoilValue } from "recoil";
-import { currUser, isLoggedIn } from "../store";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { currUser, isLoggedIn, loginErr } from "../store";
 import { useNavigate } from "react-router-dom";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../firebaseConfig";
@@ -10,6 +10,7 @@ interface LeaveReviewProps {
   isOpen: boolean;
   onClose: () => void;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
+  setFormSubmitted: Dispatch<SetStateAction<boolean>>;
 }
 
 interface Review {
@@ -20,6 +21,7 @@ const LeaveReview: React.FC<LeaveReviewProps> = ({
   isOpen,
   onClose,
   setIsOpen,
+  setFormSubmitted,
 }) => {
   if (!isOpen) return null;
   let arr = ["", "", "", "", ""];
@@ -31,10 +33,11 @@ const LeaveReview: React.FC<LeaveReviewProps> = ({
   const navigate = useNavigate();
   const collectionRef = collection(db, "reviews");
   const currentUser = useRecoilValue(currUser);
-  const [formSubmitted, setFormSubmitted] = useState(false);
+  const setLoginError = useSetRecoilState(loginErr);
 
   const handleSubmit = async () => {
     if (!isLogIn) {
+      setLoginError(true);
       navigate("/signin");
     } else {
       try {
@@ -49,7 +52,7 @@ const LeaveReview: React.FC<LeaveReviewProps> = ({
         setIsOpen(false);
         setTimeout(() => {
           setFormSubmitted(false);
-        }, 5000);
+        }, 10000);
 
         setFormData({
           review: "",
@@ -63,7 +66,7 @@ const LeaveReview: React.FC<LeaveReviewProps> = ({
   };
 
   return (
-    <div className="fixed inset-0  bg-black bg-opacity-50 flex justify-center items-center">
+    <div className="fixed inset-0  bg-black bg-opacity-50 flex justify-center items-center  ">
       <div className="bg-white p-6 rounded-lg shadow-lg max-w-lg w-[80%] sm:w-full">
         <h2 className="text-xl font-bold mb-4">Leave a Review</h2>
         <form className="flex gap-3 flex-col">

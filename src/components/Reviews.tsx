@@ -12,6 +12,7 @@ const Reviews = () => {
     reviewItems.slice(0, 3)
   );
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const updateCurrentReviews = () => {
     const startIndex = currentIndex;
@@ -86,6 +87,7 @@ const Reviews = () => {
               </p>
             </div>
           </div>
+
           {/* <div className="w-full sm:w-[80%] h-[38%] sm:h-full flex items-center justify-end">
             <button className="text-[13px] sm:text-[16px] px-4 py-2 text-white bg-[#0766FF] rounded-lg">
               Leave a Review
@@ -99,12 +101,18 @@ const Reviews = () => {
               Leave a Review
             </button>
             <LeaveReview
+              setFormSubmitted={setFormSubmitted}
               isOpen={isReviewOpen}
               onClose={() => setReviewOpen(false)}
               setIsOpen={setReviewOpen}
             />
           </div>
         </div>
+        {formSubmitted && (
+          <div className="w-full text-center text-blue-600 h-auto font-semibold">
+            Thank You for the Review
+          </div>
+        )}
         <div className="w-full h-[70%] flex items-center justify-around">
           <IoMdArrowDropleft
             onClick={handleLeftButtonClick}
