@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { FaRegStar, FaS, FaStar } from "react-icons/fa6";
+import { FaRegStar, FaStar } from "react-icons/fa6";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { currUser, isLoggedIn, loginErr } from "../store";
 import { useNavigate } from "react-router-dom";
@@ -7,7 +7,6 @@ import { addDoc, collection } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 
 interface LeaveReviewProps {
-  isOpen: boolean;
   onClose: () => void;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   setFormSubmitted: Dispatch<SetStateAction<boolean>>;
@@ -18,12 +17,10 @@ interface Review {
 }
 
 const LeaveReview: React.FC<LeaveReviewProps> = ({
-  isOpen,
   onClose,
   setIsOpen,
   setFormSubmitted,
 }) => {
-  if (!isOpen) return null;
   let arr = ["", "", "", "", ""];
   const [currentRate, setCurrentRate] = useState(0);
   const [formData, setFormData] = useState<Review>({
@@ -34,12 +31,14 @@ const LeaveReview: React.FC<LeaveReviewProps> = ({
   const collectionRef = collection(db, "reviews");
   const currentUser = useRecoilValue(currUser);
   const setLoginError = useSetRecoilState(loginErr);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async () => {
     if (!isLogIn) {
       setLoginError(true);
       navigate("/signin");
     } else {
+      setLoading(true);
       try {
         await addDoc(collectionRef, {
           rating: currentRate,
@@ -49,10 +48,12 @@ const LeaveReview: React.FC<LeaveReviewProps> = ({
           img: "",
         });
 
+        setFormSubmitted(true);
+        setLoading(false);
         setIsOpen(false);
         setTimeout(() => {
           setFormSubmitted(false);
-        }, 10000);
+        }, 3000);
 
         setFormData({
           review: "",
@@ -69,7 +70,7 @@ const LeaveReview: React.FC<LeaveReviewProps> = ({
     <div className="fixed inset-0  bg-black bg-opacity-50 flex justify-center items-center  ">
       <div className="bg-white p-6 rounded-lg shadow-lg max-w-lg w-[80%] sm:w-full">
         <h2 className="text-xl font-bold mb-4">Leave a Review</h2>
-        <form className="flex gap-3 flex-col">
+        <div className="flex gap-3 flex-col">
           <p>Rate sajiloDev</p>
           <div className="flex gap-3">
             {arr.map((_, i) =>
@@ -109,10 +110,10 @@ const LeaveReview: React.FC<LeaveReviewProps> = ({
               onClick={handleSubmit}
               className="bg-[#0766FF] hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-r"
             >
-              Submit
+              {loading ? "Submitting..." : "Submit"}
             </button>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import { FaFacebook } from "react-icons/fa";
-import { FaGithub, FaLinkedin } from "react-icons/fa6";
+import { FaGithub } from "react-icons/fa6";
 
 interface FormData {
   name: string;

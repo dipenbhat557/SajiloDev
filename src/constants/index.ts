@@ -187,6 +187,7 @@ export const reviewItems = [
     img: customer1,
     name: " Ajaya Neupane",
     time: "2 months ago",
+    rating: 5,
     review:
       "Incredible experience with sajiloDev ! They brought our vision to life with a stunning website that perfectly represents our brand. The process was smooth, and the team was highly responsive to our needs. Highly recommended!",
   },
@@ -194,6 +195,7 @@ export const reviewItems = [
     img: customer2,
     name: "Shiv Raj Khanal",
     time: "10 months ago",
+    rating: 5,
     review:
       " I couldn't be happier with the website sajiloDev created for my business. From start to finish, they were professional, efficient, and attentive to detail. The end result exceeded my ex",
   },
@@ -201,6 +203,7 @@ export const reviewItems = [
     img: customer3,
     name: " Shiva Oli",
     time: "1 months ago",
+    rating: 5,
     review:
       "मैले सजिलो डेभको साथ अत्यधिक सन्तुलित संवाद सहित निर्माणाधिकारीको साथ सफल अनुभव गरेँ। प्रारम्भिक परामर्शदेखि अन्तिम लान्चसम्म, उनीहरू मेरो आवश्यकताहरूको लागि अत्यधिक प्रतिकूल र सावधानीपूर्वक छिरें। उनीहरूको कामको गुणस्तर शीर्ष-स्तरको छ, र म आफ्ना नयाँ वेबसाइटलाई ग्राहक र सहकर्मीहरूलाई गर्व गर्न सक्छु। उत्कृष्ट सेवाको लागि धन्यवाद!",
   },
@@ -209,6 +212,7 @@ export const reviewItems = [
     img: customer4,
     name: "Shashi Pariyar ",
     time: "1 months ago",
+    rating: 5,
     review:
       "Working with sajiloDev was a game-changer for my online presence. They took the time to understand my goals and delivered a website that not only looks fantastic but also performs exceptionally well. Their expertise and dedication are unmatched!",
   },
@@ -216,6 +220,7 @@ export const reviewItems = [
     img: customer5,
     name: "Tek Bahadhur Pun  ",
     time: "1 months ago",
+    rating: 5,
     review:
       "मेरो स्टार्टअपको लागि सजिलो डेभ छान्नु मेरो एकै राम्रो निर्णय थियो। उनीहरूले मलाई प्रक्रियाको प्रत्येक चरणमा मार्गदर्शन गरेँ, मूल्यवान परामर्श प्रदान गरेँ, र मेरो वेबसाइटलाई मेरो ब्राण्ड पहिचानसँग पूर्णरूपमा मेल खानु निश्चित गरेँ। म उत्कृष्ट परिणामबाट उत्साहित छु र मेरो व्यवसायमा यसको प्रभाव कसरी हुनेछ हेर्न बिर्सनु छ।",
   },
@@ -261,13 +266,4 @@ export const founders = [
     linkedin: "https://www.linkedin.com/in/avash-neupane-a85877264/",
     instagram: "https://www.instagram.com/avash__22/",
   },
-];
-
-export const images = [
-  { img: work1, link: "https://www.deukhurimultiplecampus.edu.np" },
-  { img: work2, link: "https://www.deukhurimultiplecampus.edu.np" },
-  { img: work3, link: "https://www.deukhurimultiplecampus.edu.np" },
-  { img: work4, link: "https://www.deukhurimultiplecampus.edu.np" },
-  { img: work5, link: "https://www.deukhurimultiplecampus.edu.np" },
-  { img: work6, link: "https://www.deukhurimultiplecampus.edu.np" },
 ];
