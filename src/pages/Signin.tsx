@@ -242,8 +242,6 @@ const Signin = () => {
                 onClick={handleGithubSignIn}
                 className="cursor-pointer text-3xl "
               />
-
-              <FaLinkedin className="cursor-pointer text-3xl text-blue-500" />
               <FaFacebook
                 onClick={handleFacebookSignIn}
                 className="cursor-pointer text-3xl text-blue-800"

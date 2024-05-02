@@ -297,7 +297,6 @@ const Signup = () => {
                 onClick={handleGithubSignUp}
                 className="cursor-pointer text-3xl"
               />
-              <FaLinkedin className="cursor-pointer text-3xl text-blue-500" />
               <FaFacebook
                 onClick={handleFacebookSignUp}
                 className="cursor-pointer text-3xl text-blue-800"
