@@ -4,8 +4,10 @@ import { reviewItems } from "../constants";
 import { styles } from "../styles";
 import { IoMdArrowDropright } from "react-icons/io";
 import { IoMdArrowDropleft } from "react-icons/io";
+import LeaveReview from "./LeaveReview";
 
 const Reviews = () => {
+  const [isReviewOpen, setReviewOpen] = useState(false);
   const [currentReviews, setCurrentReviews] = useState<any>(
     reviewItems.slice(0, 3)
   );
@@ -84,10 +86,22 @@ const Reviews = () => {
               </p>
             </div>
           </div>
-          <div className="w-full sm:w-[80%] h-[38%] sm:h-full flex items-center justify-end">
+          {/* <div className="w-full sm:w-[80%] h-[38%] sm:h-full flex items-center justify-end">
             <button className="text-[13px] sm:text-[16px] px-4 py-2 text-white bg-[#0766FF] rounded-lg">
               Leave a Review
             </button>
+          </div> */}
+          <div className="App">
+            <button
+              className=" hover:bg-blue-500 bg-[#0766FF] text-white font-bold py-2 px-4 rounded-lg"
+              onClick={() => setReviewOpen(true)}
+            >
+              Leave a Review
+            </button>
+            <LeaveReview
+              isOpen={isReviewOpen}
+              onClose={() => setReviewOpen(false)}
+            />
           </div>
         </div>
         <div className="w-full h-[70%] flex items-center justify-around">
