@@ -26,7 +26,7 @@ const Services = () => {
               <div className="font-semibold  font-serif text-[13px] sm:text-[16px]">
                 {item?.title}
               </div>
-              <div className="line-clamp-4 text-[11px] sm:text-[16px] sm:line-clamp-none">
+              <div className="line-clamp-4 text-[11px] sm:text-[13px] sm:line-clamp-none">
                 {item?.desc}
               </div>
             </div>

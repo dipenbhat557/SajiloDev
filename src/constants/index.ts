@@ -151,34 +151,34 @@ export const workItems = [
 export const serviceItems = [
   {
     img: service1,
-    title: "Versatile Website Creation",
-    desc: "sajiloDev specializes in crafting both static and dynamic websites, providing tailored solutions for diverse needs. Our expertise ensures seamless user experiences and optimal functionality.",
+    title: "Full Stack Development",
+    desc: " We'll build you a website that's so good, it'll make all the other websites jealous. Trust me, not kidding.",
   },
   {
     img: service2,
     title: "Technical Support",
-    desc: "sajiloDev’s, technical support and maintenance are key services. We provide ongoing assistance and ensure the smooth operation of your websites, guaranteeing their reliability and optimal performance.",
+    desc: "SajiloDev offers vital technical support, ensuring website reliability, performance, and seamless operation for sustained success.",
   },
   {
     img: service3,
     title: "UI/UX",
-    desc: "We specialize in UI/UX services, crafting digital experiences that prioritize user satisfaction. From visually appealing interfaces to intuitive navigation, we optimize every aspect for maximum engagement.",
+    desc: "Explore our stunning website designs, like works of art. We prioritize top-notch digital solutions over decoration.",
   },
 
   {
     img: service5,
     title: "Hosting",
-    desc: "sajiloDev provide secure and reliable hosting services, ensuring high uptime, fast loading speeds, and robust security for your online presence.",
-  },
+    desc: "Get your website out there in the world, where it belongs, with our lightning-fast deployment services"},
   {
     img: service4,
     title: "Domain registration",
-    desc: "Secure your online identity with seamless domain registration. Claim your unique web address effortlessly and mark your presence in the digital world.",
+    desc: 
+    "Easily secure your online identity with seamless domain registration. Claim your unique web address and stand out.",
   },
   {
     img: service6,
     title: "Upgrade & update",
-    desc: "We offer website upgrading and updating services, providing significant improvements and regular tweaks to keep your site efficient, secure, and aligned with your evolving needs.",
+    desc: "We ensure your website runs smoothly. From performance optimization to security, we've got your back."
   },
 ];
 
@@ -267,3 +267,41 @@ export const founders = [
     instagram: "https://www.instagram.com/avash__22/",
   },
 ];
+
+
+export const images = [
+  { img: work1, link: "https://www.deukhurimultiplecampus.edu.np" },
+  { img: work2, link: "https://www.deukhurimultiplecampus.edu.np" },
+  { img: work3, link: "https://www.deukhurimultiplecampus.edu.np" },
+  { img: work4, link: "https://www.deukhurimultiplecampus.edu.np" },
+  { img: work5, link: "https://www.deukhurimultiplecampus.edu.np" },
+  { img: work6, link: "https://www.deukhurimultiplecampus.edu.np" },
+];
+ export const faqs = [
+  {
+    question: "What is React?",
+    answer: "React is a JavaScript library for building user interfaces.",
+  },
+  {
+    question: "What is TypeScript?",
+    answer: "TypeScript is a superset of JavaScript that adds static typing.",
+  },
+  {
+    question: "What is TypeScript?",
+    answer: "TypeScript is a superset of JavaScript that adds static typing.", 
+  },
+  {
+    question: "What is TypeScript?",
+    answer: "TypeScript is a superset of JavaScript that adds static typing.", 
+  },
+  {
+    question: "What is TypeScript?",
+    answer: "TypeScript is a superset of JavaScript that adds static typing.", 
+  } 
+,
+{
+  question: "What is TypeScript?",
+  answer: "TypeScript is a superset of JavaScript that adds static typing.", 
+}
+];
+
