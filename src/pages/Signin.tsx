@@ -13,7 +13,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import { FaFacebook } from "react-icons/fa";
-import { FaGithub, FaLinkedin } from "react-icons/fa6";
+import { FaGithub } from "react-icons/fa6";
 
 interface FormData {
   email: string;
@@ -242,8 +242,6 @@ const Signin = () => {
                 onClick={handleGithubSignIn}
                 className="cursor-pointer text-3xl "
               />
-
-              <FaLinkedin className="cursor-pointer text-3xl text-blue-500" />
               <FaFacebook
                 onClick={handleFacebookSignIn}
                 className="cursor-pointer text-3xl text-blue-800"
