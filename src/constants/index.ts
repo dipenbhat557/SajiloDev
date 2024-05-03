@@ -168,17 +168,17 @@ export const serviceItems = [
   {
     img: service5,
     title: "Hosting",
-    desc: "Get your website out there in the world, where it belongs, with our lightning-fast deployment services"},
+    desc: "Get your website out there in the world, where it belongs, with our lightning-fast deployment services",
+  },
   {
     img: service4,
     title: "Domain registration",
-    desc: 
-    "Easily secure your online identity with seamless domain registration. Claim your unique web address and stand out.",
+    desc: "Easily secure your online identity with seamless domain registration. Claim your unique web address and stand out.",
   },
   {
     img: service6,
     title: "Upgrade & update",
-    desc: "We ensure your website runs smoothly. From performance optimization to security, we've got your back."
+    desc: "We ensure your website runs smoothly. From performance optimization to security, we've got your back.",
   },
 ];
 
@@ -268,7 +268,6 @@ export const founders = [
   },
 ];
 
-
 export const images = [
   { img: work1, link: "https://www.deukhurimultiplecampus.edu.np" },
   { img: work2, link: "https://www.deukhurimultiplecampus.edu.np" },
@@ -277,31 +276,35 @@ export const images = [
   { img: work5, link: "https://www.deukhurimultiplecampus.edu.np" },
   { img: work6, link: "https://www.deukhurimultiplecampus.edu.np" },
 ];
- export const faqs = [
+export const faqs = [
   {
     question: "What is React?",
-    answer: "React is a JavaScript library for building user interfaces.",
+    answer:
+      "  React is a JavaScript library for building user interfacesReact is a JavaScript library for building user interfacesReact is a JavaScript library for building user interfacesReact is a JavaScript library for building user interfacesReact is a JavaScript library for building user interfacesReact is a JavaScript library for building user interfaces React is a JavaScript library for building user interfaces.",
   },
   {
     question: "What is TypeScript?",
-    answer: "TypeScript is a superset of JavaScript that adds static typing.",
+    answer:
+      "  TypeScript is a superset of JavaScript that adds static TypeScript is a superset of JavaScript that adds static TypeScript is a superset of JavaScript that adds static TypeScript is a superset of JavaScript that adds static TypeScript is a superset of JavaScript that adds static TypeScript is a superset of JavaScript that adds static  TypeScript is a superset of JavaScript that adds static typing.",
   },
   {
     question: "What is TypeScript?",
-    answer: "TypeScript is a superset of JavaScript that adds static typing.", 
+    answer:
+      "  TypeScript is a superset of JavaScript that adds static TypeScript is a superset of JavaScript that adds static TypeScript is a superset of JavaScript that adds static TypeScript is a superset of JavaScript that adds static TypeScript is a superset of JavaScript that adds static TypeScript is a superset of JavaScript that adds static  TypeScript is a superset of JavaScript that adds static typing.",
   },
   {
     question: "What is TypeScript?",
-    answer: "TypeScript is a superset of JavaScript that adds static typing.", 
+    answer:
+      "  TypeScript is a superset of JavaScript that adds static TypeScript is a superset of JavaScript that adds static TypeScript is a superset of JavaScript that adds static TypeScript is a superset of JavaScript that adds static TypeScript is a superset of JavaScript that adds static TypeScript is a superset of JavaScript that adds static  TypeScript is a superset of JavaScript that adds static typing.",
   },
   {
     question: "What is TypeScript?",
-    answer: "TypeScript is a superset of JavaScript that adds static typing.", 
-  } 
-,
-{
-  question: "What is TypeScript?",
-  answer: "TypeScript is a superset of JavaScript that adds static typing.", 
-}
+    answer:
+      "  TypeScript is a superset of JavaScript that adds static TypeScript is a superset of JavaScript that adds static TypeScript is a superset of JavaScript that adds static TypeScript is a superset of JavaScript that adds static TypeScript is a superset of JavaScript that adds static TypeScript is a superset of JavaScript that adds static  TypeScript is a superset of JavaScript that adds static typing.",
+  },
+  {
+    question: "What is TypeScript?",
+    answer:
+      "  TypeScript is a superset of JavaScript that adds static TypeScript is a superset of JavaScript that adds static TypeScript is a superset of JavaScript that adds static TypeScript is a superset of JavaScript that adds static TypeScript is a superset of JavaScript that adds static TypeScript is a superset of JavaScript that adds static  TypeScript is a superset of JavaScript that adds static typing.",
+  },
 ];
-

@@ -54,6 +54,7 @@ const Signin = () => {
           setCurrentUser({
             email: res.user.email,
             name: res?.user?.displayName,
+            photo: res?.user?.photoURL,
           });
           navigate("/");
           console.log(res.user);
@@ -74,6 +75,7 @@ const Signin = () => {
           setCurrentUser({
             email: res.user.email,
             name: res?.user?.displayName,
+            photo: res?.user?.photoURL,
           });
           navigate("/");
           console.log(res.user);
@@ -94,6 +96,7 @@ const Signin = () => {
           setCurrentUser({
             email: res.user.email,
             name: res?.user?.displayName,
+            photo: res?.user?.photoURL,
           });
           navigate("/");
           console.log(res.user);
@@ -114,6 +117,7 @@ const Signin = () => {
           setCurrentUser({
             email: res.user.email,
             name: res?.user?.displayName,
+            photo: res?.user?.photoURL,
           });
           navigate("/");
           console.log(res.user);

@@ -3,7 +3,7 @@ import { def } from "../assets";
 import { navLinks, serviceDropdowns } from "../constants";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-import { isLoggedIn } from "../store";
+import { currUser, isLoggedIn } from "../store";
 import { useState } from "react";
 import { AiOutlineMenuFold, AiOutlineMenuUnfold } from "react-icons/ai";
 import { ImCross } from "react-icons/im";
@@ -22,6 +22,7 @@ const Navbar = ({
   const isLogIn = useRecoilValue(isLoggedIn);
   const [showDropdown, setShowDropdown] = useState(false);
   const [toggle, setToggle] = useState(false);
+  const currentUser = useRecoilValue(currUser);
   let timeoutId: NodeJS.Timeout;
 
   const handleMouseLeave = () => {
@@ -40,7 +41,7 @@ const Navbar = ({
   return (
     <>
       <div
-        className={` ${bgColor} bg-opacity-70 backdrop-blur-sm hover:backdrop-blur-lg	border-radius: 0.5rem  	 fixed w-full h-[60px] hidden sm:flex items-center ${textColor} justify-between z-30`}
+        className={` ${bgColor} bg-opacity-70 backdrop-blur-sm hover:backdrop-blur-lg	border-radius:0.5rem  	 fixed w-full h-[60px] hidden sm:flex items-center ${textColor} justify-between z-30`}
       >
         <div className="flex items-center gap-10 w-[65%]">
           <div
@@ -105,12 +106,12 @@ const Navbar = ({
         )}
         {isLogIn && (
           <div
-            className="w-[15%] flex items-center justify-center "
+            className="w-[3%] h-[80%] flex items-center rounded-full justify-center mr-4"
             onClick={() => navigate("/user")}
           >
             <img
-              src={def}
-              className="w-[3] h-[80%] object-contain rounded-full cursor-pointer"
+              src={currentUser?.photo || def}
+              className="w-full h-full object-cover rounded-full cursor-pointer"
             />
           </div>
         )}

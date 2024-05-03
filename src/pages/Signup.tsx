@@ -77,7 +77,11 @@ const Signup = () => {
               console.error("Error updating display name: ", error);
             });
 
-          setCurrentUser({ email: res.user.email, name: formData.name });
+          setCurrentUser({
+            email: res.user.email,
+            name: formData.name,
+            photo: "",
+          });
           navigate("/");
           console.log(res.user);
         } else {
@@ -97,6 +101,7 @@ const Signup = () => {
           setCurrentUser({
             email: res.user.email,
             name: res?.user?.displayName,
+            photo: res?.user?.photoURL,
           });
           navigate("/");
           console.log(res.user);
@@ -117,6 +122,7 @@ const Signup = () => {
           setCurrentUser({
             email: res.user.email,
             name: res?.user?.displayName,
+            photo: res?.user?.photoURL,
           });
           navigate("/");
           console.log(res.user);
@@ -137,6 +143,7 @@ const Signup = () => {
           setCurrentUser({
             email: res.user.email,
             name: res?.user?.displayName,
+            photo: res?.user?.photoURL,
           });
           navigate("/");
           console.log(res.user);

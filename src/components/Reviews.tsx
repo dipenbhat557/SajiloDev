@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { def, rating, reviewBg } from "../assets";
+import { def, reviewBg } from "../assets";
 import { reviewItems } from "../constants";
 import { styles } from "../styles";
 import { IoMdArrowDropright } from "react-icons/io";

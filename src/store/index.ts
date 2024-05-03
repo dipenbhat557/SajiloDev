@@ -16,6 +16,7 @@ export const currUser = atom({
   default: {
     email: null as string | null,
     name: null as string | null,
+    photo: null as string | null,
   },
 });
 
@@ -26,6 +27,7 @@ export const listenForAuthChanges = () => {
       setCurrentUser({
         email: user ? user.email : "",
         name: user ? user.displayName : null,
+        photo: user ? user.photoURL : null,
       });
       console.log("user is ", user);
     });

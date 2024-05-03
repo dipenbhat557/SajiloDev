@@ -66,6 +66,8 @@ import heroBg from "./heroBg.png";
 import reviewBg from "./reviewBg.png";
 
 import login from "./login.svg";
+import faqBg from "./faq/faqBg.svg";
+import faqLight from "./faq/faqLight.svg";
 
 export {
   logo,
@@ -125,4 +127,6 @@ export {
   heroBg,
   reviewBg,
   login,
+  faqBg,
+  faqLight,
 };

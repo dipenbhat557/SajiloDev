@@ -16,16 +16,16 @@ const Hero = () => {
 
   return (
     <div className="relative">
-      <div
+      {/* <div
         className="absolute z-50 inset-0 bg-grid-slate-100 dark:bg-grid-slate-700/25"
         style={{
           WebkitMaskImage:
             "linear-gradient(0deg, rgba(255,255,255,0.1), rgba(255,255,255,0.5))",
-          maskImage:
+          maskImage:f
             "linear-gradien(0deg, rgba(255,255,255,0.1), rgba(255,255,255,0.5))",
           backgroundPosition: "10px 10px",
         }}
-      />
+      /> */}
       <div className="flex sm:flex-row flex-col">
         <div
           onMouseEnter={() => {

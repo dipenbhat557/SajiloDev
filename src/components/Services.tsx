@@ -10,7 +10,7 @@ const Services = () => {
         <p>Our </p>
         <p className="text-[#0766FF]">Services</p>
       </div>
-      <div className="h-auto w-full flex flex-wrap gap-4 items-center justify-around">
+      <div className="h-auto w-full flex flex-wrap gap-4 items-center justify-around ">
         {serviceItems?.map((item, index) => {
           return (
             <div

@@ -10,6 +10,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import { useRecoilValue } from "recoil";
 import { currUser } from "../store";
+import Popup from "../constants/Popup";
 
 const User = () => {
   const [editable, setEditable] = useState(false);
@@ -111,12 +112,20 @@ const User = () => {
             </div>
           </div>
           <div className="w-[80%] h-[10%] gap-4 flex flex-col-reverse sm:flex-row items-center justify-center">
-            <button
+            {/* <button
               className="px-14 py-1 text-white bg-[#1F2123] rounded-full text-[18px] font-serif"
               onClick={handleLogOut}
             >
               Logout
-            </button>{" "}
+            </button>{" "} */}
+
+            <Popup
+              deco="px-14 py-1 text-white bg-[#1F2123] rounded-full text-[18px] font-serif"
+              text="Logout"
+              onpressed={handleLogOut}
+            >
+              Logout
+            </Popup>
             <button
               className="px-14 py-1 text-white bg-red-500 rounded-full text-[14px] sm:text-[18px] font-serif"
               onClick={handleChangePassword}
