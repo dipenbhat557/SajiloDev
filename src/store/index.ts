@@ -29,7 +29,6 @@ export const listenForAuthChanges = () => {
         name: user ? user.displayName : null,
         photo: user ? user.photoURL : null,
       });
-      console.log("user is ", user);
     });
     return () => unsubscribe();
   }, [setCurrentUser]);

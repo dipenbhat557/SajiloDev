@@ -82,12 +82,12 @@ const Hero = () => {
         )}
 
         <div>
-          <h1 className="text-transparent absolute top-10 z-30 sm:z-none sm:top-[40%] left-[18%] sm:left-[10%] bg-clip-text bg-gradient-to-r from-[#0766FF] to-white  font-semibold sm:font-bold text-[30px] sm:text-[50px]">
+          <h1 className="text-transparent absolute top-10 z-20 sm:z-none sm:top-[40%] left-[18%] sm:left-[10%] bg-clip-text bg-gradient-to-r from-[#0766FF] to-white  font-semibold sm:font-bold text-[30px] sm:text-[50px]">
             You Dream It,
             <br /> We Build It
           </h1>
           <button
-            className="rounded-md px-6 py-2 z-30 sm:z-none absolute top-[24%] sm:top-[65%] left-[18%] sm:left-[10%] text-white text-[12px] sm:text-[14px] bg-[#0766FF]"
+            className="rounded-md px-6 py-2 z-20 sm:z-none absolute top-[24%] sm:top-[65%] left-[18%] sm:left-[10%] text-white text-[12px] sm:text-[14px] bg-[#0766FF]"
             onClick={() => navigate("/afterservice/1")}
           >
             Get your own site

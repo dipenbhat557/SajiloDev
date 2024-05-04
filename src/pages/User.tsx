@@ -10,7 +10,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import { useRecoilValue } from "recoil";
 import { currUser } from "../store";
-import Popup from "../constants/Popup";
+import Popup from "../components/Popup";
 
 const User = () => {
   const [editable, setEditable] = useState(false);
@@ -79,15 +79,16 @@ const User = () => {
               <p className="font-serif">Name</p>
               <input
                 type="text"
-                value={currentUser?.name?.toString()}
+                value={currentUser?.name?.toString() || ""}
                 className="px-2 border border-slate-200 rounded-md shadow-sm shadow-slate-300 mb-2 placeholder:text-[12px] "
                 placeholder="Enter your name"
                 readOnly={!editable}
               />
+
               <p className="font-serif">Email</p>
               <input
                 type="text"
-                value={currentUser?.email?.toString()}
+                value={currentUser?.email?.toString() || ""}
                 className="px-2 border border-slate-200 rounded-md shadow-sm shadow-slate-300 mb-2 placeholder:text-[12px] "
                 placeholder="Enter your email"
                 readOnly={!editable}

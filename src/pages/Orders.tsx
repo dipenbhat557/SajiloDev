@@ -18,7 +18,7 @@ import { currUser, loginErr } from "../store";
 import { onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { logo } from "../assets";
-import Popup from "../constants/Popup";
+import Popup from "../components/Popup";
 
 interface OrderItem {
   orderId: String;
@@ -179,21 +179,6 @@ const Orders = () => {
                     </td>
                     <td className="text-[12px] text-center sm:text-[16px] p-2">
                       {order?.meeting === "Cancel" ? (
-                        // <button
-                        //   onClick={
-                        //     () => {
-                        //       // setpop(true);
-                        //       console.log("it is clicked");
-                        //     }
-                        //     order?.orderId &&
-                        //     handleCancelMeeting(
-                        //       order.orderId.slice(1).toString().trim()
-                        //     )
-                        //   }
-                        //   className="border cursor-pointer border-slate-300 rounded-md py-1 px-3 text-red-500"
-                        // >
-                        //   {pop ? <Popup> Cancel</Popup> : "Cancel"}
-                        // </button>
                         <Popup
                           deco="rounded-md py-1 px-3 text-[#FB7E15] bg-[#FFF5EB]"
                           text="Cancel"

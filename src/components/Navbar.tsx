@@ -122,7 +122,7 @@ const Navbar = ({
             onMouseLeave={() => setShowDropdown(false)}
             onMouseOver={() => handleMouseOverDropdown()}
           >
-            <ul>
+            <ul className="w-full">
               {serviceDropdowns?.map((service, index) => {
                 return (
                   <li

@@ -23,6 +23,7 @@ const AfterService = ({
   currentServiceIncoming: number;
 }) => {
   const [currentService, setCurrentService] = useState(currentServiceIncoming);
+  const [currentOrder, setCurrentOrder] = useState(0);
   const collectionRef = collection(db, "orders");
   const currentUser: User = useRecoilValue(currUser);
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -41,6 +42,14 @@ const AfterService = ({
     setFormData((prevData) => ({
       ...prevData,
       selectedService: parseInt(event.target.value, 10),
+    }));
+  };
+
+  const handleOrderChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setCurrentOrder(parseInt(event.target.value, 10));
+    setFormData((prevData) => ({
+      ...prevData,
+      orderType: event.target.value,
     }));
   };
 
@@ -135,7 +144,7 @@ const AfterService = ({
                 <div className="w-[80%] sm:w-[35%] h-[40%] sm:h-full justify-around flex flex-col gap-1 sm:gap-3">
                   <p className="font-serif ">Services</p>
                   <select
-                    className="p-2 border border-slate-200 rounded-md shadow-sm shadow-slate-300 mb-2 placeholder:text-[10px] sm:placeholder:text-[12px]"
+                    className="p-2 border border-slate-200 cursor-pointer rounded-md shadow-sm shadow-slate-300 mb-2 placeholder:text-[10px] sm:placeholder:text-[12px]"
                     onChange={handleServiceChange}
                     value={currentService}
                   >
@@ -171,20 +180,22 @@ const AfterService = ({
                 </div>
                 <div className="w-[80%] sm:w-[35%] h-[60%] sm:h-full flex flex-col gap-3 justify-end">
                   <p className="font-serif">Order Type *</p>
-                  <input
-                    type="text"
-                    className="p-2 border border-slate-200 rounded-md shadow-sm shadow-slate-300 mb-2 placeholder:text-[12px]"
-                    placeholder="Write your order type"
-                    name="orderType"
-                    value={formData.orderType}
-                    onChange={handleInputChange}
-                    required
-                  />
+                  <select
+                    className="p-2 border border-slate-200 cursor-pointer rounded-md shadow-sm shadow-slate-300 mb-2 placeholder:text-[10px] sm:placeholder:text-[12px]"
+                    onChange={handleOrderChange}
+                    value={currentOrder}
+                  >
+                    <option value="">Select order type</option>
+                    <option value="Personal">Personal</option>
+                    <option value="Organization">Organization</option>
+                    <option value="Government">Government</option>
+                    <option value="Others">Others</option>
+                  </select>
                   <p className="font-serif">Additional Information</p>
                   <textarea
                     rows={10}
                     className="p-2 placeholder:p-4 border border-slate-200 rounded-md shadow-sm shadow-slate-300 mb-2 placeholder:text-[12px]"
-                    placeholder="Any additional information"
+                    placeholder="Please tell something about the product you desire"
                     name="additionalInfo"
                     value={formData.additionalInfo}
                     onChange={handleInputChange}
