@@ -24,25 +24,48 @@ const Reviews = () => {
     const readingReviews = async () => {
       try {
         const q = query(collection(db, "reviews"));
-
         const querySnapshot = await getDocs(q);
+        const newReviews: any[] = [];
+        let newTotalReview = 0;
+
         querySnapshot.forEach((doc) => {
-          setTotalReviewItems([
-            ...totalReviewItems,
-            {
-              name: doc.data().name,
-              img: doc.data().img,
-              review: doc.data().review,
-              rating: doc.data().rating,
-              time: doc.data().time,
-            },
-          ]);
-          setTotalReview((prev) => prev + doc.data().rating);
+          const reviewData = doc.data();
+          const review = {
+            name: reviewData.name,
+            img: reviewData.img,
+            review: reviewData.review,
+            rating: reviewData.rating,
+            time: reviewData.time,
+          };
+          // let newOne = review?.filter(a=>reviewData?.)
+          newReviews.push(review);
+          newTotalReview += reviewData.rating;
         });
+        console.log("review items are ", reviewItems);
+        console.log("new reviews are ", newReviews);
+
+        // Combine the existing reviews with the newly fetched reviews
+
+        const newOne = totalReviewItems;
+        newReviews.forEach((n) => {
+          const s = newOne?.filter((a) => n?.name === a?.name);
+          if (s.length > 0) {
+            console.log(n, " it didn't ran");
+          } else {
+            console.log("it ran");
+            newOne.push(n);
+          }
+        });
+
+        setTotalReviewItems(newOne);
+        console.log("total review items are ", totalReviewItems);
+
+        setTotalReview((prevTotal) => prevTotal + newTotalReview);
       } catch (error) {
         console.log("Error is ", error);
       }
     };
+
     readingReviews();
   }, []);
 
