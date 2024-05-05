@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
+import { slideIn } from "../utils/motion";
+import { SectionWrapper } from "../hoc";
 
 const Domain = () => {
   const [domainName, setDomainName] = useState("");
@@ -40,7 +43,10 @@ const Domain = () => {
   };
 
   return (
-    <div className="w-full h-[300px] flex flex-col items-center justify-center bg-[#1F2123]">
+    <motion.div
+      variants={slideIn("left", "spring", 0.6, 1.6)}
+      className="w-full h-[300px] flex flex-col items-center justify-center bg-[#1F2123]"
+    >
       <p className="font-bold text-white text-[18px] sm:text-[28px]">
         Secure your domain now
       </p>
@@ -70,8 +76,8 @@ const Domain = () => {
           {availability ? "Domain available!" : "Domain not available."}
         </p>
       )}
-    </div>
+    </motion.div>
   );
 };
 
-export default Domain;
+export default SectionWrapper(Domain);

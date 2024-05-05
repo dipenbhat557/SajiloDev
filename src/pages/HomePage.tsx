@@ -10,7 +10,6 @@ import Works from "../components/Works";
 import Footer from "../components/Footer";
 import { logo } from "../assets";
 import FAQs from "../components/Faqs";
-import { faqs } from "../constants";
 
 const HomePage = () => {
   return (
@@ -28,7 +27,7 @@ const HomePage = () => {
       <Reviews />
       <TechStack />
       <Founders />
-      <FAQs faqs={faqs} />
+      <FAQs />
       <GettingSite />
       <Footer />
     </>

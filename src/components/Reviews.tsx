@@ -8,6 +8,9 @@ import LeaveReview from "./LeaveReview";
 import { FaStar } from "react-icons/fa6";
 import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../firebaseConfig";
+import { motion } from "framer-motion";
+import { fadeIn } from "../utils/motion";
+import { SectionWrapper } from "../hoc";
 
 const Reviews = () => {
   const [isReviewOpen, setReviewOpen] = useState(false);
@@ -113,7 +116,10 @@ const Reviews = () => {
       <div className="w-full h-[20%] sm:h-[30%] ">
         <img src={reviewBg} alt="bg" className="w-full h-full object-contain" />
       </div>
-      <div className="w-full h-[70%] flex flex-col rounded-t-lg shadow-black shadow-lg">
+      <motion.div
+        variants={fadeIn("down", "", 0.5, 0.6)}
+        className="w-full h-[70%] flex flex-col rounded-t-lg shadow-black shadow-lg"
+      >
         <div className="w-full h-[10%] rounded-t-lg bg-[#1F2123]" />
         <div
           className={`${styles.paddingX} pt-2 w-full h-[30%] sm:h-[20%] flex flex-col sm:flex-row sm:items-center justify-between`}
@@ -216,8 +222,8 @@ const Reviews = () => {
             }`}
           />
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
-export default Reviews;
+export default SectionWrapper(Reviews);

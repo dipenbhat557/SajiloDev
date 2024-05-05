@@ -1,6 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { getSite1, getSite2 } from "../assets";
 import { styles } from "../styles";
+import { motion } from "framer-motion";
+import { slideIn } from "../utils/motion";
+import { SectionWrapper } from "../hoc";
 
 const GettingSite = () => {
   const navigate = useNavigate();
@@ -20,22 +23,28 @@ const GettingSite = () => {
         </button>
       </div>
       <div className="w-[90%] sm:w-[50%] h-[60%] sm:h-[90%] relative">
-        <div className="w-[90%] h-[80%] -z-1">
+        <motion.div
+          variants={slideIn("right", "spring", 0.5, 1)}
+          className="w-[90%] h-[80%] -z-1"
+        >
           <img
             src={getSite1}
             alt="get site 1"
             className="w-full h-full object-contain rounded-lg"
           />
-        </div>
-        <div className="w-[50%] h-[40%] z-50 bottom-0 right-0 rounded-lg absolute">
+        </motion.div>
+        <motion.div
+          variants={slideIn("right", "spring", 1, 1)}
+          className="w-[50%] h-[40%] z-50 bottom-0 right-0 rounded-lg absolute"
+        >
           <img
             src={getSite2}
             alt="get site 2"
             className="w-full h-[90%] object-contain rounded-lg"
           />
-        </div>
+        </motion.div>
       </div>
     </div>
   );
 };
-export default GettingSite;
+export default SectionWrapper(GettingSite);

@@ -120,4 +120,4 @@ const Hero = () => {
   );
 };
 
-export default SectionWrapper(Hero, "hero");
+export default SectionWrapper(Hero);

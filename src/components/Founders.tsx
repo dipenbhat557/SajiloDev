@@ -1,13 +1,19 @@
 import { founders } from "../constants";
 import { styles } from "../styles";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa6";
+import { motion } from "framer-motion";
+import { slideIn, textVariant } from "../utils/motion";
+import { SectionWrapper } from "../hoc";
 
 const Founders = () => {
   return (
     <div
       className={`${styles.padding} w-full h-[380px] sm:h-[500px] flex flex-col items-center gap-3`}
     >
-      <div className="h-[10%] flex items-center gap-2">
+      <motion.div
+        variants={textVariant(0.2)}
+        className="h-[10%] flex items-center gap-2"
+      >
         <p className="font-serif text-[18px] sm:text-[22px] italic ">Sajilo</p>
         <div className="font-serif  text-[18px] sm:text-[22px] italic bg-[#0766FF] flex items-center justify-center p-1 sm:p-2 rounded-[50%] text-white">
           Dev's
@@ -15,10 +21,16 @@ const Founders = () => {
         <p className="font-serif  text-[18px] sm:text-[22px] italic ">
           Founders
         </p>
-      </div>
+      </motion.div>
       <div className="w-full h-[90%] flex items-center justify-around">
         {founders?.map((founder, index) => (
-          <div
+          <motion.div
+            variants={slideIn(
+              index === 0 ? "left" : "right",
+              "spring",
+              0.5,
+              0.9
+            )}
             key={index}
             className="w-[45%] sm:w-[30%] h-[90%] shadow-xl rounded-md shadow-slate-300 flex flex-col items-center justify-around"
           >
@@ -67,11 +79,11 @@ const Founders = () => {
                 className="text-xl sm:text-3xl cursor-pointer text-red-600"
               />
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>
   );
 };
 
-export default Founders;
+export default SectionWrapper(Founders);

@@ -7,7 +7,7 @@ export const fadeIn = (
   return {
     hidden: {
       x: direction === "left" ? 100 : direction === "right" ? -100 : 0,
-      y: direction === "up" ? 100 : direction === "down" ? -100 : 0,
+      y: direction === "up" ? 100 : direction === "down" ? -300 : 0,
       opacity: 0,
     },
     show: {

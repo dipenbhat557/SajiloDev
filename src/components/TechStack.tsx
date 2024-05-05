@@ -1,11 +1,18 @@
 import { useState } from "react";
 import { techStack } from "../constants";
 import { styles } from "../styles";
+import { motion } from "framer-motion";
+import { SectionWrapper } from "../hoc";
 
 const TechStack = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   return (
-    <div className={`h-auto w-full ${styles.padding} flex flex-col gap-4`}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.6, duration: 1.5 }}
+      className={`h-auto w-full ${styles.padding} flex flex-col gap-4`}
+    >
       <div className={`${styles.sectionHeadText} flex gap-3 mx-auto `}>
         <p>Our Tech</p>
         <p className="text-[#0766FF]">Stack</p>
@@ -48,7 +55,7 @@ const TechStack = () => {
           })}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
-export default TechStack;
+export default SectionWrapper(TechStack);

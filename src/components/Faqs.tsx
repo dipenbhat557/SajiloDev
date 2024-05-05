@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { styles } from "../styles";
 import { faqBg, faqLight } from "../assets";
+import { motion } from "framer-motion";
+import { slideIn } from "../utils/motion";
+import { SectionWrapper } from "../hoc";
+import { faqs } from "../constants";
 
-interface FAQ {
-  question: string;
-  answer: string;
-}
-
-const FAQs: React.FC<{ faqs: FAQ[] }> = ({ faqs }) => {
+const FAQs = () => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   const toggleAnswer = (index: number) => {
@@ -22,7 +21,10 @@ const FAQs: React.FC<{ faqs: FAQ[] }> = ({ faqs }) => {
     <div className={`${styles.padding} w-full bg-[#1F2123] `}>
       {/* <div className="flex justify-center"> */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 text-white ">
-        <div className="w-[95%] pl-8 px-6 h-auto">
+        <motion.div
+          variants={slideIn("left", "spring", 0.6, 1.4)}
+          className="w-[95%] pl-8 px-6 h-auto"
+        >
           <div
             className={`${styles.sectionHeadText} tracking-wider font-medium flex flex-wrap pb-7`}
           >
@@ -61,20 +63,23 @@ const FAQs: React.FC<{ faqs: FAQ[] }> = ({ faqs }) => {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* second col */}
 
-        <div className="w-[95%] h-[500px] hidden sm:flex my-auto">
+        <motion.div
+          variants={slideIn("right", "spring", 0.6, 1.4)}
+          className="w-[95%] h-[500px] hidden sm:flex my-auto"
+        >
           <img
             src={faqBg}
             alt="FAQ BG"
             className="w-full h-full object-contain"
           />
-        </div>
+        </motion.div>
       </div>
     </div>
   );
 };
 
-export default FAQs;
+export default SectionWrapper(FAQs);
