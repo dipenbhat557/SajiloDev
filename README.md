@@ -1,30 +1,62 @@
-# React + TypeScript + Vite
+# SajiloDev
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+SajiloDev is a web-based platform built with React.ts and Firebase, designed to streamline the process of ordering technical services such as website creation, domain name availability checks, hosting, and maintenance.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Order Services**: Clients can easily order various technical services, including website creation, domain name checks, hosting, and maintenance, through an intuitive interface.
 
-## Expanding the ESLint configuration
+- **Domain Name Availability Check**: The platform allows users to check the availability of domain names directly through the website.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Hosting Services**: Users can explore different hosting options and choose the one that best fits their needs.
 
-- Configure the top-level `parserOptions` property like this:
+- **Maintenance and Updates**: Clients can request ongoing maintenance and updates for their websites, ensuring their online presence remains up-to-date and secure.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+## Getting Started
+
+To run the project locally, follow these steps:
+
+1. Clone the repository:
+
+```bash
+git clone git@github.com:dipenbhat557/SajiloDev.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. Navigate to the project directory:
+
+```bash
+cd SajiloDev
+```
+
+3. Install dependencies:
+
+```bash
+npm install
+```
+
+4. Start the development server:
+
+```bash
+npm run dev
+```
+
+5. Open your browser and navigate to `http://localhost:5173` to view the application.
+
+## Online Accessibility
+
+The SajiloDev platform is accessible online at sajilodev.com.
+
+## Technologies Used
+
+- **React.ts**: Frontend development framework for building user interfaces.
+- **Firebase**: Backend service used for authentication, database management, and hosting.
+- **HTML/CSS**: Markup and styling languages for designing the user interface.
+- **TypeScript**: Programming languages used for frontend logic and interaction.
+
+## Contributing
+
+Contributions are welcome! Feel free to open an issue or submit a pull request for any enhancements or bug fixes.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
