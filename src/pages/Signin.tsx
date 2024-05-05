@@ -68,7 +68,8 @@ const Signin = () => {
                 name: res?.user?.displayName,
                 photo: res?.user?.photoURL,
                 subscribed: ans.length > 0,
-                provider: res?.user?.providerId,
+                provider: res?.user?.providerData?.[0]?.providerId,
+                phoneNo: res?.user?.phoneNumber,
               });
               navigate("/");
               console.log(res.user);
@@ -103,7 +104,8 @@ const Signin = () => {
                 name: res?.user?.displayName,
                 photo: res?.user?.photoURL,
                 subscribed: ans.length > 0,
-                provider: res?.user?.providerId,
+                provider: res?.user?.providerData?.[0]?.providerId,
+                phoneNo: res?.user?.phoneNumber,
               });
               navigate("/");
               console.log(res.user);
@@ -138,7 +140,8 @@ const Signin = () => {
                 name: res?.user?.displayName,
                 photo: res?.user?.photoURL,
                 subscribed: ans.length > 0,
-                provider: res?.user?.providerId,
+                provider: res?.user?.providerData?.[0]?.providerId,
+                phoneNo: res?.user?.phoneNumber,
               });
               navigate("/");
               console.log(res.user);
@@ -173,7 +176,8 @@ const Signin = () => {
                 name: res?.user?.displayName,
                 photo: res?.user?.photoURL,
                 subscribed: ans.length > 0,
-                provider: res?.user?.providerId,
+                provider: res?.user?.providerData?.[0]?.providerId,
+                phoneNo: res?.user?.phoneNumber,
               });
               navigate("/");
               console.log(res.user);

@@ -19,6 +19,7 @@ export const currUser = atom({
     photo: null as string | null,
     subscribed: false,
     provider: null as string | null,
+    phoneNo: null as string | null,
   },
 });
 
@@ -31,7 +32,8 @@ export const listenForAuthChanges = () => {
         name: user ? user.displayName : null,
         photo: user ? user.photoURL : null,
         subscribed: false,
-        provider: user ? user.providerId : null,
+        provider: user ? user.providerData?.[0]?.providerId : null,
+        phoneNo: user ? user.phoneNumber : null,
       });
     });
     return () => unsubscribe();
