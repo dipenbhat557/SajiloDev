@@ -26,7 +26,7 @@ const Reviews = () => {
         const q = query(collection(db, "reviews"));
         const querySnapshot = await getDocs(q);
         const newReviews: any[] = [];
-        let newTotalReview = 0;
+        let newTotalReview = totalReview;
 
         querySnapshot.forEach((doc) => {
           const reviewData = doc.data();
@@ -37,30 +37,32 @@ const Reviews = () => {
             rating: reviewData.rating,
             time: reviewData.time,
           };
-          // let newOne = review?.filter(a=>reviewData?.)
           newReviews.push(review);
-          newTotalReview += reviewData.rating;
         });
-        console.log("review items are ", reviewItems);
-        console.log("new reviews are ", newReviews);
-
-        // Combine the existing reviews with the newly fetched reviews
+        // console.log("review items are ", reviewItems);
+        // console.log("new reviews are ", newReviews);
 
         const newOne = totalReviewItems;
         newReviews.forEach((n) => {
           const s = newOne?.filter((a) => n?.name === a?.name);
           if (s.length > 0) {
-            console.log(n, " it didn't ran");
           } else {
-            console.log("it ran");
+            newTotalReview = newTotalReview + n?.rating;
+            // console.log("The rating is ", n?.rating);
+            // console.log("new total review is ", newTotalReview);
+            setTotalReview(newTotalReview);
+
+            // console.log("total review is ", totalReview);
             newOne.push(n);
           }
         });
 
         setTotalReviewItems(newOne);
-        console.log("total review items are ", totalReviewItems);
-
-        setTotalReview((prevTotal) => prevTotal + newTotalReview);
+        // console.log("total review items are ", totalReviewItems);
+        // console.log(
+        //   "length of total review items is ",
+        //   totalReviewItems.length
+        // );
       } catch (error) {
         console.log("Error is ", error);
       }
@@ -82,17 +84,6 @@ const Reviews = () => {
     } else {
       setCurrentReviews(totalReviewItems?.slice(startIndex, endIndex));
     }
-    // console.log(reviewItems?.slice(1, 4));
-    // console.log(
-    //   "start index is ",
-    //   startIndex,
-    //   " end index is ",
-    //   endIndex,
-    //   " current reviews are ",
-    //   currentReviews,
-    //   "next index is ",
-    //   nextIndex
-    // );
   };
 
   const handleLeftButtonClick = () => {

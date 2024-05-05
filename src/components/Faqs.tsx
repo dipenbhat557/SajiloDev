@@ -23,14 +23,6 @@ const FAQs: React.FC<{ faqs: FAQ[] }> = ({ faqs }) => {
       {/* <div className="flex justify-center"> */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 text-white ">
         <div className="w-[95%] pl-8 px-6 h-auto">
-          <div className="w-full h-full absolute">
-            {" "}
-            <img
-              src={faqLight}
-              className="w-full h-full object-contain -z-10 absolute"
-              alt="faqLight"
-            />
-          </div>
           <div
             className={`${styles.sectionHeadText} tracking-wider font-medium flex flex-wrap pb-7`}
           >
@@ -38,7 +30,10 @@ const FAQs: React.FC<{ faqs: FAQ[] }> = ({ faqs }) => {
             <p>ASKED</p>&nbsp;&nbsp;
             <p className="text-[#03dffc]">QUESTIONS</p>
           </div>
-          <div className="sm:max-w-4xl sm:mx-4">
+          <div
+            style={{ backgroundImage: `url(${faqLight})` }}
+            className=" sm:max-w-4xl w-auto sm:mx-4 "
+          >
             {faqs.map((faq, index) => (
               <div
                 key={index}

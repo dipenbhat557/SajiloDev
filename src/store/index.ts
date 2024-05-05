@@ -17,6 +17,8 @@ export const currUser = atom({
     email: null as string | null,
     name: null as string | null,
     photo: null as string | null,
+    subscribed: false,
+    provider: null as string | null,
   },
 });
 
@@ -28,13 +30,14 @@ export const listenForAuthChanges = () => {
         email: user ? user.email : "",
         name: user ? user.displayName : null,
         photo: user ? user.photoURL : null,
+        subscribed: false,
+        provider: user ? user.providerId : null,
       });
     });
     return () => unsubscribe();
   }, [setCurrentUser]);
 };
 
-//handles the error when user tries to access orders without being authenticated
 export const loginErr = atom({
   key: "loginErr",
   default: false,

@@ -12,9 +12,10 @@ import {
   signInWithPopup,
   updateProfile,
 } from "firebase/auth";
-import { auth } from "../firebaseConfig";
+import { auth, db } from "../firebaseConfig";
 import { FaFacebook } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa6";
+import { collection, getDocs, query, where } from "firebase/firestore";
 
 interface FormData {
   name: string;
@@ -33,6 +34,7 @@ const Signup = () => {
   let googleProvider = new GoogleAuthProvider();
   let githubProvider = new GithubAuthProvider();
   let facebookProvider = new FacebookAuthProvider();
+  const subscriptionRef = collection(db, "subscriptions");
 
   const [showPassword1, setShowPassword1] = useState<boolean>(false);
   const [showPassword2, setShowPassword2] = useState<boolean>(false);
@@ -69,21 +71,28 @@ const Signup = () => {
         if (res?.user?.email) {
           updateProfile(res.user, {
             displayName: formData.name,
-          })
-            .then(() => {
-              console.log("Display name updated successfully");
-            })
-            .catch((error) => {
-              console.error("Error updating display name: ", error);
-            });
-
-          setCurrentUser({
-            email: res.user.email,
-            name: formData.name,
-            photo: "",
           });
-          navigate("/");
-          console.log(res.user);
+          const q = query(
+            subscriptionRef,
+            where("email", "==", res?.user?.email)
+          );
+          getDocs(q)
+            .then((r) => {
+              const ans = r.docs.filter(
+                (d) => d.data().email === res?.user?.email
+              );
+              console.log("it is empty ", ans.length <= 0);
+              setCurrentUser({
+                email: res.user.email,
+                name: res?.user?.displayName,
+                photo: res?.user?.photoURL,
+                subscribed: ans.length > 0,
+                provider: res?.user?.providerId,
+              });
+              navigate("/");
+              console.log(res.user);
+            })
+            .catch((err) => console.log(err));
         } else {
           setError(true);
         }
@@ -98,13 +107,27 @@ const Signup = () => {
     signInWithPopup(auth, googleProvider)
       .then((res) => {
         if (res?.user?.email) {
-          setCurrentUser({
-            email: res.user.email,
-            name: res?.user?.displayName,
-            photo: res?.user?.photoURL,
-          });
-          navigate("/");
-          console.log(res.user);
+          const q = query(
+            subscriptionRef,
+            where("email", "==", res?.user?.email)
+          );
+          getDocs(q)
+            .then((r) => {
+              const ans = r.docs.filter(
+                (d) => d.data().email === res?.user?.email
+              );
+              console.log("it is empty ", ans.length <= 0);
+              setCurrentUser({
+                email: res.user.email,
+                name: res?.user?.displayName,
+                photo: res?.user?.photoURL,
+                subscribed: ans.length > 0,
+                provider: res?.user?.providerId,
+              });
+              navigate("/");
+              console.log(res.user);
+            })
+            .catch((err) => console.log(err));
         } else {
           setError(true);
         }
@@ -119,13 +142,27 @@ const Signup = () => {
     signInWithPopup(auth, githubProvider)
       .then((res) => {
         if (res?.user?.email) {
-          setCurrentUser({
-            email: res.user.email,
-            name: res?.user?.displayName,
-            photo: res?.user?.photoURL,
-          });
-          navigate("/");
-          console.log(res.user);
+          const q = query(
+            subscriptionRef,
+            where("email", "==", res?.user?.email)
+          );
+          getDocs(q)
+            .then((r) => {
+              const ans = r.docs.filter(
+                (d) => d.data().email === res?.user?.email
+              );
+              console.log("it is empty ", ans.length <= 0);
+              setCurrentUser({
+                email: res.user.email,
+                name: res?.user?.displayName,
+                photo: res?.user?.photoURL,
+                subscribed: ans.length > 0,
+                provider: res?.user?.providerId,
+              });
+              navigate("/");
+              console.log(res.user);
+            })
+            .catch((err) => console.log(err));
         } else {
           setError(true);
         }
@@ -140,13 +177,27 @@ const Signup = () => {
     signInWithPopup(auth, facebookProvider)
       .then((res) => {
         if (res?.user?.email) {
-          setCurrentUser({
-            email: res.user.email,
-            name: res?.user?.displayName,
-            photo: res?.user?.photoURL,
-          });
-          navigate("/");
-          console.log(res.user);
+          const q = query(
+            subscriptionRef,
+            where("email", "==", res?.user?.email)
+          );
+          getDocs(q)
+            .then((r) => {
+              const ans = r.docs.filter(
+                (d) => d.data().email === res?.user?.email
+              );
+              console.log("it is empty ", ans.length <= 0);
+              setCurrentUser({
+                email: res.user.email,
+                name: res?.user?.displayName,
+                photo: res?.user?.photoURL,
+                subscribed: ans.length > 0,
+                provider: res?.user?.providerId,
+              });
+              navigate("/");
+              console.log(res.user);
+            })
+            .catch((err) => console.log(err));
         } else {
           setError(true);
         }

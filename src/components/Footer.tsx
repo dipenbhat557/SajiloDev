@@ -2,13 +2,44 @@ import { useNavigate } from "react-router-dom";
 import { logo } from "../assets";
 import { styles } from "../styles";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa6";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { currUser, isLoggedIn, loginErr } from "../store";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../firebaseConfig";
 
 const Footer = () => {
   const navigate = useNavigate();
-  const handleSubscribe = () => {};
+  const isLogIn = useRecoilValue(isLoggedIn);
+  const setLoginError = useSetRecoilState(loginErr);
+  const collectionRef = collection(db, "subscriptions");
+  const [currentUser, setCurrentUser] = useRecoilState(currUser);
+
+  const handleSubscribe = async () => {
+    if (!isLogIn) {
+      setLoginError(true);
+      navigate("/signin");
+    } else {
+      try {
+        await addDoc(collectionRef, {
+          email: currentUser?.email,
+          name: currentUser?.name,
+          time: new Date().toLocaleString(),
+        });
+        setCurrentUser({ ...currentUser, subscribed: true });
+
+        console.log("subscribed");
+      } catch (error) {
+        console.error("Error adding document: ", error);
+        alert("Failed to add data. Please try again.");
+      }
+    }
+  };
+
   return (
     <div
-      className={`${styles.paddingX} flex flex-col bg-[#1F2123] w-full h-[550px] sm:h-[300px] items-center`}
+      className={`${styles.paddingX} flex flex-col bg-[#1F2123] w-full ${
+        currentUser?.subscribed ? "h-[260px]" : "h-[550px]"
+      } sm:h-[300px] items-center`}
     >
       <div
         className={` w-full h-full sm:h-[82%] flex  flex-col-reverse sm:flex-row justify-around items-center`}
@@ -78,35 +109,33 @@ const Footer = () => {
           </a>
         </div>
 
-        <div className="flex flex-col w-[75%] sm:w-[30%] h-[60%] sm:h-[70%] justify-center items-center pt-4">
-          <div className="flex flex-row w-[90%] sm:w-[25%] items-center justify-center mt-2">
-            <div className="w-[8%] h-[2px] border-b-4 border-[#0766FF] mr-2 rounded-3xl flex-grow" />
-            <p className="font-extrabold  text-xl text-white sm:text-2xl">
-              SUBSCRIPTION
+        {!currentUser?.subscribed && (
+          <div className="flex flex-col w-[75%] sm:w-[30%] h-[60%] sm:h-[70%] justify-center items-center pt-4">
+            <div className="flex flex-row w-[90%] sm:w-[25%] items-center justify-center mt-2">
+              <div className="w-[8%] h-[2px] border-b-4 border-[#0766FF] mr-2 rounded-3xl flex-grow" />
+              <p className="font-extrabold  text-xl text-white sm:text-2xl">
+                SUBSCRIPTION
+              </p>
+              <div className="w-[8%] h-[2px] border-b-4 ml-2 border-[#0766FF] rounded-3xl flex-grow" />
+            </div>
+            <p className="font-extrabold my-2 text-[17px] text-white">
+              Join our Newsletter
             </p>
-            <div className="w-[8%] h-[2px] border-b-4 ml-2 border-[#0766FF] rounded-3xl flex-grow" />
+            <p className=" text-center font-bold text-[12px] text-white md:leading-loose m-2">
+              Subscribe to our Newsletter to get the latest news, updates
+              delivered directly to your inbox.
+            </p>
+
+            <div className="w-[90%] sm:w-auto my-2 mb-6 justify-center items-center flex flex-row">
+              <button
+                onClick={handleSubscribe}
+                className="bg-[#0766FF] text-[12px] sm:text-[16px] font-medium sm:font-bold text-white hover:shadow-2xl mt-2 hover:bg-blue-500 ml-1 sm:ml-3 p-1 sm:p-2 px-4 rounded-2xl"
+              >
+                Subscribe
+              </button>
+            </div>
           </div>
-          <p className="font-extrabold my-2 text-[17px] text-white">
-            Join our Newsletter
-          </p>
-          <p className=" text-center font-bold text-[12px] text-white md:leading-loose m-2">
-            Subscribe to our Newsletter to get the latest news, updates
-            delivered directly to your inbox.
-          </p>
-          <div className="w-[90%] sm:w-auto my-2 mb-6 justify-center items-center flex flex-row">
-            <input
-              type="text"
-              placeholder="Enter your mail address"
-              className="flex-grow py-1 sm:py-2 w-[80%] sm:w-auto placeholder:text-center sm:px-6 placeholder:text-[10px] sm:placeholder:text-[16px] rounded-xl"
-            />
-            <button
-              onClick={handleSubscribe}
-              className="bg-[#0766FF] text-[12px] sm:text-[16px] font-medium sm:font-bold text-white hover:shadow-2xl mt-2 hover:bg-blue-500 ml-1 sm:ml-3 p-1 sm:p-2 px-4 rounded-2xl"
-            >
-              Subscribe
-            </button>
-          </div>
-        </div>
+        )}
       </div>
       <div className="w-[80%] sm:w-[20%] h-[10%] sm:h-auto border-t border-slate-400 flex items-center justify-center p-2">
         {" "}
