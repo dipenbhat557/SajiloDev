@@ -1,4 +1,9 @@
-export const fadeIn = (direction, type, delay, duration) => {
+export const fadeIn = (
+  direction: any,
+  type: any,
+  delay: any,
+  duration: any
+) => {
   return {
     hidden: {
       x: direction === "left" ? 100 : direction === "right" ? -100 : 0,
@@ -19,7 +24,7 @@ export const fadeIn = (direction, type, delay, duration) => {
   };
 };
 
-export const textVariant = (delay) => {
+export const textVariant = (delay: any) => {
   return {
     hidden: {
       y: -50,
@@ -37,7 +42,12 @@ export const textVariant = (delay) => {
   };
 };
 
-export const slideIn = (direction, type, delay, duration) => {
+export const slideIn = (
+  direction: any,
+  type: any,
+  delay: any,
+  duration: any
+) => {
   return {
     hidden: {
       x: direction === "left" ? "-100%" : direction === "right" ? "100%" : 0,
@@ -56,7 +66,7 @@ export const slideIn = (direction, type, delay, duration) => {
   };
 };
 
-export const staggerContainer = (staggerChildren, delayChildren) => {
+export const staggerContainer = (staggerChildren: any, delayChildren: any) => {
   return {
     hidden: {},
     show: {
